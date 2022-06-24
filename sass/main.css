@@ -60,4 +60,18 @@ body {
   background: #FFF;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  color: #000;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 1.7;
+}
+
+h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: 5rem;
+  font-style: italic;
+}
+
 /*# sourceMappingURL=main.css.map */
