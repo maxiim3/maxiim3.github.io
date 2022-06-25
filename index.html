@@ -1,45 +1,233 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <!--    Metas   -->
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
-    <!--
-        Add Social Media cards
-    -->
-    <!--    Google Fonts    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap"
-      rel="stylesheet"
-    />
-    <!--    CSS -->
-    <link href="./public/css/normalize.css" rel="stylesheet" />
-    <link href="./public/css/style.css" rel="stylesheet" />
+   <head>
+      <!--    Metas   -->
+      <meta charset="UTF-8" />
+      <meta
+         content="width=device-width, initial-scale=1.0"
+         name="viewport" />
+      <meta
+         content="ie=edge"
+         http-equiv="X-UA-Compatible" />
+      <!--
+Add Social Media cards
+-->
+      <!--    Google Fonts    -->
+      <link
+         rel="preconnect"
+         href="https://fonts.googleapis.com" />
+      <link
+         rel="preconnect"
+         href="https://fonts.gstatic.com"
+         crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap"
+         rel="stylesheet" />
+      <!--    CSS -->
+      <link
+         href="./public/css/normalize.css"
+         rel="stylesheet" />
+      <link
+         href="./public/css/style.css"
+         rel="stylesheet" />
 
-    <!--    Font Awesome -->
-    <link
-      crossorigin="anonymous"
-      href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
-      integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
-      rel="stylesheet"
-    />
-    <!--    Title   -->
-    <title>Ohmyfood</title>
-    <meta
-      content="Trouvez le menu qui vous convient | Découvrez des restaurants d'exceptions sélectionnés par nos soins."
-      name="description"
-    />
-  </head>
-  <body>
-    <h1>Welcome</h1>
-    <ul>
-      <li><a href="./a-la-francaise.html">A la Francaise</a></li>
-      <li><a href="./la-note-enchantee.html">La Note Enchantee</a></li>
-      <li><a href="./la-palette-du-gout.html">La Palette du gout</a></li>
-      <li><a href="./le-delice-des-sens.html">Le Delice des Sens</a></li>
-    </ul>
-  </body>
+      <!--    Font Awesome -->
+      <link
+         crossorigin="anonymous"
+         href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+         integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
+         rel="stylesheet" />
+      <script
+         src="https://kit.fontawesome.com/0c07982b91.js"
+         crossorigin="anonymous"></script>
+      <!--    Title   -->
+      <title>Ohmyfood</title>
+      <meta
+         content="Trouvez le menu qui vous convient | Découvrez des restaurants d'exceptions sélectionnés par nos soins."
+         name="description" />
+   </head>
+   <body>
+      <!--region Header-->
+      <header class="home__header">
+         <nav class="header__navigation">
+            <h1>ohmyfood</h1>
+         </nav>
+         <section class="header__localisation">
+            <label for="localisation"><i class="fa-solid fa-location-dot"></i></label>
+            <input
+               id="localisation"
+               type="text"
+               value="Paris, Belleville"
+               placeholder="Chercher à proximité" />
+         </section>
+         <section class="header__presentation">
+            <h2>réservez le menu qui vous convient</h2>
+            <p>Découvrez des restaurants d'exception sélectionnés par nos soins.</p>
+            <div class="header__button-container">
+               <button class="main-button">
+                  <a href="#main__restaurant">Explorer nos restaurants </a>
+               </button>
+            </div>
+         </section>
+      </header>
+      <!--endregion-->
+      <!--region Main-->
+      <main class="home__main">
+         <!--region fonctionnement-->
+         <section class="main__fonctionnement-container">
+            <h2>Fonctionnement</h2>
+            <ul class="fonctionnement__list">
+               <li>
+                  <span class="fonctionnement__bubble">1</span>
+                  <span class="fonctionnement__icon"
+                     ><i class="fa-solid fa-mobile-screen-button"></i
+                  ></span>
+                  <span class="fonctionnement__description">Choisissez un restaurant</span>
+               </li>
+               <li>
+                  <span class="fonctionnement__bubble">2</span>
+                  <span class="fonctionnement__icon"><i class="fa-solid fa-list-ul"></i></span>
+                  <span class="fonctionnement__description">Composez votre menu</span>
+               </li>
+               <li>
+                  <span class="fonctionnement__bubble">3</span>
+                  <span class="fonctionnement__icon"><i class="fa-solid fa-store"></i></span>
+                  <span class="fonctionnement__description">Dégustez au restaurant</span>
+               </li>
+            </ul>
+         </section>
+         <!--endregion-->
+         <!--region restaurant-->
+         <section
+            id="main__restaurant"
+            class="main__restaurant-container">
+            <!--TITLE-->
+            <h2>Restaurants</h2>
+
+            <!--region card-container-->
+            <ul class="restaurant__card-container">
+               <!--region 1. La palette du goût-->
+               <li class="restaurant__card restaurant__card--new">
+                  <a href="./la-palette-du-gout.html">
+                     <!--Card-HEADER-->
+                     <section class="restaurant__card-header">
+                        <img
+                           src="./public/img/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg"
+                           alt="La palette du goût à Ménilmontant" />
+                        <div class="new-restaurant">
+                           <p>Nouveau</p>
+                        </div>
+                     </section>
+                     <!--Card-CONTENT-->
+                     <section class="restaurant__card-content">
+                        <div class="text-container">
+                           <h3>La palette du goût</h3>
+                           <p>Ménilmontant</p>
+                        </div>
+                        <div class="like-container">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </section>
+                  </a>
+               </li>
+               <!--endregion-->
+               <!--region 2. La note enchantée-->
+               <li class="restaurant__card restaurant__card--new">
+                  <a href="./la-note-enchantee.html">
+                     <!--Card-HEADER-->
+                     <section class="restaurant__card-header">
+                        <img
+                           src="./public/img/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg"
+                           alt="La note enchantée à Charonne" />
+                        <div class="new-restaurant">
+                           <p>Nouveau</p>
+                        </div>
+                     </section>
+                     <!--Card-CONTENT-->
+                     <section class="restaurant__card-content">
+                        <div class="text-container">
+                           <h3>La note enchantée</h3>
+                           <p>Charonne</p>
+                        </div>
+                        <div class="like-container">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </section>
+                  </a>
+               </li>
+               <!--endregion-->
+               <!--region 3. À la française-->
+               <li class="restaurant__card restaurant__card--new">
+                  <a href="./a-la-francaise.html">
+                     <!--Card-HEADER-->
+                     <section class="restaurant__card-header">
+                        <img
+                           src="./public/img/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg"
+                           alt="À la française à Cité Rouge" />
+                        <div
+                           class="new-restaurant"
+                           hidden>
+                           <p>Nouveau</p>
+                        </div>
+                     </section>
+                     <!--Card-CONTENT-->
+                     <section class="restaurant__card-content">
+                        <div class="text-container">
+                           <h3>À la française</h3>
+                           <p>Cité Rouge</p>
+                        </div>
+                        <div class="like-container">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </section>
+                  </a>
+               </li>
+               <!--endregion-->
+               <!--region 4. Le délice des sens-->
+               <li class="restaurant__card restaurant__card--new">
+                  <a href="./le-delice-des-sens.html">
+                     <!--Card-HEADER-->
+                     <section class="restaurant__card-header">
+                        <img
+                           src="./public/img/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg"
+                           alt="Le délice des sens à Folie-Méricourt" />
+                        <div
+                           class="new-restaurant"
+                           hidden>
+                           <p>Nouveau</p>
+                        </div>
+                     </section>
+                     <!--Card-CONTENT-->
+                     <section class="restaurant__card-content">
+                        <div class="text-container">
+                           <h3>Le délice des sens</h3>
+                           <p>Folie-Méricourt</p>
+                        </div>
+                        <div class="like-container">
+                           <i class="fa-regular fa-heart"></i>
+                        </div>
+                     </section>
+                  </a>
+               </li>
+               <!--endregion-->
+            </ul>
+            <!--endregion-->
+         </section>
+         <!--endregion-->
+      </main>
+      <!--endregion-->
+      <!--region Footer-->
+      <footer>
+         <h2>ohmyfood</h2>
+         <ul class="footer__links">
+            <li><i class="fa"></i><a href="#">Proposer un restaurant</a></li>
+            <li><i class="fa"></i><a href="#">Devenir partenaire</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li>
+               <a href="mailto:contact@maxii.me?subject=Je vous contact depuis ohmyfood">Contact</a>
+            </li>
+         </ul>
+      </footer>
+      <!--endregion-->
+   </body>
 </html>

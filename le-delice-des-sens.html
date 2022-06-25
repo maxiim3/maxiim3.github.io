@@ -1,45 +1,216 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <!--    Metas   -->
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
-    <!--
-        Add Social Media cards
-    -->
-    <!--    Google Fonts    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap"
-            rel="stylesheet"
-    />
-    <!--    CSS -->
-    <link href="./public/css/normalize.css" rel="stylesheet" />
-    <link href="./public/css/style.css" rel="stylesheet" />
+   <head>
+      <!--    Metas   -->
+      <meta charset="UTF-8" />
+      <meta
+         content="width=device-width, initial-scale=1.0"
+         name="viewport" />
+      <meta
+         content="ie=edge"
+         http-equiv="X-UA-Compatible" />
+      <!--
+Add Social Media cards
+-->
+      <!--    Google Fonts    -->
+      <link
+         rel="preconnect"
+         href="https://fonts.googleapis.com" />
+      <link
+         rel="preconnect"
+         href="https://fonts.gstatic.com"
+         crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap"
+         rel="stylesheet" />
+      <!--    CSS -->
+      <link
+         href="./public/css/normalize.css"
+         rel="stylesheet" />
+      <link
+         href="./public/css/style.css"
+         rel="stylesheet" />
 
-    <!--    Font Awesome -->
-    <link
-            crossorigin="anonymous"
-            href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
-            integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
-            rel="stylesheet"
-    />
-    <!--    Title   -->
-    <title>Le Delice des Sens</title>
-    <meta
-            content="Trouvez le menu qui vous convient | Découvrez des restaurants d'exceptions sélectionnés par nos soins."
-            name="description"
-    />
-</head>
-<body>
-<h1>Le Delice des Sens</h1>
-<ul>
-    <li><a href="./a-la-francaise.html">A la Francaise</a></li>
-    <li><a href="./la-note-enchantee.html">La Note Enchantee</a></li>
-    <li><a href="./la-palette-du-gout.html">La Palette du gout</a></li>
-    <li><a href="./le-delice-des-sens.html">Le Delice des Sens</a></li>
-</ul>
-</body>
+      <!--    Font Awesome -->
+      <link
+         crossorigin="anonymous"
+         href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+         integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
+         rel="stylesheet" />
+      <script
+         src="https://kit.fontawesome.com/0c07982b91.js"
+         crossorigin="anonymous"></script>
+      <!--    Title   -->
+      <title>Ohmyfood | Le délice des sens</title>
+      <meta
+         content="Trouvez le menu qui vous convient | Découvrez des restaurants d'exceptions sélectionnés par nos soins."
+         name="description" />
+   </head>
+   <body>
+      <!--region Header-->
+      <header class="pages__header page-two__header">
+         <nav class="header__navigation">
+            <a href="./"><i class="fa-solid fa-arrow-left"></i></a>
+            <h1>ohmyfood</h1>
+         </nav>
+      </header>
+      <!--endregion-->
+      <!--region Main-->
+      <main class="pages__main page-one__main">
+         <!--region header-->
+         <section class="main__header">
+            <img
+               src="./public/img/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg"
+               alt="Le délice des sens à Folie-Méricourt" />
+         </section>
+         <!--endregion-->
+         <!--region Menu-->
+         <section class="main__menu">
+            <section class="restaurant-title-container">
+               <h1>Le délice des sens</h1>
+               <span><i class="fa-regular fa-heart"></i></span>
+            </section>
+            <!--region Starter-dish-->
+            <section class="starter-dish">
+               <h2>Entrées</h2>
+               <ul class="card-container">
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Tartare de thon</h3>
+                        <p>Assaisonné au yuzu</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">25€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Bouchée de homard croustillant</h3>
+                        <p>Et sa farandole de petits légumes</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">35€ </span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Velouté de cèpes</h3>
+                        <p>Aux truffes</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">20€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+               </ul>
+            </section>
+            <!--endregion-->
+            <!--region Main-dish-->
+            <section class="main-dish">
+               <h2>Plats</h2>
+               <ul class="card-container">
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Poulet rôti aux herbes de Provence</h3>
+                        <p>Et sa crème de truffe</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">40€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Langouste rôtie</h3>
+                        <p>Et ses légumes de saison</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">35€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Côte de boeuf Angus</h3>
+                        <p>Et sa purée de panais</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">44€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+               </ul>
+            </section>
+            <!--endregion-->
+            <!--region Dessert-dish-->
+            <section class="dessert">
+               <h2>Desserts</h2>
+               <ul class="card-container">
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Farandole de desserts</h3>
+                        <p>Du chef</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">18€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Crème brulée</h3>
+                        <p>Revisitée</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">22€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+                  <!--Menu Element-->
+                  <li class="card">
+                     <div class="card-content">
+                        <h3>Tiramisu</h3>
+                        <p>À la noisette</p>
+                     </div>
+                     <aside class="card-price">
+                        <span class="price">23€</span>
+                     </aside>
+                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                  </li>
+               </ul>
+            </section>
+            <div class="menu__button-container">
+               <button class="main-button">
+                  <a href="#">Commander</a>
+               </button>
+            </div>
+            <!--endregion-->
+         </section>
+         <!--endregion-->
+      </main>
+      <!--endregion-->
+      <!--region Footer-->
+      <footer>
+         <h2>ohmyfood</h2>
+         <ul class="footer__links">
+            <li><i class="fa"></i><a href="#">Proposer un restaurant</a></li>
+            <li><i class="fa"></i><a href="#">Devenir partenaire</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li>
+               <a href="mailto:contact@maxii.me?subject=Je vous contact depuis ohmyfood">Contact</a>
+            </li>
+         </ul>
+      </footer>
+      <!--endregion-->
+   </body>
 </html>

@@ -1,6 +1,6 @@
 # maxiim3.github.io
 
-![](../../../Documents/OpenClassrooms/P3/Livrables/Maquettes Ohmyfood/images/logo/ohmyfood.png)
+![](./public/img/logo/ohmyfood@2x.svg)
 
 ## Formation React
 ### ohmyfood - Projet numéro 3
