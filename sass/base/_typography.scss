@@ -1,26 +1,46 @@
-body {
-    font-family: $font-text;
-    color: #000;
-    font-size: 2rem;
-    font-weight: 100;
-    line-height: 1.7;
+p,
+h3,
+h2,
+h1,
+h4,
+label,
+a,
+input,
+li {
+   font-family: $font-text;
+   color: white(0);
 }
 
 h1 {
-    font-family: $font-header;
-    font-size: 5rem;
-    font-style: italic;
+   font-family: $font-header;
+   font-size: $text-xxxl;
+   font-weight: 400;
+   letter-spacing: 0.6px;
 }
 
-//textarea {
-//    font-family: 'Roboto', sans-serif;
-//    font-weight: 100;
-//    font-size: 2rem;
-//}
-//
-//button {
-//    font-family: 'Roboto', sans-serif;
-//    font-weight: 900;
-//    font-style: italic;
-//    font-size: 2.75rem;
-//}
+h2 {
+   font-family: $font-text;
+   font-size: $text-xl;
+   font-weight: 600;
+   letter-spacing: 0.1px;
+}
+
+input {
+   font-size: $text-m;
+   font-weight: 500;
+   color: white(20);
+}
+
+i {
+   font-size: $icon-size;
+}
+
+p {
+   font-size: $text-l;
+   font-weight: 300;
+}
+
+button {
+   font-size: $text-m;
+   font-weight: 400;
+}

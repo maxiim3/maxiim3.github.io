@@ -1,3 +1,25 @@
-//.btn {
-//    @include btn
-//}
+.main-button {
+   height: 50px;
+   transition: all 150ms ease-in-out;
+   border: none;
+   border-radius: 100px;
+   background: $primaire;
+   background: linear-gradient(170deg, $secondaire 10%, $primaire-light 75%);
+   padding-inline: 21px;
+   @include box-shadow;
+   a {
+      font-weight: 400;
+      color: white(100);
+   }
+   &:hover {
+      cursor: pointer;
+      @include box-shadow(5px, 15px, 45%);
+      filter: brightness(110%);
+   }
+}
+
+.pages__main {
+   .main-button {
+      width: 186px;
+   }
+}
