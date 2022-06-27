@@ -1,0 +1,176 @@
+//region HEADER
+.home__header {
+   //NAVIGATION for Home page only
+   .header__navigation {
+      position: sticky;
+      top: 0;
+      border-bottom: 1px solid white(96);
+      background-color: white(100);
+      box-shadow: 0 1px 3px white(70);
+   }
+}
+
+//region Input Localisation
+.header__localisation {
+   z-index: 0;
+   display: grid;
+   height: 50px;
+   background-color: white(92);
+   place-content: center;
+
+   input {
+      z-index: 0;
+      width: 130px;
+      margin-left: 15px;
+      border: none;
+      background-color: inherit;
+   }
+}
+//endregion
+
+//region Presentation
+.header__presentation {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   background-color: white(96);
+   padding-block: 43px;
+   gap: 15px;
+   h2 {
+      width: 74%;
+   }
+   p {
+      width: 85%;
+      margin-bottom: 20px;
+      color: white(20);
+   }
+}
+//endregion
+//endregion
+
+//region MAIN
+
+//region main Layout
+.main__fonctionnement-container,
+.main__restaurant-container {
+   padding-inline: 20px;
+   padding-block: 52px 70px;
+
+   h2 {
+      margin-bottom: 25px;
+   }
+}
+//endregion
+
+//region Fonctionnement
+$offset: 10px;
+.fonctionnement__list {
+   //Wrapper
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   li {
+      //Cards
+      display: flex;
+      align-items: center;
+      width: 323px;
+      height: 73px;
+      transform: translateX($offset);
+      border-radius: 23px;
+      background-color: white(96);
+      @include box-shadow(4px, 15px, 85%);
+      &:last-of-type {
+         background-color: $primaire-lighter;
+      }
+   }
+}
+
+.fonctionnement__bubble {
+   display: inline-grid;
+   width: 24px;
+   height: 25px;
+   transform: translateX(-$offset);
+   border-radius: 100%;
+   background-color: $primaire;
+   place-content: center;
+   p {
+      font-size: $text-s;
+      font-weight: 300;
+      transform: translateY(2px);
+      color: white(100);
+   }
+}
+.fonctionnement__icon {
+   margin-inline: 12px 27px;
+   i {
+      font-size: 19px;
+      transform: scaley(1.1);
+      color: white(50);
+      &:last-of-type {
+         color: $primaire;
+      }
+   }
+}
+.fonctionnement__description {
+   font-size: $text-m;
+   font-weight: 500;
+}
+//endregion
+
+//region Restaurants
+.main__restaurant-container {
+   background-color: white(96);
+}
+
+.restaurant__card {
+   overflow: hidden;
+   width: 335px;
+   height: 258px;
+   border-radius: 20px;
+   a {
+      width: 100%;
+      height: 100%;
+   }
+   &:nth-of-type(3) {
+      img {
+         width: 150%;
+      }
+   }
+}
+.restaurant__card-header {
+   position: relative;
+   overflow: hidden;
+   height: 181px;
+   img {
+      width: 100%;
+      object-fit: contain;
+      object-position: center;
+   }
+   .new-restaurant {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      display: none;
+      padding: 8px 12px;
+      border-radius: 2px;
+      background-color: $tertiaire;
+      p {
+         font-size: $text-s;
+         font-weight: 500;
+         color: $tertiaire-darker;
+      }
+   }
+}
+.restaurant__card--new {
+   .new-restaurant {
+      display: block;
+   }
+}
+.restaurant__card-content {
+   background-color: white(100);
+   height: 77px;
+}
+//endregion
+//endregion
