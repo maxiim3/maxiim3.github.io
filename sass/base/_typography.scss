@@ -1,3 +1,4 @@
+//region Global
 p,
 h3,
 h2,
@@ -9,6 +10,12 @@ input,
 li {
    font-family: $font-text;
    color: white(0);
+}
+li, a {
+   &:hover{
+      color: $primaire-light;
+      cursor: pointer;
+   }
 }
 
 h1 {
@@ -23,6 +30,12 @@ h2 {
    font-size: $text-xl;
    font-weight: 600;
    letter-spacing: 0.1px;
+}
+
+h3 {
+   font-family: $font-text;
+   font-size: $text-l;
+   font-weight: 500;
 }
 
 input {
@@ -43,4 +56,40 @@ p {
 button {
    font-size: $text-m;
    font-weight: 400;
+}
+//endregion
+
+//region Accueil
+//region Section-restaurant
+.new-restaurant {
+   p {
+      font-size: $text-s;
+      font-weight: 500;
+      color: $tertiaire-darker;
+   }
+}
+.restaurant__card-content {
+   .text-container {
+      p {
+         font-size: $text-m;
+         font-weight: 300;
+         letter-spacing: 0.3px;
+      }
+   }
+}
+//endregion
+//endregion
+
+footer {
+   h2 {
+      font-family: $font-header;
+      font-size: $text-l;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+   }
+   .footer__links {
+      font-size: $text-s;
+      font-weight: 300;
+      letter-spacing: 0.6px;
+   }
 }

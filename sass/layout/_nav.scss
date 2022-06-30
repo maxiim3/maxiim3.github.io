@@ -1,0 +1,16 @@
+.header__navigation {
+   position: sticky;
+   top: 0;
+   border-bottom: 1px solid white(96);
+   background-color: white(100);
+   box-shadow: 0 1px 3px white(70);
+   a {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      i {
+         font-size: 22px;
+        transform: scaleX(.9);
+      }
+   }
+}

@@ -1,0 +1,11 @@
+.fa-heart {
+  display: block;
+  font-size: 23px;
+  color: white(0);
+  transform: scaleY(1.2);
+  z-index: 10;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=heart-like.css.map */

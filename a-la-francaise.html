@@ -27,15 +27,16 @@ Add Social Media cards
       <link
          href="./public/css/normalize.css"
          rel="stylesheet" />
-       <!--       TODO Revert Stylsheet to compile one-->
-       <!--      <link-->
-       <!--         href="./public/css/style.css"-->
-       <!--         rel="stylesheet" />-->
-       <!--       TODO Direct stylesheet to main.scss &ndash;&gt; main.css || !! no compilation!! -->
-       <link rel="stylesheet" href="./sass/main.css">
+      <!--       TODO Revert Stylsheet to compile one-->
+      <!--      <link-->
+      <!--         href="./public/css/style.css"-->
+      <!--         rel="stylesheet" />-->
+      <!--       TODO Direct stylesheet to main.scss &ndash;&gt; main.css || !! no compilation!! -->
+      <link
+         rel="stylesheet"
+         href="./sass/main.css" />
 
-
-       <!--    Font Awesome -->
+      <!--    Font Awesome -->
       <link
          crossorigin="anonymous"
          href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
@@ -52,7 +53,7 @@ Add Social Media cards
    </head>
    <body>
       <!--region Header-->
-      <header class="pages__header page-two__header">
+      <header class="pages__header page-three__header">
          <nav class="header__navigation">
             <a href="./"><i class="fa-solid fa-arrow-left"></i></a>
             <h1>ohmyfood</h1>
@@ -60,7 +61,7 @@ Add Social Media cards
       </header>
       <!--endregion-->
       <!--region Main-->
-      <main class="pages__main page-one__main">
+      <main class="pages__main page-three__main">
          <!--region header-->
          <section class="main__header">
             <img
@@ -73,7 +74,10 @@ Add Social Media cards
             <section class="restaurant-title-container">
                <!--Title-->
                <h1>À la française</h1>
-               <span><i class="fa-regular fa-heart"></i></span>
+               <div class="like-container">
+                  <i class="fa-regular fa-heart"></i>
+                  <i class="fa-solid fa-heart"></i>
+               </div>
             </section>
             <!--region Starter-dish-->
             <section class="starter-dish">
@@ -83,38 +87,50 @@ Add Social Media cards
                <ul class="card-container">
                   <!--region Menu Element 1-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Tartare de poulpe acidulé</h3>
-                        <p>Aux zestes d'orange</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">25€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Tartare de poulpe acidulé</h3>
+                           <p>Aux zestes d'orange</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">25€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                   <!--region Menu Element 2-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Velouté de légumes d'antan</h3>
-                        <p>Carotte, panais, topinambour</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">35€ </span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Velouté de légumes d'antan</h3>
+                           <p>Carotte, panais, topinambour</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">35€ </span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                   <!--region Menu Element 3-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Soupe à l'oignon</h3>
-                        <p>Revisitée</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">20€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Soupe à l'oignon</h3>
+                           <p>Revisitée</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">20€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                </ul>
@@ -126,38 +142,50 @@ Add Social Media cards
                <ul class="card-container">
                   <!--region Menu Element 1-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Coquilles Saint-Jacques</h3>
-                        <p>Accompagnées d'une purée de panais</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">40€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Coquilles Saint-Jacques</h3>
+                           <p>Accompagnées d'une purée de panais</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">40€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                   <!--region Menu Element 2-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Magret de canard</h3>
-                        <p>Et parmentier de pommes de terre</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">35€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Magret de canard</h3>
+                           <p>Et parmentier de pommes de terre</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">35€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                   <!--region Menu Element 3-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Pigeonneau d’Ille-et-Vilaine</h3>
-                        <p>Sur son lit de gnocchis aux légumes</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">44€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Pigeonneau d’Ille-et-Vilaine</h3>
+                           <p>Sur son lit de gnocchis aux légumes</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">44€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                </ul>
@@ -169,38 +197,50 @@ Add Social Media cards
                <ul class="card-container">
                   <!--region Menu Element 1-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Pétales de violettes glacés</h3>
-                        <p>Et purée de noisettes</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">18€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Pétales de violettes glacés</h3>
+                           <p>Et purée de noisettes</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">18€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                   <!--region Menu Element 2-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Fondant au chocolat</h3>
-                        <p>Revisité</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">22€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Fondant au chocolat</h3>
+                           <p>Revisité</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">22€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                   <!--region Menu Element 3-->
                   <li class="card">
-                     <div class="card-content">
-                        <h3>Millefeuille croustillant</h3>
-                        <p>Myrtilles et pâte d’amande</p>
-                     </div>
-                     <aside class="card-price">
-                        <span class="price">23€</span>
-                     </aside>
-                     <div class="card-select"><i class="fa-solid fa-circle-check"></i></div>
+                     <section class="card__content">
+                        <div class="card-text">
+                           <h3>Millefeuille croustillant</h3>
+                           <p>Myrtilles et pâte d’amande</p>
+                        </div>
+                        <aside class="card-price">
+                           <span class="price">23€</span>
+                        </aside>
+                     </section>
+                     <section class="card__hover">
+                        <i class="fa-solid fa-circle-check"></i>
+                     </section>
                   </li>
                   <!--endregion-->
                </ul>
@@ -219,8 +259,8 @@ Add Social Media cards
       <footer>
          <h2>ohmyfood</h2>
          <ul class="footer__links">
-            <li><i class="fa"></i><a href="#">Proposer un restaurant</a></li>
-            <li><i class="fa"></i><a href="#">Devenir partenaire</a></li>
+            <li><i class="fa-solid fa-utensils"></i><a href="#">Proposer un restaurant</a></li>
+            <li><i class="fa-solid fa-handshake-angle"></i><a href="#">Devenir partenaire</a></li>
             <li><a href="#">Mentions légales</a></li>
             <li>
                <a href="mailto:contact@maxii.me?subject=Je vous contact depuis ohmyfood">Contact</a>

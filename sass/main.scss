@@ -1,20 +1,21 @@
-@import "utils/variables";
-@import "utils/functions";
-@import "utils/mixins";
-@import "utils/extensions";
+@import 'utils/variables';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/extensions';
 
-@import "base/base";
-@import "base/typography";
+@import 'base/base';
+@import 'base/typography';
 
-@import "components/buttons";
+@import 'components/buttons';
+@import 'components/heart-like';
 
-@import "layout/header";
-@import "layout/footer";
-@import "layout/nav";
-@import "layout/page-layout";
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/nav';
+@import 'layout/page-layout';
 
-@import "pages/acceuil";
-@import "pages/la-palette-du-gout";
-@import "pages/la-note-enchantee";
-@import "pages/le-delice-des-sens";
-@import "pages/a-la-francaise";
+@import 'pages/acceuil';
+@import 'pages/la-palette-du-gout';
+@import 'pages/la-note-enchantee';
+@import 'pages/le-delice-des-sens';
+@import 'pages/a-la-francaise';
