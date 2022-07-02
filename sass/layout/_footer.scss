@@ -1,8 +1,14 @@
-// todo responsive footer
 footer {
    background-color: white(24);
    padding: 26px;
    height: 197px;
+   @media screen and (min-width: 735px) {
+      h2 {
+         display: block;
+         width: min-content;
+         margin-inline: auto;
+      }
+   }
    * {
       color: white(100);
    }
@@ -12,6 +18,11 @@ footer {
    display: flex;
    flex-direction: column;
    gap: 10px;
+   @media screen and (min-width: 735px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 50px;
+   }
    li {
       display: flex;
       gap: 10px;
