@@ -77,12 +77,15 @@ li {
   color: hsl(0deg, 0%, 0%);
 }
 
-li:hover, a:hover {
+li:hover,
+a:hover {
   color: #af5fdb;
   cursor: pointer;
 }
 
-h1 {
+h1,
+.loader-page .loader-page__title,
+.restaurant-title {
   font-family: "Shrikhand", cursive;
   font-size: 29px;
   font-weight: 400;
@@ -96,7 +99,7 @@ h2 {
   letter-spacing: 0.1px;
 }
 
-h3 {
+h3, h4 {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -147,6 +150,8 @@ footer .footer__links {
 }
 
 .main-button {
+  place-content: center;
+  display: grid;
   height: 50px;
   transition: all 150ms ease-in-out;
   border: none;
@@ -156,8 +161,10 @@ footer .footer__links {
   padding-inline: 21px;
   box-shadow: 0 4px 10px hsl(0deg, 0%, 63%);
 }
-.main-button a {
+.main-button__text {
+  font-size: 16px;
   font-weight: 400;
+  display: block;
   color: hsl(0deg, 0%, 100%);
 }
 .main-button:hover {
@@ -390,7 +397,7 @@ footer * {
   margin-bottom: 30px;
   gap: 30px;
 }
-.pages__main .main__menu h2 {
+.pages__main .main__menu h3 {
   font-size: 16px;
   font-weight: 300;
   position: relative;
@@ -398,7 +405,7 @@ footer * {
   margin-left: 5px;
   text-transform: uppercase;
 }
-.pages__main .main__menu h2::after {
+.pages__main .main__menu h3::after {
   position: relative;
   top: 5px;
   display: block;
@@ -432,7 +439,7 @@ footer * {
   animation-name: check-roll;
 }
 .pages__main .main__menu .card:hover p,
-.pages__main .main__menu .card:hover h3 {
+.pages__main .main__menu .card:hover h4 {
   animation-name: text-shrink;
 }
 .pages__main .main__menu .card:hover .card__content {
@@ -444,7 +451,7 @@ footer * {
 .pages__main .main__menu .card:hover .card__hover,
 .pages__main .main__menu .card:hover .fa-circle-check,
 .pages__main .main__menu .card:hover p,
-.pages__main .main__menu .card:hover h3,
+.pages__main .main__menu .card:hover h4,
 .pages__main .main__menu .card:hover .card__content {
   animation-timing-function: ease-out;
   animation-duration: 450ms;
@@ -458,7 +465,7 @@ footer * {
   animation-name: slide-out;
 }
 .pages__main .main__menu p,
-.pages__main .main__menu h3 {
+.pages__main .main__menu h4 {
   animation-name: text-grow;
 }
 .pages__main .main__menu .card__content {
@@ -466,7 +473,7 @@ footer * {
 }
 .pages__main .main__menu .card__hover,
 .pages__main .main__menu p,
-.pages__main .main__menu h3,
+.pages__main .main__menu h4,
 .pages__main .main__menu .card__content {
   animation-timing-function: ease-out;
   animation-duration: 450ms;
@@ -500,7 +507,7 @@ footer * {
   width: 100%;
 }
 .pages__main .main__menu .card__content .card-text p,
-.pages__main .main__menu .card__content .card-text h3 {
+.pages__main .main__menu .card__content .card-text h4 {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -514,8 +521,8 @@ footer * {
   background-color: hsl(0deg, 0%, 100%);
   font-size: 15px;
   display: flex;
-  align-items: end;
-  justify-content: end;
+  align-items: flex-end;
+  justify-content: flex-end;
   padding-right: 20px;
   width: 80px;
 }
@@ -523,8 +530,7 @@ footer * {
   padding-top: 15px;
   padding-bottom: 70px;
 }
-.pages__main .main__menu .menu__button-container button {
-  display: block;
+.pages__main .main__menu .menu__button-container .main-button {
   margin-inline: auto;
 }
 
@@ -704,7 +710,7 @@ footer * {
   position: relative;
   border: 1px solid hsl(0deg, 0%, 92%);
 }
-.loader-page__container h1 {
+.loader-page__container .loader-page__title {
   display: block;
   font-size: 55px;
   position: absolute;
@@ -776,13 +782,18 @@ footer * {
     border-bottom-right-radius: 20px;
   }
 }
-.header__presentation h2 {
+.header__presentation > h2 {
   width: 74%;
 }
-.header__presentation p {
+.header__presentation > p {
   width: 85%;
   margin-bottom: 20px;
   color: hsl(0deg, 0%, 20%);
+}
+
+.header__button-link {
+  display: block;
+  height: 50px;
 }
 
 .main__fonctionnement-container,

@@ -100,7 +100,7 @@
    border-radius: 30px;
    position: relative;
    border: 1px solid white(92);
-   h1 {
+   .loader-page__title {
       display: block;
       font-size: 55px;
       position: absolute;
@@ -178,14 +178,19 @@
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
    }
-   h2 {
+   &>h2 {
       width: 74%;
    }
-   p {
+   &>p {
       width: 85%;
       margin-bottom: 20px;
       color: white(20);
    }
+}
+.header__button-link {
+   display: block;
+   height: 50px;
+
 }
 //endregion
 //endregion

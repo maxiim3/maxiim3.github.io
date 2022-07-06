@@ -27,14 +27,10 @@ Add Social Media cards
       <link
          href="./public/css/normalize.css"
          rel="stylesheet" />
-      <!--       TODO Revert Stylsheet to compile one-->
-      <!--      <link-->
-      <!--         href="./public/css/style.css"-->
-      <!--         rel="stylesheet" />-->
-      <!--       TODO Direct stylesheet to main.scss &ndash;&gt; main.css || !! no compilation!! -->
       <link
-         href="./sass/main.css"
+         href="./public/css/prefixed/style.css"
          rel="stylesheet" />
+
       <!--    Font Awesome -->
       <link
          crossorigin="anonymous"
@@ -55,7 +51,7 @@ Add Social Media cards
          <div class="loader-page__container">
             <div class="loader-page__inner"></div>
             <div class="loader-page__hide"></div>
-             <h1>ohmyfood</h1>
+            <p class="loader-page__title">ohmyfood</p>
          </div>
       </div>
       <!--region Header-->
@@ -63,7 +59,7 @@ Add Social Media cards
          <nav class="header__navigation">
             <h1>ohmyfood</h1>
          </nav>
-         <section class="header__localisation">
+         <div class="header__localisation">
             <label for="localisation"
                ><i class="fa-solid fa-location-dot"></i>
                <input
@@ -72,14 +68,16 @@ Add Social Media cards
                   type="text"
                   value="Paris, Belleville"
             /></label>
-         </section>
+         </div>
          <section class="header__presentation">
             <h2>Réservez le menu qui vous convient</h2>
             <p>Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
             <div class="header__button-container">
-               <button class="main-button">
-                  <a href="#main__restaurant">Explorer nos restaurants </a>
-               </button>
+               <a
+                  class="main-button"
+                  href="#main__restaurant">
+                  <span class="main-button__text">Explorer nos restaurants</span>
+               </a>
             </div>
          </section>
       </header>
@@ -123,16 +121,16 @@ Add Social Media cards
                <li class="restaurant__card restaurant__card--new">
                   <a href="./la-palette-du-gout.html">
                      <!--Card-HEADER-->
-                     <section class="restaurant__card-header">
+                     <div class="restaurant__card-header">
                         <img
                            alt="La palette du goût à Ménilmontant"
                            src="./public/img/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg" />
                         <div class="new-restaurant">
                            <p>Nouveau</p>
                         </div>
-                     </section>
+                     </div>
                      <!--Card-CONTENT-->
-                     <section class="restaurant__card-content">
+                     <div class="restaurant__card-content">
                         <div class="text-container">
                            <h3>La palette du goût</h3>
                            <p>Ménilmontant</p>
@@ -141,7 +139,7 @@ Add Social Media cards
                            <i class="fa-regular fa-heart"></i>
                            <i class="fa-solid fa-heart"></i>
                         </div>
-                     </section>
+                     </div>
                   </a>
                </li>
                <!--endregion-->
@@ -149,16 +147,16 @@ Add Social Media cards
                <li class="restaurant__card restaurant__card--new">
                   <a href="./la-note-enchantee.html">
                      <!--Card-HEADER-->
-                     <section class="restaurant__card-header">
+                     <div class="restaurant__card-header">
                         <img
                            alt="La note enchantée à Charonne"
                            src="./public/img/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg" />
                         <div class="new-restaurant">
                            <p>Nouveau</p>
                         </div>
-                     </section>
+                     </div>
                      <!--Card-CONTENT-->
-                     <section class="restaurant__card-content">
+                     <div class="restaurant__card-content">
                         <div class="text-container">
                            <h3>La note enchantée</h3>
                            <p>Charonne</p>
@@ -167,7 +165,7 @@ Add Social Media cards
                            <i class="fa-regular fa-heart"></i>
                            <i class="fa-solid fa-heart"></i>
                         </div>
-                     </section>
+                     </div>
                   </a>
                </li>
                <!--endregion-->
@@ -175,7 +173,7 @@ Add Social Media cards
                <li class="restaurant__card">
                   <a href="./a-la-francaise.html">
                      <!--Card-HEADER-->
-                     <section class="restaurant__card-header">
+                     <div class="restaurant__card-header">
                         <img
                            alt="À la française à Cité Rouge"
                            src="./public/img/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg" />
@@ -184,9 +182,9 @@ Add Social Media cards
                            hidden>
                            <p>Nouveau</p>
                         </div>
-                     </section>
+                     </div>
                      <!--Card-CONTENT-->
-                     <section class="restaurant__card-content">
+                     <div class="restaurant__card-content">
                         <div class="text-container">
                            <h3>À la française</h3>
                            <p>Cité Rouge</p>
@@ -195,7 +193,7 @@ Add Social Media cards
                            <i class="fa-regular fa-heart"></i>
                            <i class="fa-solid fa-heart"></i>
                         </div>
-                     </section>
+                     </div>
                   </a>
                </li>
                <!--endregion-->
@@ -203,7 +201,7 @@ Add Social Media cards
                <li class="restaurant__card">
                   <a href="./le-delice-des-sens.html">
                      <!--Card-HEADER-->
-                     <section class="restaurant__card-header">
+                     <div class="restaurant__card-header">
                         <img
                            alt="Le délice des sens à Folie-Méricourt"
                            src="./public/img/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg" />
@@ -212,9 +210,9 @@ Add Social Media cards
                            hidden>
                            <p>Nouveau</p>
                         </div>
-                     </section>
+                     </div>
                      <!--Card-CONTENT-->
-                     <section class="restaurant__card-content">
+                     <div class="restaurant__card-content">
                         <div class="text-container">
                            <h3>Le délice des sens</h3>
                            <p>Folie-Méricourt</p>
@@ -223,7 +221,7 @@ Add Social Media cards
                            <i class="fa-regular fa-heart"></i>
                            <i class="fa-solid fa-heart"></i>
                         </div>
-                     </section>
+                     </div>
                   </a>
                </li>
                <!--endregion-->
@@ -241,7 +239,7 @@ Add Social Media cards
             <li><i class="fa-solid fa-handshake-angle"></i><a href="#">Devenir partenaire</a></li>
             <li><a href="#">Mentions légales</a></li>
             <li>
-               <a href="mailto:contact@maxii.me?subject=Je vous contact depuis ohmyfood">Contact</a>
+               <a href="mailto:contact@maxii.me?subject=ohmyfood-contact">Contact</a>
             </li>
          </ul>
       </footer>

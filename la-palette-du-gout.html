@@ -27,15 +27,9 @@ Add Social Media cards
       <link
          href="./public/css/normalize.css"
          rel="stylesheet" />
-      <!--       TODO Revert Stylsheet to compile one-->
-      <!--      <link-->
-      <!--         href="./public/css/style.css"-->
-      <!--         rel="stylesheet" />-->
-      <!--       TODO Direct stylesheet to main.scss &ndash;&gt; main.css || !! no compilation!! -->
       <link
-         rel="stylesheet"
-         href="./sass/main.css" />
-
+         href="./public/css/prefixed/style.css"
+         rel="stylesheet" />
       <!--    Font Awesome -->
       <link
          crossorigin="anonymous"
@@ -63,16 +57,16 @@ Add Social Media cards
       <!--region Main-->
       <main class="pages__main page-one__main">
          <!--region header-->
-         <section class="main__header">
+         <div class="main__header">
             <img
                src="./public/img/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg"
                alt="La palette du goût à Ménilmontant" />
-         </section>
+         </div>
          <!--endregion-->
          <!--region Menu-->
-         <section class="main__menu">
+         <div class="main__menu">
             <section class="restaurant-title-container">
-               <h1>La palette du goût</h1>
+               <h2 class="restaurant-title">La palette du goût</h2>
                <div class="like-container">
                   <i class="fa-regular fa-heart"></i>
                   <i class="fa-solid fa-heart"></i>
@@ -80,166 +74,168 @@ Add Social Media cards
             </section>
             <!--region Starter-dish-->
             <section class="starter-dish">
-               <h2>Entrées</h2>
+               <h3>Entrées</h3>
                <ul class="card-container">
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Fricassée d'escargot</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Fricassée d'escargot</h4>
                            <p>Au piment d'Espelette</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">25€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Foie gras de canard mi-cuit</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Foie gras de canard mi-cuit</h4>
                            <p>Et ses copeaux de truffe noire</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">35€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Oeuf au plat</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Oeuf au plat</h4>
                            <p>Assaisonné à la truffe sur lit de caviar</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">20€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                </ul>
             </section>
             <!--endregion-->
             <!--region Main-dish-->
             <section class="main-dish">
-               <h2>Plats</h2>
+               <h3>Plats</h3>
                <ul class="card-container">
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Filet de boeuf aux herbes</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Filet de boeuf aux herbes</h4>
                            <p>Accompagné de sa ribambelle de légumes</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">40€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Parmentier de queue de boeuf</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Parmentier de queue de boeuf</h4>
                            <p>À la truffe noire sur sa purée de panais</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">35€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Filet de turbot</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Filet de turbot</h4>
                            <p>Aux agrumes</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">44€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                </ul>
             </section>
             <!--endregion-->
             <!--region Dessert-dish-->
             <section class="dessert">
-               <h2>Desserts</h2>
+               <h3>Desserts</h3>
                <ul class="card-container">
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Paris-Brest</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Paris-Brest</h4>
                            <p>Revisité</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">18€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Macaron au chocolat d'exception</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Macaron au chocolat d'exception</h4>
                            <p>Et glace à la vanille de Madagascar</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">22€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                   <!--Menu Element-->
                   <li class="card">
-                     <section class="card__content">
-                        <div class="card-text">
-                           <h3>Mousse au chocolat</h3>
+                     <div class="card__content">
+                        <section class="card-text">
+                           <h4>Mousse au chocolat</h4>
                            <p>Au piment d'Espelette et à la truffe noire</p>
-                        </div>
+                        </section>
                         <aside class="card-price">
                            <span class="price">23€</span>
                         </aside>
-                     </section>
-                     <section class="card__hover">
+                     </div>
+                     <div class="card__hover">
                         <i class="fa-solid fa-circle-check"></i>
-                     </section>
+                     </div>
                   </li>
                </ul>
             </section>
             <div class="menu__button-container">
-               <button class="main-button">
-                  <a href="#">Commander</a>
-               </button>
+               <a
+                  class="main-button"
+                  href="#">
+                  <span class="main-button__text">Commander</span>
+               </a>
             </div>
             <!--endregion-->
-         </section>
+         </div>
          <!--endregion-->
       </main>
       <!--endregion-->
@@ -251,7 +247,7 @@ Add Social Media cards
             <li><i class="fa-solid fa-handshake-angle"></i><a href="#">Devenir partenaire</a></li>
             <li><a href="#">Mentions légales</a></li>
             <li>
-               <a href="mailto:contact@maxii.me?subject=Je vous contact depuis ohmyfood">Contact</a>
+               <a href="mailto:contact@maxii.me?subject=ohmyfood-contact">Contact</a>
             </li>
          </ul>
       </footer>

@@ -11,14 +11,17 @@ li {
    font-family: $font-text;
    color: white(0);
 }
-li, a {
-   &:hover{
+li,
+a {
+   &:hover {
       color: $primaire-light;
       cursor: pointer;
    }
 }
 
-h1 {
+h1,
+.loader-page .loader-page__title,
+.restaurant-title{
    font-family: $font-header;
    font-size: $text-xxxl;
    font-weight: 400;
@@ -32,7 +35,7 @@ h2 {
    letter-spacing: 0.1px;
 }
 
-h3 {
+h3, h4 {
    font-family: $font-text;
    font-size: $text-l;
    font-weight: 500;

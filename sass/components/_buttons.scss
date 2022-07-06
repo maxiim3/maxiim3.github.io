@@ -1,4 +1,6 @@
 .main-button {
+   place-content: center;
+   display: grid;
    height: 50px;
    transition: all 150ms ease-in-out;
    border: none;
@@ -7,8 +9,10 @@
    background: linear-gradient(170deg, $secondaire 10%, $primaire-light 75%);
    padding-inline: 21px;
    @include box-shadow;
-   a {
+   &__text {
+      font-size: $text-m;
       font-weight: 400;
+      display: block;
       color: white(100);
    }
    &:hover {
