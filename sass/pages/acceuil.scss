@@ -15,10 +15,10 @@
 .home__main {
    animation-duration: 3200ms;
 }
-.main__fonctionnement-container{
+.main__fonctionnement-container {
    animation-duration: 3200ms;
 }
-.main__restaurant-container{
+.main__restaurant-container {
    animation-duration: 3500ms;
 }
 .home__main + footer {
@@ -178,10 +178,10 @@
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
    }
-   &>h2 {
+   & > h2 {
       width: 74%;
    }
-   &>p {
+   & > p {
       width: 85%;
       margin-bottom: 20px;
       color: white(20);
@@ -190,7 +190,6 @@
 .header__button-link {
    display: block;
    height: 50px;
-
 }
 //endregion
 //endregion
@@ -255,8 +254,8 @@ $offset: 10px;
    background-color: $primaire;
    place-content: center;
    span {
-      font-size: $text-s;
-      font-weight: 300;
+      font-size: $text-s2;
+      font-weight: 400;
       transform: translateY(2px);
       color: white(100);
    }

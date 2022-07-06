@@ -855,8 +855,8 @@ footer * {
   place-content: center;
 }
 .fonctionnement__bubble span {
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   transform: translateY(2px);
   color: hsl(0deg, 0%, 100%);
 }
