@@ -723,7 +723,7 @@ footer * {
 .fonctionnement__bubble span {
   font-size: 14px;
   font-weight: 400;
-  transform: translateY(2px);
+  transform: translateY(1px);
   color: hsl(0deg, 0%, 100%);
 }
 
