@@ -1,149 +1,4 @@
 //region HEADER
-//region LOADING ANIMATION
-//region Home-page__fade-in
-.home__header,
-.home__main,
-.main__fonctionnement-container,
-.main__restaurant-container,
-.home__main + footer {
-   animation: home-page__fade-in;
-   animation-fill-mode: forwards;
-}
-.home__header {
-   animation-duration: 2500ms;
-}
-.home__main {
-   animation-duration: 3200ms;
-}
-.main__fonctionnement-container {
-   animation-duration: 3200ms;
-}
-.main__restaurant-container {
-   animation-duration: 3500ms;
-}
-.home__main + footer {
-   animation-duration: 3500ms;
-}
-@keyframes home-page__fade-in {
-   0% {
-      opacity: 0;
-   }
-   85% {
-      opacity: 0%;
-   }
-   90% {
-      opacity: 20%;
-   }
-   95% {
-      opacity: 50%;
-   }
-   98% {
-      opacity: 75%;
-   }
-   100% {
-      opacity: 100%;
-   }
-}
-//endregion
-
-//region Loading-page__fade-out
-.loader-page {
-   position: absolute;
-   top: 0;
-   display: grid;
-   width: 100vw;
-   height: 100vh;
-   overflow: hidden;
-   animation-name: loader-page__animation-fade-out;
-   animation-duration: 2800ms;
-   animation-timing-function: ease-out;
-   place-content: center;
-   animation-fill-mode: forwards;
-}
-
-@keyframes loader-page__animation-fade-out {
-   0% {
-      z-index: 50;
-      opacity: 0;
-   }
-   20% {
-      opacity: 100%;
-   }
-   70% {
-      opacity: 100%;
-   }
-   80% {
-      opacity: 100%;
-   }
-   85% {
-      opacity: 75%;
-   }
-   88% {
-      opacity: 50%;
-   }
-   90% {
-      opacity: 25%;
-   }
-   95% {
-      opacity: 0;
-   }
-   100% {
-      opacity: 0;
-      z-index: -5;
-   }
-}
-//endregion
-.loader-page__container {
-   width: 350px;
-   height: 100px;
-   overflow: hidden;
-   border-radius: 30px;
-   position: relative;
-   border: 1px solid white(92);
-   .loader-page__title {
-      display: block;
-      font-size: 55px;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: white;
-      text-shadow: 0 0 5px white(50);
-      isolation: isolate;
-   }
-}
-
-.loader-page__inner {
-   background: linear-gradient(170deg, $secondaire 10%, $primaire-light 75%);
-   width: 100%;
-   height: 100%;
-}
-.loader-page__hide {
-   animation: loading-page__animation-reveal 1900ms forwards;
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: white(100);
-   z-index: 5;
-}
-@keyframes loading-page__animation-reveal {
-   0% {
-      transform: translateX(0%);
-   }
-   75% {
-      transform: translateX(75%);
-   }
-   100% {
-      transform: translateX(100%);
-   }
-}
-
-//endregion
-.home__header {
-   //NAVIGATION for Home page only
-}
-
 //region Input Localisation
 .header__localisation {
    z-index: 0;
@@ -213,7 +68,17 @@
 //endregion
 
 //region Fonctionnement
+//La variable Offset permet de decaler de X pixel le block entier, puis de ramener la "bulles" du meme nombre de pixels.
 $offset: 10px;
+.fonctionnement__list {
+   li {
+      transform: translateX($offset);
+   }
+}
+.fonctionnement__bubble {
+   transform: translateX(-$offset);
+}
+
 .fonctionnement__list {
    //Wrapper
    display: flex;
@@ -228,7 +93,6 @@ $offset: 10px;
       height: 73px;
       cursor: pointer;
       transition: all 300ms ease-in-out;
-      transform: translateX($offset);
       @include box-shadow(4px, 15px, 85%);
       border-radius: 23px;
       background-color: white(96);
@@ -239,6 +103,7 @@ $offset: 10px;
          }
       }
    }
+
    @media screen and (min-width: 735px) {
       flex-direction: row;
       justify-content: center;
@@ -249,7 +114,6 @@ $offset: 10px;
    display: inline-grid;
    width: 24px;
    height: 25px;
-   transform: translateX(-$offset);
    border-radius: 100%;
    background-color: $primaire;
    place-content: center;
@@ -260,6 +124,7 @@ $offset: 10px;
       color: white(100);
    }
 }
+
 .fonctionnement__icon {
    margin-inline: 12px 27px;
    i {
@@ -297,9 +162,7 @@ $offset: 10px;
    height: 243px;
    border-radius: 20px;
    &:hover {
-      animation-name: card-hover;
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
+      @include box-shadow(5px, 12px, 75%);
    }
    a {
       width: 100%;
@@ -313,26 +176,27 @@ $offset: 10px;
       }
    }
 }
+
 .restaurant__card {
    &:nth-of-type(1) {
       img {
          transform: scale(1.04);
-         object-position: 0% 106%;
+         object-position: 0 106%;
       }
    }
    &:nth-of-type(2) {
       img {
-         object-position: 0% 61%;
+         object-position: 0 61%;
       }
    }
    &:nth-of-type(3) {
       img {
-         object-position: 0% 100%;
+         object-position: 0 100%;
       }
    }
    &:nth-of-type(4) {
       img {
-         object-position: 0% 100%;
+         object-position: 0 100%;
       }
    }
 }
@@ -347,6 +211,11 @@ $offset: 10px;
       height: 173px;
       object-fit: cover;
    }
+   &:hover {
+      animation-name: card-hover;
+      animation-duration: 500ms;
+      animation-timing-function: ease-in-out;
+   }
    .new-restaurant {
       position: absolute;
       top: 15px;
@@ -356,10 +225,22 @@ $offset: 10px;
       border-radius: 2px;
       background-color: $tertiaire;
    }
+   &--new {
+      .new-restaurant {
+         display: block;
+      }
+   }
 }
-.restaurant__card--new {
-   .new-restaurant {
-      display: block;
+@keyframes card-hover {
+   0% {
+      transform: scale(1);
+   }
+
+   33% {
+      transform: scale(1.1);
+   }
+   100% {
+      transform: scale(1);
    }
 }
 .restaurant__card-content {
@@ -379,16 +260,3 @@ $offset: 10px;
 
 //endregion
 //endregion
-
-@keyframes card-hover {
-   0% {
-      transform: scale(1);
-   }
-
-   33% {
-      transform: scale(1.1);
-   }
-   100% {
-      transform: scale(1);
-   }
-}
