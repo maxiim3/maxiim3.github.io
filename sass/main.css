@@ -77,8 +77,8 @@ li {
   color: hsl(0deg, 0%, 0%);
 }
 
-li:hover,
-a:not[class=restaurant__card-content]:hover {
+li:hover:not(.restaurant__card),
+a:hover:not(.restaurant__card) {
   color: #af5fdb;
   cursor: pointer;
 }
@@ -99,7 +99,8 @@ h2 {
   letter-spacing: 0.1px;
 }
 
-h3, h4 {
+h3,
+h4 {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 500;

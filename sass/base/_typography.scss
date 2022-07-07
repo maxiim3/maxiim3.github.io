@@ -12,8 +12,8 @@ li {
    color: white(0);
 }
 li,
-a:not[class="restaurant__card-content"] {
-   &:hover {
+a {
+   &:hover:not(.restaurant__card) {
       color: $primaire-light;
       cursor: pointer;
    }
@@ -21,7 +21,7 @@ a:not[class="restaurant__card-content"] {
 
 h1,
 .loader-page .loader-page__title,
-.restaurant-title{
+.restaurant-title {
    font-family: $font-header;
    font-size: $text-xxxl;
    font-weight: 400;
@@ -35,7 +35,8 @@ h2 {
    letter-spacing: 0.1px;
 }
 
-h3, h4 {
+h3,
+h4 {
    font-family: $font-text;
    font-size: $text-l;
    font-weight: 500;
