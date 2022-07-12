@@ -1,51 +1,56 @@
 //region HEADER
 //region Input Localisation
 .header__localisation {
-   z-index: 0;
-   display: grid;
-   height: 50px;
-   background-color: white(92);
-   place-content: center;
+  z-index: 0;
+  display: grid;
+  height: 50px;
+  background-color: white(92);
+  place-content: center;
 
-   input {
-      z-index: 0;
-      width: 130px;
-      margin-left: 15px;
-      border: none;
-      background-color: inherit;
-   }
+  input {
+    z-index: 0;
+    width: 130px;
+    margin-left: 15px;
+    border: none;
+    background-color: inherit;
+  }
 }
+
 //endregion
 
 //region Presentation
 .header__presentation {
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   justify-content: center;
-   text-align: center;
-   background-color: white(96);
-   padding-block: 43px;
-   gap: 15px;
-   @media screen and (min-width: 735px) {
-      max-width: 1050px;
-      margin-inline: auto;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-   }
-   & > h2 {
-      width: 74%;
-   }
-   & > p {
-      width: 85%;
-      margin-bottom: 20px;
-      color: white(20);
-   }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: white(96);
+  padding-block: 43px;
+  gap: 15px;
+  @media screen and (min-width: 735px) {
+    max-width: 1050px;
+    margin-inline: auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  & > h2 {
+    width: 74%;
+  }
+
+  & > p {
+    width: 85%;
+    margin-bottom: 20px;
+    color: white(20);
+  }
 }
+
 .header__button-link {
-   display: block;
-   height: 50px;
+  display: block;
+  height: 50px;
 }
+
 //endregion
 //endregion
 
@@ -54,208 +59,233 @@
 //region main Layout
 .main__fonctionnement-container,
 .main__restaurant-container {
-   padding-inline: 20px;
-   padding-block: 52px 70px;
-   @media screen and (min-width: 735px) {
-      max-width: 1050px;
-      margin-inline: auto;
-      border-radius: 20px;
-   }
-   h2 {
-      margin-bottom: 25px;
-   }
+  padding-inline: 20px;
+  padding-block: 52px 70px;
+  @media screen and (min-width: 735px) {
+    max-width: 1050px;
+    margin-inline: auto;
+    border-radius: 20px;
+  }
+
+  h2 {
+    margin-bottom: 25px;
+  }
 }
+
 //endregion
 
 //region Fonctionnement
 //La variable Offset permet de decaler de X pixel le block entier, puis de ramener la "bulles" du meme nombre de pixels.
 $offset: 10px;
 .fonctionnement__list {
-   li {
-      transform: translateX($offset);
-   }
+  li {
+    transform: translateX($offset);
+  }
 }
+
 .fonctionnement__bubble {
-   transform: translateX(-$offset);
+  transform: translateX(-$offset);
 }
 
 .fonctionnement__list {
-   //Wrapper
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   gap: 24px;
-   li {
-      //Cards
-      display: flex;
-      align-items: center;
-      width: 323px;
-      height: 73px;
-      cursor: pointer;
-      transition: all 300ms ease-in-out;
-      @include box-shadow(4px, 15px, 85%);
-      border-radius: 23px;
-      background-color: white(96);
-      &:hover {
-         background-color: $primaire-lighter;
-         i {
-            color: $primaire;
-         }
-      }
-   }
+  //Wrapper
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
 
-   @media screen and (min-width: 735px) {
-      flex-direction: row;
-      justify-content: center;
-   }
+  li {
+    //Cards
+    display: flex;
+    align-items: center;
+    width: 323px;
+    height: 73px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    @include box-shadow(4px, 15px, 85%);
+    border-radius: 23px;
+    background-color: white(96);
+
+    &:hover {
+      background-color: $primaire-lighter;
+
+      i {
+        color: $primaire;
+      }
+    }
+  }
+
+  @media screen and (min-width: 735px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .fonctionnement__bubble {
-   display: inline-grid;
-   width: 24px;
-   height: 25px;
-   border-radius: 100%;
-   background-color: $primaire;
-   place-content: center;
-   span {
-      font-size: $text-s2;
-      font-weight: 400;
-      transform: translateY(1px);
-      color: white(100);
-   }
+  display: inline-grid;
+  width: 24px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: $primaire;
+  place-content: center;
+
+  span {
+    font-size: $text-s2;
+    font-weight: 400;
+    transform: translateY(1px);
+    color: white(100);
+  }
 }
 
 .fonctionnement__icon {
-   margin-inline: 12px 27px;
-   i {
-      font-size: 19px;
-      transform: scaley(1.1);
-      color: white(50);
-   }
+  margin-inline: 12px 27px;
+
+  i {
+    font-size: 19px;
+    transform: scaley(1.1);
+    color: white(50);
+  }
 }
+
 .fonctionnement__description {
-   font-size: $text-m;
-   font-weight: 500;
+  font-size: $text-m;
+  font-weight: 500;
 }
+
 //endregion
 
 //region Restaurants
 .main__restaurant-container {
-   background-color: white(96);
+  background-color: white(96);
 }
+
 .restaurant__card-container {
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-   flex-wrap: wrap;
-   gap: 25px;
-   @media screen and (min-width: 735px) {
-      flex-direction: row;
-      justify-content: center;
-   }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 25px;
+  @media screen and (min-width: 735px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .restaurant__card {
-   @include box-shadow(4px, 10px, 90%);
-   overflow: hidden;
-   width: 335px;
-   height: 243px;
-   border-radius: 20px;
-   &:hover {
-      @include box-shadow(5px, 12px, 75%);
-   }
-   a {
-      width: 100%;
-      height: 100%;
-      &:hover {
-         cursor: pointer;
-         h3,
-         p {
-            color: $primaire;
-         }
-      }
-   }
-}
+  @include box-shadow(4px, 10px, 90%);
+  overflow: hidden;
+  width: 335px;
+  height: 243px;
+  border-radius: 20px;
 
-.restaurant__card {
-   &:nth-of-type(1) {
-      img {
-         transform: scale(1.04);
-         object-position: 0 106%;
-      }
-   }
-   &:nth-of-type(2) {
-      img {
-         object-position: 0 61%;
-      }
-   }
-   &:nth-of-type(3) {
-      img {
-         object-position: 0 100%;
-      }
-   }
-   &:nth-of-type(4) {
-      img {
-         object-position: 0 100%;
-      }
-   }
-}
-.restaurant__card-header {
-   background-color: pink;
-   position: relative;
-   overflow: hidden;
-   height: 173px;
-   width: inherit;
-   img {
-      width: 335px;
-      height: 173px;
-      object-fit: cover;
-   }
-   &:hover {
-      animation-name: card-hover;
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
-   }
-   .new-restaurant {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      display: none;
-      padding: 8px 12px;
-      border-radius: 2px;
-      background-color: $tertiaire;
-   }
-   &--new {
-      .new-restaurant {
-         display: block;
-      }
-   }
-}
-@keyframes card-hover {
-   0% {
-      transform: scale(1);
-   }
+  &:hover {
+    @include box-shadow(5px, 12px, 75%);
+  }
 
-   33% {
-      transform: scale(1.1);
-   }
-   100% {
-      transform: scale(1);
-   }
-}
-.restaurant__card-content {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   height: 77px;
-   background-color: white(100);
-   padding-inline: 14px;
+  a {
+    width: 100%;
+    height: 100%;
 
-   .text-container {
+    &:hover {
+      cursor: pointer;
+
+      h3,
       p {
-         margin-top: 5px;
+        color: $primaire;
       }
-   }
+    }
+  }
+}
+
+.new-restaurant {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  visibility: hidden;
+  padding: 8px 12px;
+  border-radius: 2px;
+  background-color: $tertiaire;
+}
+.restaurant__card--new {
+  .new-restaurant {
+    visibility: visible;
+  }
+}
+
+.restaurant__card {
+  &:nth-of-type(1) {
+    img {
+      transform: scale(1.04);
+      object-position: 0 106%;
+    }
+  }
+
+  &:nth-of-type(2) {
+    img {
+      object-position: 0 61%;
+    }
+  }
+
+  &:nth-of-type(3) {
+    img {
+      object-position: 0 100%;
+    }
+  }
+
+  &:nth-of-type(4) {
+    img {
+      object-position: 0 100%;
+    }
+  }
+
+}
+
+.restaurant__card-header {
+  background-color: pink;
+  position: relative;
+  overflow: hidden;
+  height: 173px;
+  width: inherit;
+
+  img {
+    width: 335px;
+    height: 173px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    animation-name: card-hover;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes card-hover {
+  0% {
+    transform: scale(1);
+  }
+
+  33% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.restaurant__card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 77px;
+  background-color: white(100);
+  padding-inline: 14px;
+
+  .text-container {
+    p {
+      margin-top: 5px;
+    }
+  }
 }
 
 //endregion
