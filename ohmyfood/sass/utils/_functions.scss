@@ -1,0 +1,5 @@
+$lightness: 100;
+
+@function white($val) {
+  @return hsl(0, 0%, ($lightness * $val) / 100%)
+}
