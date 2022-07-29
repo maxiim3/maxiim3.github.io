@@ -1,9 +1,0 @@
-.sass-cache/
-*.css.map
-*.sass.map
-*.scss.map
-
-/.idea
-package-lock.json
-
-./node_modules

@@ -1,7 +1,0 @@
-/**
- * Box Shadow
- * Props || Hauteur, Flou, % de blanc
- */
-@mixin box-shadow ($hauteur: 4px, $flou: 10px, $transparency: 63%) {
-  box-shadow: 0 $hauteur $flou hsl(0deg 0% $transparency);
-}
