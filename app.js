@@ -21,8 +21,61 @@ const links = document.querySelector('#links')
 projects.forEach(project => {
    const list = document.createElement('li')
    const link = document.createElement('a')
-   link.innerText = project._label.toUpperCase()
+   project._label.split('').forEach(l => {
+      const letter = document.createElement('span')
+      letter.className = 'letter'
+      letter.innerText = l.toUpperCase()
+      letter.addEventListener('mouseover', () => {
+         letter.animate(
+            [
+               { transform: 'rotate(0deg)' },
+               { transform: 'rotate(45deg)' },
+               { transform: 'rotate(-45deg)' },
+               { transform: 'rotate(35deg)' },
+               { transform: 'rotate(-32deg)' },
+               { transform: 'rotate(20deg)' },
+               { transform: 'rotate(-15deg)' },
+               { transform: 'rotate(0deg)' },
+            ],
+            1000
+         )
+      })
+      link.appendChild(letter)
+   })
    link.href = project._url
+   link.className = 'navigation'
    list.appendChild(link)
    links.appendChild(list)
+})
+
+// Keyboard Arrow Up | Down Focus Navigation
+const keyUp = document.querySelector('.keys__icon--up')
+const keyDown = document.querySelector('.keys__icon--down')
+
+document.addEventListener('keydown', k => {
+   const links = [...document.querySelectorAll('.navigation')]
+   let count = document.querySelector('#count')
+
+   if (k.key === 'ArrowUp') {
+      keyUp.dataset.keyPress = 'true'
+      if (count.dataset.value === 'null') {
+         count.dataset.value = '0'
+      } else {
+         count.dataset.value === '0' ? (count.dataset.value = '2') : count.dataset.value--
+      }
+   } else if (k.key === 'ArrowDown') {
+      keyDown.dataset.keyPress = 'true'
+      count.dataset.value < 2 ? count.dataset.value++ : (count.dataset.value = '0')
+   }
+   links[count.dataset.value].focus()
+})
+
+document.addEventListener('keyup', k => {
+   let delay = 150
+   if (k.key === 'ArrowUp') {
+      setTimeout(() => (keyUp.dataset.keyPress = 'false'), delay)
+   } else if (k.key === 'ArrowDown') {
+      setTimeout(() => (keyDown.dataset.keyPress = 'false'), delay)
+   }
+   clearTimeout()
 })
