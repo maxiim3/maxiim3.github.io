@@ -11,12 +11,12 @@ class Project {
 }
 
 const projects = [
-   new Project(1, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_2_booki'),
+   new Project(1, 'Booki', 'https://maxiim3.github.io/oc_projet_2_booki'),
    new Project(2, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_3_ohmyfood'),
-   new Project(3, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_4_gameon'),
-   new Project(4, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_6_fisheye'),
-   new Project(5, 'OhMyFood', 'https://maxiim3.github.io/pomodoro'),
-   new Project(5, 'OhMyFood', 'https://maxiim3.github.io/CDM2022'),
+   new Project(3, 'GameOn', 'https://maxiim3.github.io/oc_projet_4_gameon/starterOnly'),
+   new Project(4, 'FishEye', 'https://maxiim3.github.io/oc_projet_6_fisheye'),
+   new Project(5, 'Pomodoro', 'https://maxiim3.github.io/pomodoro'),
+   new Project(5, 'CDM2022', 'https://maxiim3.github.io/CDM2022'),
    new Project(6, 'Sestini-Pizza', 'http://sestini-pizza.fr'),
    new Project(7, 'portfolio', 'https://maxii.me'),
 ]
@@ -72,7 +72,7 @@ document.addEventListener('keydown', k => {
       keyDown.dataset.keyPress = 'true'
       count.dataset.value < 2 ? count.dataset.value++ : (count.dataset.value = '0')
    }
-   links[count.dataset.value].focus()
+   // links[count.dataset.value].focus()
 })
 
 document.addEventListener('keyup', k => {

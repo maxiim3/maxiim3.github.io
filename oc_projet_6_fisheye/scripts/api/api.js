@@ -18,5 +18,4 @@ class Api {
          throw new Error('Un problème est survenu...')
       }
    }
-
 }
