@@ -1,0 +1,213 @@
+@import 'normalize.css';
+@import 'main.css';
+
+/*region app*/
+:root {
+   --tomato: rgba(255, 107, 107);
+   --tomato-alt: rgb(208, 84, 84);
+   --gold: #ffe66d;
+   --lime: #88cb00;
+   --black: #292f36;
+   --white: #f7fff7;
+   --gray: #aeaeae;
+   --shadow: rgba(0, 0, 0, 0.1);
+}
+
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: content-box;
+}
+
+main {
+   width: 100vw;
+   height: 100vh;
+   display: grid;
+   place-content: center;
+   background-color: var(--tomato);
+}
+
+.container {
+   width: 65rem;
+   height: 55rem;
+   border-radius: 15px;
+   /*  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;*/
+   background-color: var(--tomato);
+   border: 1px solid #e66767;
+   box-shadow: 0 0 15px var(--shadow);
+}
+
+.tomato {
+   display: block;
+   width: 4rem;
+   height: 4rem;
+   margin-inline: auto;
+   margin-block: 2.5rem 1rem;
+}
+
+h1 {
+   display: block;
+   text-align: center;
+   font-size: 6rem;
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   /*text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);*/
+   font-family: sans-serif;
+}
+
+.counter {
+   width: 30%;
+   height: 30%;
+   margin-inline: auto;
+   border-radius: 15px;
+   display: grid;
+   place-content: center;
+   margin-block: 2rem;
+}
+
+.btn {
+   &__container {
+      width: 100%;
+      height: 7rem;
+      position: relative;
+      margin-top: 5rem;
+   }
+
+   &__reload,
+   &__pomodoro {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 100%;
+      border: none;
+      position: absolute;
+      font-size: 3rem;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+   }
+
+   &__reload {
+      left: 25rem;
+      top: 0;
+   }
+
+   &__pomodoro {
+      right: 25rem;
+      top: 0;
+   }
+}
+
+.container {
+   &[data-state='init'] {
+      h1 {
+         color: var(--white);
+      }
+
+      .tomato {
+         fill: var(--white);
+      }
+
+      .counter {
+         background-color: var(--shadow);
+      }
+
+      .btn__pomodoro {
+         color: var(--tomato);
+         background-color: var(--shadow);
+
+         &:hover {
+            box-shadow: 0 0 5 pxvar(--shadow);
+            color: var(--tomato);
+            background-color: var(--tomato-alt);
+         }
+
+         &:active {
+            box-shadow: 0 0 5px var(--shadow);
+            color: #eee;
+            background-color: var(--tomato-alt);
+         }
+      }
+
+      .btn__reload {
+         color: var(--tomato);
+         background-color: var(--shadow);
+         cursor: initial;
+         box-shadow: none;
+         border: none;
+         /*  &:hover {
+        box-shadow: 0 0 5px var(--shadow);
+        color: var(--tomato);
+        background-color: var(--tomato-alt);
+     }
+
+     &:active {
+        box-shadow: 0 0 5px var(--shadow);
+        color: #eee;
+        background-color: var(--tomato-alt);
+     }*/
+      }
+   }
+
+   &[data-state='pause'],
+   &[data-state='play'] {
+      h1 {
+         color: var(--tomato-alt);
+      }
+
+      .tomato {
+         fill: var(--tomato-alt);
+      }
+
+      .counter {
+         background-color: var(--white);
+      }
+
+      .btn__pomodoro {
+         color: var(--tomato);
+         background-color: #eee;
+
+         &:hover {
+            box-shadow: 0 0 5px var(--shadow);
+            color: var(--lime);
+            background-color: #eee;
+         }
+
+         &:active {
+            box-shadow: 0 0 5px var(--shadow);
+            color: #eee;
+            background-color: var(--tomato-alt);
+         }
+      }
+
+      .btn__reload {
+         color: var(--tomato);
+         background-color: #eee;
+
+         &:hover {
+            box-shadow: 0 0 5px var(--shadow);
+            color: var(--lime);
+            background-color: #eee;
+         }
+
+         &:active {
+            box-shadow: 0 0 5px var(--shadow);
+            color: #eee;
+            background-color: var(--tomato-alt);
+         }
+      }
+
+      .counter__content {
+        font-size: 4rem;
+      }
+   }
+}
+
+/*endregion*/
+
+/*endregion*/

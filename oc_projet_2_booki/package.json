@@ -1,0 +1,26 @@
+{
+  "name": "oc_projet_2",
+  "version": "1.0.0",
+  "description": "Projet 2 - Intégration d'une maquette en HTML, CSS",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxiim3/oc_projet_2.git"
+  },
+  "keywords": [
+    "openclassrooms"
+  ],
+  "author": "Maxime Tamburrini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxiim3/oc_projet_2/issues"
+  },
+  "homepage": "https://github.com/maxiim3/oc_projet_2#readme",
+  "dependencies": {
+    "http-server": "^14.1.0",
+    "prettier": "^2.6.2"
+  }
+}
