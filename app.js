@@ -19,9 +19,9 @@ class Api {
 
    async get() {
       try {
-         const api = fetch(this.url)
-         this.promise = await api.json()
-         return await this.promise
+         const api = await fetch(this.url)
+         const promise = await api.json()
+         return await promise
       } catch (e) {
          throw new Error('Cannot read data from api...')
       }
@@ -31,7 +31,7 @@ class Api {
 class App {
    constructor() {
       this.links = document.querySelector('#links')
-      this.api = new Api('sites.json')
+      this.api = new Api('https://maxiim3.github.io/sites.json')
    }
 
    async getData() {
@@ -39,9 +39,11 @@ class App {
    }
 
    getSites(data) {
-      return data.map(site => {
-         new Project(site.id, site.name, site.url)
+      const projects = []
+      data.map(site => {
+         projects.push(new Project(site.id, site.name, site.url))
       })
+      return projects
    }
 
    async renderSites(sites) {
@@ -112,7 +114,7 @@ class App {
 
    async init() {
       const data = await this.getData()
-      const projects = await this.getSites(data)
+      const projects = this.getSites(data)
       await this.renderSites(projects)
       this.keyBoardNavigation()
    }
