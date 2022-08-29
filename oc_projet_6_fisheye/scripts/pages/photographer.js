@@ -5,7 +5,7 @@ class App {
    _startingTabIndex
 
    constructor() {
-      this.api = new Api('/data/photographers.json')
+      this.api = new Api('https://maxiim3.github.io/oc_projet_6_fisheye/data/photographers.json')
       this._paramsId = this.getParamsFromURL('photographer')
       this._startingTabIndex = 4
       this._countLikes = 0
@@ -101,7 +101,7 @@ class App {
       popularity.ariaLabel = 'trier les éléments par popularité'
       popularity.classList.value = 'sort__options--popularity'
       popularity.textContent = 'Popularité'
-      popularity.tabIndex = options.dataset.dropped === 'true'  ? 0 : -1
+      popularity.tabIndex = options.dataset.dropped === 'true' ? 0 : -1
 
       const title = document.createElement('p')
       title.ariaLabel = 'trier les éléments par tite'
@@ -132,7 +132,10 @@ class App {
 
    async handleSort() {
       const options = document.querySelector('.sort__options')
-      const buttons = [...options.querySelectorAll('p'), document.querySelector('.sort__options--icon')]
+      const buttons = [
+         ...options.querySelectorAll('p'),
+         document.querySelector('.sort__options--icon'),
+      ]
 
       buttons.forEach(btn => {
          btn.addEventListener('click', async ev => {
