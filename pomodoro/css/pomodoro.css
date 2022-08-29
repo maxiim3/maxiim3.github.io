@@ -30,15 +30,12 @@ main {
 
 .container {
   width: 65rem;
-  height: 55rem;
-  border-radius: 15px;
-  /*  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;*/
+  height: 65rem;
+  border-radius: 100%;
+  padding: 5rem;
   background-color: var(--tomato);
   border: 1px solid #e66767;
-  box-shadow: 0 0 15px var(--shadow);
+  box-shadow: 0 0 15px var(--shadow), 0 0 10px 20px var(--tomato), 0 0 15px 40px var(--shadow), 0 0 25px 60px var(--tomato), 0 0 15px 80px var(--shadow);
 }
 
 .tomato {
@@ -105,12 +102,15 @@ h1 {
 .container[data-state=init] .counter {
   background-color: var(--shadow);
 }
+.container[data-state=init] .counter__content {
+  display: none;
+}
 .container[data-state=init] .btn__pomodoro {
   color: var(--tomato);
   background-color: var(--shadow);
 }
 .container[data-state=init] .btn__pomodoro:hover {
-  box-shadow: 0 0 5 pxvar(--shadow);
+  box-shadow: 0 0 5px var(--shadow);
   color: var(--tomato);
   background-color: var(--tomato-alt);
 }
@@ -126,15 +126,15 @@ h1 {
   box-shadow: none;
   border: none;
   /*  &:hover {
-     box-shadow: 0 0 5px var(--shadow);
-     color: var(--tomato);
-     background-color: var(--tomato-alt);
+  box-shadow: 0 0 5px var(--shadow);
+  color: var(--tomato);
+  background-color: var(--tomato-alt);
   }
 
   &:active {
-     box-shadow: 0 0 5px var(--shadow);
-     color: #eee;
-     background-color: var(--tomato-alt);
+  box-shadow: 0 0 5px var(--shadow);
+  color: #eee;
+  background-color: var(--tomato-alt);
   }*/
 }
 .container[data-state=pause] h1, .container[data-state=play] h1 {
@@ -145,6 +145,9 @@ h1 {
 }
 .container[data-state=pause] .counter, .container[data-state=play] .counter {
   background-color: var(--white);
+}
+.container[data-state=pause] .counter__content, .container[data-state=play] .counter__content {
+  display: block;
 }
 .container[data-state=pause] .btn__pomodoro, .container[data-state=play] .btn__pomodoro {
   color: var(--tomato);

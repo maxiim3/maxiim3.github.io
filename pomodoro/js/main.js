@@ -2,12 +2,15 @@ class PomodoroTimer {
    constructor() {
       this.states = ['play', 'pause']
       this.stateIndex = 1
+      this.count = 25
       // dom
-      this.$btn = document.querySelector('.btn__pomodoro')
+      this.$playBtn = document.querySelector('.btn__pomodoro')
       this.$btnReload = document.querySelector('.btn__reload')
       this.$main = document.querySelector('main')
       this.$wrapper = document.querySelector('.container')
       this.$counter = document.querySelector('.counter__content')
+      this.$minutes = document.querySelector('.minutes')
+      this.$seconds = document.querySelector('.seconds')
       this.$btnContainer = document.querySelector('.btn__container')
    }
 
@@ -15,75 +18,58 @@ class PomodoroTimer {
       return this.states[this.stateIndex % 2]
    }
 
-   changeState(state) {
+   changeDomState(state) {
       this.$wrapper.dataset.state = state
       const playIcon = 'fa-solid fa-play'
       const pauseIcon = 'fa-solid fa-pause'
-      const timer = new Timer(this.$counter)
 
       switch (this.$wrapper.dataset.state) {
          case 'init':
-            this.$btn.querySelector('i').classList.value = playIcon
-            this.$counter.textContent = ''
+            this.$playBtn.querySelector('i').classList.value = playIcon
             break
          case 'play':
-            this.$btn.querySelector('i').classList.value = pauseIcon
-            timer.isRunning = true
-           // this.$counter.textContent = timer.run()
-           this.renderCounter(timer)
+            this.$playBtn.querySelector('i').classList.value = pauseIcon
             break
          case 'pause':
-            this.$btn.querySelector('i').classList.value = playIcon
-            timer.isRunning = false
+            this.$playBtn.querySelector('i').classList.value = playIcon
             break
       }
    }
 
-   renderCounter(timer){
-     setInterval(()=>{
-        this.$counter.textContent = timer.run()
-     }, 1000)
-   }
-
-   handleBtn(e) {
+   handlePlayPause(e) {
       e.preventDefault()
       this.stateIndex++
       const state = this.getState()
-      this.changeState(state)
-      console.log(e)
+      this.changeDomState(state)
+      this.handleTimer()
+      this.$seconds.textContent = this.count
+   }
+
+   handleReset(e) {
+      e.preventDefault()
+      clearTimeout(this.play)
+      const state = 'init'
+      this.changeDomState(state)
+      this.count = 25
+      this.$seconds.textContent = this.count
+   }
+
+   handleTimer() {
+      if (this.$wrapper.dataset.state === 'pause' || this.count < 0) return clearTimeout(this.play)
+      setTimeout(() => this.play(), 1000)
+   }
+
+   play() {
+      console.log(this.count)
+      this.count--
+      this.handleTimer()
+      this.$seconds.textContent = this.count
    }
 
    init() {
-      this.changeState('init')
-      this.$btn.addEventListener('click', e => this.handleBtn(e))
-      this.$btnReload.addEventListener('click', e => this.changeState('init'))
-   }
-}
-
-class Timer {
-   timeOutId
-
-   isRunning
-
-   constructor() {
-      this.time = 25
-      this.isRunning = false
-   }
-
-   run() {
-      if (this.isRunning && this.time > 0) {
-         this.time--
-         // this.timeOutId = setTimeout(() => this.run(this.time), 1000)
-         return this.time
-      } else {
-         // clearTimeout(this.timeOutId)
-         return this.time
-      }
-   }
-
-   pause() {
-      this.isRunning = false
-      return this.time
+      this.changeDomState('init')
+      this.$playBtn.addEventListener('click', e => this.handlePlayPause(e))
+      this.$btnReload.addEventListener('click', e => this.handleReset(e))
    }
 }
 

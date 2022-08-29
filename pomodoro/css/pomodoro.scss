@@ -31,15 +31,14 @@ main {
 
 .container {
    width: 65rem;
-   height: 55rem;
-   border-radius: 15px;
-   /*  display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;*/
+   height: 65rem;
+   border-radius: 100%;
+   padding: 5rem;
+
    background-color: var(--tomato);
    border: 1px solid #e66767;
-   box-shadow: 0 0 15px var(--shadow);
+   box-shadow: 0 0 15px var(--shadow), 0 0 10px 20px var(--tomato), 0 0 15px 40px var(--shadow),
+      0 0 25px 60px var(--tomato), 0 0 15px 80px var(--shadow);
 }
 
 .tomato {
@@ -115,6 +114,10 @@ h1 {
 
       .counter {
          background-color: var(--shadow);
+
+         &__content {
+            display: none;
+         }
       }
 
       .btn__pomodoro {
@@ -122,7 +125,7 @@ h1 {
          background-color: var(--shadow);
 
          &:hover {
-            box-shadow: 0 0 5 pxvar(--shadow);
+            box-shadow: 0 0 5px var(--shadow);
             color: var(--tomato);
             background-color: var(--tomato-alt);
          }
@@ -141,16 +144,16 @@ h1 {
          box-shadow: none;
          border: none;
          /*  &:hover {
-        box-shadow: 0 0 5px var(--shadow);
-        color: var(--tomato);
-        background-color: var(--tomato-alt);
-     }
+box-shadow: 0 0 5px var(--shadow);
+color: var(--tomato);
+background-color: var(--tomato-alt);
+}
 
-     &:active {
-        box-shadow: 0 0 5px var(--shadow);
-        color: #eee;
-        background-color: var(--tomato-alt);
-     }*/
+&:active {
+box-shadow: 0 0 5px var(--shadow);
+color: #eee;
+background-color: var(--tomato-alt);
+}*/
       }
    }
 
@@ -166,6 +169,9 @@ h1 {
 
       .counter {
          background-color: var(--white);
+        &__content {
+          display: block
+        }
       }
 
       .btn__pomodoro {
@@ -203,7 +209,7 @@ h1 {
       }
 
       .counter__content {
-        font-size: 4rem;
+         font-size: 4rem;
       }
    }
 }

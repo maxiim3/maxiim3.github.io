@@ -11,9 +11,14 @@ class Project {
 }
 
 const projects = [
-   new Project(1, 'OhMyFood', 'https://maxiim3.github.io/ohmyfood'),
-   new Project(2, 'Sestini-Pizza', 'http://sestini-pizza.fr'),
-   new Project(3, 'portfolio', 'https://maxii.me'),
+   new Project(1, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_2_booki'),
+   new Project(2, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_3_ohmyfood'),
+   new Project(3, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_4_gameon'),
+   new Project(4, 'OhMyFood', 'https://maxiim3.github.io/oc_projet_6_fisheye'),
+   new Project(5, 'OhMyFood', 'https://maxiim3.github.io/pomodoro'),
+   new Project(5, 'OhMyFood', 'https://maxiim3.github.io/CDM2022'),
+   new Project(6, 'Sestini-Pizza', 'http://sestini-pizza.fr'),
+   new Project(7, 'portfolio', 'https://maxii.me'),
 ]
 
 const links = document.querySelector('#links')
