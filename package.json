@@ -1,25 +1,25 @@
 {
-  "name": "maxiim3.github.io",
-  "version": "2.0.0",
-  "description": "Portfolio",
-  "main": "app.js",
+  "name": "oc_projet_3",
+  "version": "1.0.0",
+  "description": "![](../../../Documents/OpenClassrooms/P3/Livrables/Maquettes Ohmyfood/images/logo/ohmyfood.png)",
+  "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./app.scss:./app.css --style compressed",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http://localhost:8889/maxiim3.github.io/index.html?_ijt=2nda55a666bs27cm5g7cmuetk4&_ij_reload=RELOAD_ON_CHANGE",
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed",
+    "prefix": "postcss public/css/style.css --use autoprefixer -d ./public/css/prefixed/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maxiim3/maxiim3.github.io.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/maxiim3/maxiim3.github.io/issues"
   },
   "homepage": "https://github.com/maxiim3/maxiim3.github.io#readme",
-  "devDependencies": {
-    "prettier": "^2.7.1",
-    "sass": "^1.54.0"
+  "dependencies": {
+    "http-server": "^14.1.0",
+    "prettier": "^2.6.2"
   }
 }
