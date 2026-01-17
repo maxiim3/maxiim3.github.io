@@ -4,13 +4,13 @@ useSeoMeta({
   description: 'Maxime Tamburrini - Développeur Front-End Vue.js / Nuxt. Applications B2B/B2C, dashboards data viz, design systems. 2 ans chez Airddm + expérience freelance.',
   ogTitle: 'Maxime Tamburrini - Développeur Front-End Vue/Nuxt',
   ogDescription: 'Développeur Front-End Vue.js / Nuxt. Applications B2B/B2C, dashboards data viz, design systems.',
-  ogImage: '/curriculum/og-image.png',
-  ogUrl: 'https://maxi.github.io/curriculum/',
+  ogImage: '/og-image.png',
+  ogUrl: 'https://maxiim3.github.io/',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'Maxime Tamburrini - Développeur Front-End Vue/Nuxt',
   twitterDescription: 'Développeur Front-End Vue.js / Nuxt. Applications B2B/B2C, dashboards data viz, design systems.',
-  twitterImage: '/curriculum/og-image.png',
+  twitterImage: '/og-image.png',
 })
 
 useHead({
@@ -22,9 +22,9 @@ useHead({
         '@type': 'Person',
         name: 'Maxime Tamburrini',
         jobTitle: 'Développeur Front-End Vue/Nuxt',
-        url: 'https://maxi.github.io/curriculum',
+        url: 'https://maxiim3.github.io',
         sameAs: [
-          'https://github.com/maxi',
+          'https://github.com/maxiim3',
           'https://linkedin.com/in/maxime-tamburrini',
         ],
       }),

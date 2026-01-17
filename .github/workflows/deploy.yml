@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: cd web && bun install
 
-      - name: Generate static site
-        run: cd web && bun run generate
+      - name: Build SPA
+        run: cd web && bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

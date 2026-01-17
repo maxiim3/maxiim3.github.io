@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://maxi.github.io/curriculum/sitemap.xml
+Sitemap: https://maxi.github.io/sitemap.xml

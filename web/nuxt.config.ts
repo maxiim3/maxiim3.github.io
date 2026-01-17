@@ -3,32 +3,28 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-17',
   devtools: { enabled: true },
 
-  // Static Site Generation
-  ssr: true,
+  // SPA Mode
+  ssr: false,
+
   nitro: {
-    prerender: {
-      routes: ['/'],
-      crawlLinks: true,
-    },
+    preset: 'static',
   },
 
-  // GitHub Pages base URL
   app: {
-    baseURL: '/curriculum/',
+    baseURL: '/',
     head: {
       htmlAttrs: { lang: 'fr' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/curriculum/favicon.ico' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/curriculum/apple-touch-icon.png' },
-        { rel: 'canonical', href: 'https://maxi.github.io/curriculum/' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       ],
     },
   },
 
   site: {
-    url: 'https://maxi.github.io',
+    url: 'https://maxiim3.github.io',
     name: 'Maxime Tamburrini - Développeur Front-End',
   },
 

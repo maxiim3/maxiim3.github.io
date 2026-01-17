@@ -2,7 +2,7 @@
 const socialLinks = [
   {
     name: 'GitHub',
-    url: 'https://github.com/maxi',
+    url: 'https://github.com/maxiim3',
     icon: 'github',
   },
   {

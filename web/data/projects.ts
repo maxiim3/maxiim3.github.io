@@ -44,6 +44,6 @@ export const projects: Project[] = [
     title: 'Portfolio Personnel',
     description: 'Ce site ! Généré statiquement avec Nuxt 3, déployé automatiquement sur GitHub Pages.',
     technologies: ['Nuxt 3', 'TypeScript', 'Tailwind', 'GitHub Actions'],
-    github: 'https://github.com/maxi/curriculum',
+    github: 'https://github.com/maxiim3/maxiim3.github.io',
   },
 ]
