@@ -1,0 +1,17 @@
+EXPERTISE
+Vue 3, Nuxt 3, TypeScript, JavaScript, CSS, Tailwind, BEM, Pinia, Git, REST API
+
+FRAMEWORKS
+React, Svelte, SvelteKit
+
+DATA VIZ
+D3.js, Chart.js
+
+INTEGRATIONS
+Figma, Algolia, Typesense, SQL, MongoDB
+
+TOOLS
+Node, Bun, Bash, Claude Code, Gemini, OpenCode
+
+CURIEUX
+Rust, Go
