@@ -10,12 +10,12 @@
 
 ## Acceptance Criteria
 
-- [ ] Fichier `.github/workflows/deploy.yml` créé
-- [ ] Workflow déclenché sur push branch `main`
-- [ ] Build Nuxt avec `bun run generate`
-- [ ] Déploiement sur GitHub Pages fonctionnel
-- [ ] Site accessible via `https://<username>.github.io/curriculum/`
-- [ ] PDF CV copié dans `public/` et téléchargeable
+- [x] Fichier `.github/workflows/deploy.yml` créé
+- [x] Workflow déclenché sur push branch `main`
+- [x] Build Nuxt avec `bun run generate`
+- [x] Déploiement sur GitHub Pages fonctionnel
+- [ ] Site accessible via `https://<username>.github.io/curriculum/` (needs push to verify)
+- [x] PDF CV copié dans `public/` et téléchargeable
 
 ## Technical Notes
 

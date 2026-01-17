@@ -10,12 +10,12 @@
 
 ## Acceptance Criteria
 
-- [ ] Toggle accessible dans le Header
-- [ ] Thème clair par défaut
-- [ ] Palette sombre cohérente (contrastes WCAG AA)
-- [ ] Persistance du choix dans localStorage
-- [ ] Respect de `prefers-color-scheme` au premier chargement
-- [ ] Transition fluide entre thèmes (pas de flash)
+- [x] Toggle accessible dans le Header
+- [x] Thème clair par défaut
+- [x] Palette sombre cohérente (contrastes WCAG AA)
+- [x] Persistance du choix dans localStorage
+- [x] Respect de `prefers-color-scheme` au premier chargement
+- [x] Transition fluide entre thèmes (pas de flash)
 
 ## Technical Notes
 

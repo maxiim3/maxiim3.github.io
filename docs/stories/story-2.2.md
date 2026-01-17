@@ -10,13 +10,13 @@
 
 ## Acceptance Criteria
 
-- [ ] Page `projets.vue` créée
-- [ ] Composant `ProjectCard.vue` pour chaque projet
-- [ ] Grille responsive (1 col mobile, 2-3 cols desktop)
-- [ ] Chaque card : titre, description, capture, technos badges, lien (si dispo)
-- [ ] Hover effect subtil sur les cards
-- [ ] Données externalisées (`data/projects.ts`)
-- [ ] Images optimisées (WebP, lazy loading)
+- [x] Page `projets.vue` créée
+- [x] Composant `ProjectCard.vue` pour chaque projet
+- [x] Grille responsive (1 col mobile, 2-3 cols desktop)
+- [x] Chaque card : titre, description, capture, technos badges, lien (si dispo)
+- [x] Hover effect subtil sur les cards
+- [x] Données externalisées (`data/projects.ts`)
+- [ ] Images optimisées (WebP, lazy loading) - placeholder images used
 
 ## Technical Notes
 

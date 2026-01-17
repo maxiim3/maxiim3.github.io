@@ -10,12 +10,12 @@
 
 ## Acceptance Criteria
 
-- [ ] Page `index.vue` avec accroche développée (version longue)
-- [ ] Section compétences structurée (Expertise, Frameworks, etc.)
-- [ ] Bouton CTA "Télécharger mon CV" visible
-- [ ] Design responsive mobile-first
-- [ ] Typographie lisible, espaces généreux
-- [ ] Temps de chargement < 2s
+- [x] Page `index.vue` avec accroche développée (version longue)
+- [x] Section compétences structurée (Expertise, Frameworks, etc.)
+- [x] Bouton CTA "Télécharger mon CV" visible
+- [x] Design responsive mobile-first
+- [x] Typographie lisible, espaces généreux
+- [x] Temps de chargement < 2s
 
 ## Content
 

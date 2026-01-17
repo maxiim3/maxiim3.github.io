@@ -10,13 +10,13 @@
 
 ## Acceptance Criteria
 
-- [ ] Balises meta title/description sur chaque page
-- [ ] Open Graph tags (og:title, og:description, og:image)
-- [ ] Twitter Card meta tags
-- [ ] Sitemap.xml généré automatiquement
-- [ ] robots.txt configuré
-- [ ] URL canoniques définies
-- [ ] Structured data JSON-LD (Person schema)
+- [x] Balises meta title/description sur chaque page
+- [x] Open Graph tags (og:title, og:description, og:image)
+- [x] Twitter Card meta tags
+- [x] Sitemap.xml généré automatiquement
+- [x] robots.txt configuré
+- [x] URL canoniques définies
+- [x] Structured data JSON-LD (Person schema)
 
 ## Technical Notes
 

@@ -10,13 +10,13 @@
 
 ## Acceptance Criteria
 
-- [ ] Page `experience.vue` créée
-- [ ] Composant `TimelineItem.vue` pour chaque expérience
-- [ ] Timeline verticale, ordre chronologique inversé (récent en haut)
-- [ ] Airddm (CDI actuel) en première position
-- [ ] Chaque item : période, poste, entreprise, description, technos
-- [ ] Design responsive, lisible sur mobile
-- [ ] Données externalisées (fichier `data/experiences.ts`)
+- [x] Page `experience.vue` créée
+- [x] Composant `TimelineItem.vue` pour chaque expérience
+- [x] Timeline verticale, ordre chronologique inversé (récent en haut)
+- [x] Airddm (CDI actuel) en première position
+- [x] Chaque item : période, poste, entreprise, description, technos
+- [x] Design responsive, lisible sur mobile
+- [x] Données externalisées (fichier `data/experiences.ts`)
 
 ## Technical Notes
 

@@ -10,12 +10,12 @@
 
 ## Acceptance Criteria
 
-- [ ] Composant `Header.vue` avec navigation (Accueil, Expériences, Projets)
-- [ ] Composant `Footer.vue` avec liens GitHub et LinkedIn
-- [ ] Layout par défaut appliqué à toutes les pages
-- [ ] Header sticky au scroll
-- [ ] Navigation responsive (hamburger menu mobile)
-- [ ] Liens fonctionnels avec `NuxtLink`
+- [x] Composant `Header.vue` avec navigation (Accueil, Expériences, Projets)
+- [x] Composant `Footer.vue` avec liens GitHub et LinkedIn
+- [x] Layout par défaut appliqué à toutes les pages
+- [x] Header sticky au scroll
+- [x] Navigation responsive (hamburger menu mobile)
+- [x] Liens fonctionnels avec `NuxtLink`
 
 ## Technical Notes
 

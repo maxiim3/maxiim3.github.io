@@ -10,12 +10,12 @@
 
 ## Acceptance Criteria
 
-- [ ] Projet Nuxt 3 initialisé dans `web/` avec Bun
-- [ ] TypeScript configuré en mode strict
-- [ ] Tailwind CSS installé et fonctionnel
-- [ ] `nuxt.config.ts` configuré pour static generation (`ssr: true`, `nitro.prerender`)
-- [ ] Commande `bun run generate` produit un dossier `.output/public`
-- [ ] Serveur dev fonctionne (`bun run dev`)
+- [x] Projet Nuxt 3 initialisé dans `web/` avec Bun
+- [x] TypeScript configuré en mode strict
+- [x] Tailwind CSS installé et fonctionnel
+- [x] `nuxt.config.ts` configuré pour static generation (`ssr: true`, `nitro.prerender`)
+- [x] Commande `bun run generate` produit un dossier `.output/public`
+- [x] Serveur dev fonctionne (`bun run dev`)
 
 ## Technical Notes
 
