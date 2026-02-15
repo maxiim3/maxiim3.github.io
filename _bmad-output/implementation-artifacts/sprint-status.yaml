@@ -41,9 +41,9 @@ story_location: _bmad-output/implementation-artifacts
 
 development_status:
   # Epic 1: Foundation & Bilingual Content Display
-  epic-1: backlog
-  1-1-astro-project-configuration-bilingual-routing: backlog
-  1-2-content-type-system-data-files: backlog
+  epic-1: in-progress
+  1-1-astro-project-configuration-bilingual-routing: done
+  1-2-content-type-system-data-files: done
   1-3-base-layout-css-layers-typography: backlog
   1-4-content-display-components: backlog
   1-5-language-switch-component: backlog
