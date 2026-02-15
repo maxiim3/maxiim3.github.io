@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 inputDocuments:
   - docs/product-brief.md
   - _bmad-output/planning-artifacts/prd.md
@@ -551,3 +551,258 @@ Inter — self-hosted from `/public/fonts/`. Chosen because:
 - `aria-pressed` on toggle button
 - `lang` attribute matches page language
 - No content hidden from screen readers that's visible on screen
+
+## User Journey Flows
+
+### Sophie: Recruiter CV Download Path
+
+**Entry:** LinkedIn profile → website link click
+**Goal:** Download CV in < 30 seconds
+
+```mermaid
+graph TD
+    A[LinkedIn → Site Link] --> B[Raw State Loads < 1s]
+    B --> C{Notices Toggle Button}
+    C -->|Curious| D[Clicks Toggle]
+    C -->|Skips| E[Scrolls to Content]
+    D --> F[Radial Transition → Styled State]
+    F --> G[Memory Chain: Surprise → Respect]
+    G --> H[Scans ToC or Scrolls]
+    E --> H
+    H --> I[Experience Section]
+    I --> J[Scans Timeline — 5s]
+    J --> K[CV Download Section]
+    K --> L{Language?}
+    L -->|FR| M[Downloads CV Français]
+    L -->|EN| N[Downloads CV English]
+    M --> O[PDF in Hand — Success]
+    N --> O
+    H --> P[Skills Section]
+    P --> I
+```
+
+**Key Design Decisions:**
+- ToC visible immediately — "CV" link always in view without scrolling
+- CV section has large, obvious download buttons (not text links)
+- Experience section scannable in 5 seconds: title + company + dates, no walls of text
+- Keyboard shortcut `5` jumps directly to CV section (power path)
+
+### Marc: Mobile Freelance Contact Path
+
+**Entry:** Friend's shared link → mobile browser
+**Goal:** Contact Max in < 1 minute
+
+```mermaid
+graph TD
+    A[Shared Link → Mobile] --> B[Raw State Loads Instantly]
+    B --> C[Thumb-friendly layout]
+    C --> D{Notices Toggle Button}
+    D -->|Taps| E[Radial Transition]
+    D -->|Scrolls| F[Content Directly]
+    E --> G[Styled State — Mobile Optimized]
+    G --> H[Scrolls to Projects]
+    F --> H
+    H --> I[Sees Past Work Links]
+    I --> J[Taps Project Link → External]
+    J --> K[Returns to Site]
+    K --> L[Links Section — Email]
+    L --> M[mailto: Opens Mail App]
+    M --> N[Contact Made — Success]
+    H --> O[Links Section Directly]
+    O --> M
+```
+
+**Key Design Decisions:**
+- All touch targets minimum 44x44px
+- `mailto:` link prominent in Links section (not buried in footer)
+- Project links open in new tab (`target="_blank"`) so user returns easily
+- Thumb zone: critical actions (links, toggle, CV) reachable in bottom 2/3 of screen
+- No sticky nav eating mobile real estate — simple scroll
+
+### Lea: Developer Explore & Share Path
+
+**Entry:** Meetup contact → direct URL
+**Goal:** Explore, appreciate craft, share
+
+```mermaid
+graph TD
+    A[Direct URL Visit] --> B[Raw State Loads]
+    B --> C[Immediately Gets It — HTML First]
+    C --> D[Toggles CSS On]
+    D --> E[Radial Transition — Appreciates]
+    E --> F[Toggles CSS Off]
+    F --> G[Toggles Again — Studying It]
+    G --> H[Checks GitHub Link]
+    H --> I[Views Source / Repo]
+    I --> J[Returns to Site]
+    J --> K[Skills Section — Credibility Check]
+    K --> L[Keyboard Shortcut Discovery]
+    L --> M{Discovers ? Shortcut}
+    M -->|Yes| N[Sees All Shortcuts — Impressed]
+    M -->|Explores| O[Tries 1-5 / t / l]
+    N --> P[Bookmarks Site]
+    O --> P
+    P --> Q[Shares Link — Viral Loop]
+    Q --> R[Success — Network Effect]
+```
+
+**Key Design Decisions:**
+- GitHub link is THE most prominent external link
+- View source reveals clean, readable code (the code IS the portfolio)
+- `?` shortcut overlay shows all keyboard shortcuts — Easter egg moment
+- Keyboard shortcuts work without focus traps or conflicts
+- Share-worthy URL: clean, short, memorable
+
+### Degraded State: No-JS / Slow Connection
+
+**Entry:** Any source → JS disabled or timeout
+**Goal:** Full content access without JS
+
+```mermaid
+graph TD
+    A[Page Load — No JS] --> B[Semantic HTML Renders]
+    B --> C[System Font — Readable]
+    C --> D[All Content Visible]
+    D --> E{User Action}
+    E -->|Scroll| F[All Sections Accessible]
+    E -->|Click Link| G[GitHub/LinkedIn/Email Work]
+    E -->|Download CV| H[PDF Links Work]
+    E -->|Switch Language| I[/en Link Works — Full Reload]
+    F --> J[Content Consumed — Success]
+    G --> J
+    H --> J
+    I --> J
+    E -->|Toggle Button| K[Button Visible but Non-Functional]
+    K --> L[No Error — Graceful]
+```
+
+**Key Design Decisions:**
+- Toggle button present but `<noscript>` hides it or it simply does nothing
+- All navigation is `<a href>` — works without JS
+- Language switch is a real link (`/en`), not JS-dependent
+- PDF downloads are direct `<a href="/cv-fr.pdf">` — no JS needed
+- Semantic landmarks (`<nav>`, `<main>`, `<section>`) for screen readers
+
+### Journey Patterns
+
+**Navigation Patterns:**
+- **Direct Jump:** ToC links + keyboard shortcuts (1-5) for instant section access
+- **Linear Scroll:** Content ordered by priority — Links → Skills → Experience → Projects → CV
+- **Language as Route:** FR `/` and EN `/en` are separate pages, not JS toggles
+
+**Decision Patterns:**
+- **Binary Toggle:** CSS on/off — one button, two states, no ambiguity
+- **Language Choice:** Visible FR|EN in header, persists via route
+- **Download Choice:** Two clear buttons side by side — CV Français / CV English
+
+**Feedback Patterns:**
+- **Radial Transition:** Immediate visual feedback on toggle — no loading state
+- **Button Inversion:** Toggle button always communicates "you can switch" via contrast
+- **Focus Indicators:** Visible focus ring on all interactive elements for keyboard users
+
+### Flow Optimization Principles
+
+1. **< 30s to CV** — Sophie's path is the benchmark. Every design decision must not slow this path.
+2. **< 3 taps to contact** — Marc's mobile path. Link → scroll → mailto.
+3. **Zero dead ends** — Every section has a natural next action (scroll, link, download).
+4. **Progressive disclosure** — Raw state shows everything. Styled state enhances but never hides.
+5. **Keyboard = first-class** — Not an afterthought. Shortcuts discoverable via `?`.
+6. **Graceful degradation = full function** — No-JS state is not "broken styled state" — it's a designed experience.
+
+## Component Strategy
+
+### Design System Components
+
+**Approach:** No external component library. All components are Astro components with custom CSS using `@layer base, styled;` architecture. This is deliberate — the site IS the portfolio piece, every line of code is the statement.
+
+**CSS Foundation (from architecture):**
+- CSS Layers: `@layer base, styled;`
+- CSS Custom Properties for theming
+- System font stack (base) → Self-hosted custom font (styled)
+- No utility framework — hand-crafted CSS
+
+### Custom Components
+
+**1. CSSToggleButton**
+- **Purpose:** The hero interaction — toggles between raw and styled states
+- **Anatomy:** Single `<button>` with text label + `aria-pressed`
+- **States:** Raw page (styled/alive: black bg, white text, bold) · Styled page (raw/brutalist: thin border, serif font, muted) · Hover · Focus-visible · Pressed
+- **Behavior:** Triggers `document.startViewTransition()` with radial clip-path from button position. Falls back to instant class swap if API unsupported.
+- **Accessibility:** `aria-pressed="true|false"`, keyboard `t` shortcut, `prefers-reduced-motion` disables animation
+
+**2. LanguageSwitch**
+- **Purpose:** FR/EN toggle in header
+- **Anatomy:** Two `<a>` elements — current language highlighted, other dimmed
+- **Behavior:** Full page navigation (`/` ↔ `/en`), not JS state
+- **Accessibility:** `aria-current="page"` on active language, keyboard `l` shortcut
+
+**3. SectionNav (ToC)**
+- **Purpose:** Quick-jump navigation to content sections
+- **Anatomy:** Horizontal list of `<a href="#section-id">` links
+- **States:** Default · Hover · Active (scrollspy optional Phase 2)
+- **Accessibility:** `<nav aria-label="Table of contents">`
+
+**4. SkillsTier**
+- **Purpose:** Display skills in 3 tiers (Expertise / Expérience / Curiosité)
+- **Anatomy:** `<h3>` tier label + list of skill items
+- **Layout:** Stacked mobile → columns on desktop (CSS grid)
+- **Accessibility:** Semantic `<section>` per tier with heading hierarchy
+
+**5. ExperienceEntry**
+- **Purpose:** Display a professional experience item
+- **Anatomy:** Job title, company, date range, short description
+- **Layout:** Stacked mobile → date left / content right on desktop
+- **Accessibility:** Semantic `<article>` per entry
+
+**6. ProjectCard**
+- **Purpose:** Display a project with link to live site
+- **Anatomy:** Project name, tech stack, external link
+- **Layout:** Stacked mobile → side by side on desktop
+- **Accessibility:** Link opens new tab with `rel="noopener"`
+
+**7. CVDownloadLinks**
+- **Purpose:** Prominent PDF download buttons
+- **Anatomy:** Two `<a>` elements styled as buttons — CV Français / CV English
+- **States:** Default · Hover · Focus · Active (download feedback)
+- **Accessibility:** `download` attribute, clear label
+
+**8. KeyboardShortcutsOverlay**
+- **Purpose:** Shows available keyboard shortcuts when `?` is pressed
+- **Anatomy:** Modal overlay listing all shortcuts
+- **States:** Hidden (default) · Visible (after `?` press) · Dismissed (Esc or `?` again)
+- **Accessibility:** `role="dialog"`, `aria-modal="true"`, focus trap, Esc to close
+
+**9. SkipLink**
+- **Purpose:** Accessibility skip-to-content link
+- **Anatomy:** Hidden `<a>` that becomes visible on focus
+- **Behavior:** First focusable element, jumps to `<main>`
+
+### Component Implementation Strategy
+
+**Build Approach:**
+- Each component is an `.astro` file in `src/components/`
+- CSS scoped within component using `<style>` or CSS Layers
+- No client-side JS except for: CSSToggleButton (island), KeyboardShortcutsOverlay (island)
+- All other components are pure Astro (server-rendered, zero JS)
+
+**Astro Islands:**
+- `CSSToggleButton` — `client:load` (needs to be interactive immediately)
+- `KeyboardShortcutsOverlay` — `client:idle` (can wait)
+- Everything else: static HTML, no hydration
+
+### Implementation Roadmap
+
+**Phase 1 — MVP (Tonight):**
+1. SkipLink — accessibility foundation
+2. LanguageSwitch — bilingual routing
+3. SectionNav — navigation
+4. SkillsTier — content display
+5. ExperienceEntry — content display
+6. ProjectCard — content display
+7. CVDownloadLinks — primary conversion
+8. CSSToggleButton — hero interaction
+
+**Phase 2 — Growth (This Week):**
+9. KeyboardShortcutsOverlay — power user feature
+10. VisitorCounter (SSE) — social proof
+11. DarkModeToggle — preference support
