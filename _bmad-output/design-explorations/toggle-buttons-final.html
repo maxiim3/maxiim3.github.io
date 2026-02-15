@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Toggle — Boutons retenus</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #fdfdfc;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    gap: 3rem;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #333;
+    text-align: center;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* ═══════════════════════════════════════════
+     CARD — Simulates each page state
+     ═══════════════════════════════════════════ */
+  .card {
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 340px;
+    position: relative;
+  }
+
+  .card-label {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .card-context {
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .card-context .name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .card-context .role {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .card-context .links {
+    font-size: 0.85rem;
+  }
+
+  /* ═══════════════════════════════════════════
+     RAW STATE — Browser defaults, plain HTML
+     ═══════════════════════════════════════════ */
+  .card-raw {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  .card-raw .card-label { color: #aaa; }
+
+  .card-raw .card-context .name { color: #000; }
+  .card-raw .card-context .role { color: #000; }
+  .card-raw .card-context a {
+    color: #0000ee;
+    text-decoration: underline;
+  }
+
+  /* ═══════════════════════════════════════════
+     STYLED STATE — Designed page
+     ═══════════════════════════════════════════ */
+  .card-styled {
+    background: #fafafa;
+    border: 1px solid #eaeaea;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  .card-styled .card-label { color: #bbb; }
+
+  .card-styled .card-context .name { color: #111; }
+  .card-styled .card-context .role { color: #555; }
+  .card-styled .card-context a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  /* ═══════════════════════════════════════════
+     MAGNETIC PULL — Raw page → "Styles"
+     Bold, alive, black pill, follows cursor
+     ═══════════════════════════════════════════ */
+  .btn-magnetic {
+    background: #0a0a0a;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-magnetic:hover {
+    box-shadow: 0 8px 25px rgba(10, 10, 10, 0.25);
+  }
+
+  .btn-magnetic:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 4px;
+  }
+
+  /* ═══════════════════════════════════════════
+     CROSSHAIR — Styled page → "raw"
+     Neutral, monospace, + rotates to × on hover
+     ═══════════════════════════════════════════ */
+  .btn-crosshair {
+    background: transparent;
+    color: #888;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-crosshair .icon {
+    font-size: 1rem;
+    line-height: 1;
+    color: #ccc;
+    transition: all 0.25s ease;
+    display: inline-block;
+  }
+
+  .btn-crosshair:hover {
+    color: #1a1a1a;
+  }
+
+  .btn-crosshair:hover .icon {
+    color: #1a1a1a;
+    transform: rotate(45deg);
+  }
+
+  .btn-crosshair:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 4px;
+  }
+
+  /* ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ */
+  footer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #ccc;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>CSS Toggle — Boutons retenus</h1>
+
+<div class="cards">
+
+  <!-- RAW PAGE → MAGNETIC PULL -->
+  <div class="card card-raw" id="raw-card">
+    <span class="card-label">Page raw — Magnetic Pull</span>
+    <div class="card-context">
+      <span class="name">Max Tamburrini</span>
+      <span class="role">Frontend Developer</span>
+      <span class="links"><a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">Email</a></span>
+    </div>
+    <button class="btn-magnetic" id="btn-magnetic">STYLES</button>
+  </div>
+
+  <!-- STYLED PAGE → CROSSHAIR -->
+  <div class="card card-styled">
+    <span class="card-label">Page stylée — Crosshair</span>
+    <div class="card-context">
+      <span class="name">Max Tamburrini</span>
+      <span class="role">Frontend Developer</span>
+      <span class="links"><a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">Email</a></span>
+    </div>
+    <button class="btn-crosshair"><span class="icon">+</span> raw</button>
+  </div>
+
+</div>
+
+<footer>Magnetic Pull × Crosshair — 2026</footer>
+
+<script>
+  // Magnetic Pull — follows cursor
+  const btn = document.getElementById('btn-magnetic');
+  const card = document.getElementById('raw-card');
+
+  card.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0, 0)';
+  });
+</script>
+
+</body>
+</html>

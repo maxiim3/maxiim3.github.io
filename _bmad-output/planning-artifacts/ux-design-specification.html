@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Split — Max Tamburrini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;background:#0e0e0e}
+a{text-decoration:none;color:inherit}
+
+/* ================================================================
+   SPLIT
+   Left panel fixed (identity). Right panel scrolls (content).
+   Two distinct zones. Left is dark + dramatic, right is readable.
+   ================================================================ */
+.split{
+  background:#0e0e0e;color:#999;
+  font-family:'DM Sans',sans-serif;
+  display:flex;min-height:100vh;
+}
+.split .left{
+  position:fixed;top:0;left:0;bottom:0;width:38vw;
+  background:#0a0a0a;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 48px 48px;
+  border-right:1px solid rgba(255,255,255,.04);
+  z-index:1;
+}
+.split .left::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%,rgba(200,50,50,.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.split .left h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.5rem,4vw,4.5rem);font-weight:300;font-style:italic;
+  color:#eee;line-height:.92;position:relative;
+}
+.split .left .role{
+  font-size:12px;color:rgba(255,255,255,0.68);
+  letter-spacing:.15em;text-transform:uppercase;margin-top:16px;
+}
+.split .left .loc{font-size:11px;color:rgba(255,255,255,0.55);margin-top:6px}
+.split .left nav{
+  margin-top:40px;display:flex;flex-direction:column;gap:8px;
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+}
+.split .left nav a{transition:.15s;padding:4px 0}
+.split .left nav a:hover{color:rgba(255,255,255,.6);padding-left:8px}
+.split .left .left-links{
+  margin-top:auto;display:flex;flex-direction:column;gap:6px;
+  font-size:12px;color:rgba(255,255,255,0.55);
+}
+.split .left .left-links a:hover{color:rgba(255,255,255,0.8)}
+
+.split .right{
+  margin-left:38vw;flex:1;padding:80px 48px 60px;
+  min-height:100vh;
+}
+.split .right section{padding:36px 0;max-width:520px}
+.split .right section+section{border-top:1px solid rgba(255,255,255,.04)}
+.split .right h2{
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.58);margin-bottom:18px;
+}
+.tier{margin-bottom:18px}
+.tier h3{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px}
+.tier p{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.75)}
+
+.xp{margin-bottom:24px}
+.xp .date{font-size:11px;color:rgba(255,255,255,0.5)}
+.xp h3{font-size:15px;font-weight:600;color:rgba(255,255,255,.7);margin-top:3px}
+.xp p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.68);margin-top:4px}
+
+.proj{margin-bottom:18px}
+.proj h3{font-size:14px;font-weight:500;color:rgba(255,255,255,0.8)}
+.proj p{font-size:13px;color:rgba(255,255,255,0.62);margin-top:2px}
+.proj .t{font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px}
+
+.dl a{
+  display:inline-block;font-size:12px;padding:8px 20px;margin-right:10px;
+  border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,0.72);transition:.15s;
+}
+.dl a:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.65)}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:900px){
+  .split{display:block}
+  .split .left{position:relative;width:100%;padding:80px 32px 40px;border-right:none;border-bottom:1px solid rgba(255,255,255,.04)}
+  .split .right{margin-left:0;padding:40px 32px 60px}
+}
+</style>
+</head>
+<body>
+
+<div class="split">
+  <div class="left">
+    <h1>Max<br>Tamburrini</h1>
+    <div class="role">Développeur Front-End Vue / Nuxt</div>
+    <div class="loc">Paris · Remote · FR / EN / SR</div>
+    <nav><a href="#">Compétences</a><a href="#">Expérience</a><a href="#">Projets</a><a href="#">CV</a></nav>
+    <div class="left-links"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">hello@maxtamburrini.dev</a></div>
+  </div>
+  <div class="right">
+    <section>
+      <h2>Compétences</h2>
+      <div class="tier"><h3>Expertise</h3><p>Vue.js 3, Nuxt 3, TypeScript, Composition API, Pinia</p></div>
+      <div class="tier"><h3>Expérience</h3><p>Tailwind CSS, Vitest, REST APIs, Git, CI/CD, Responsive Design</p></div>
+      <div class="tier"><h3>Curiosité</h3><p>Astro, Three.js, WebGL, Rust/WASM</p></div>
+    </section>
+    <section>
+      <h2>Expérience</h2>
+      <div class="xp"><div class="date">2023 — Présent</div><h3>Développeur Front-End Vue/Nuxt</h3><p>Applications web performantes, SPAs et sites statiques. Architecture composant, testing, optimisation.</p></div>
+      <div class="xp"><div class="date">2013 — 2023</div><h3>Parcours hors tech</h3><p>Dix ans de gestion de projet, relation client, résolution de problèmes. Regard neuf sur le développement.</p></div>
+    </section>
+    <section>
+      <h2>Projets</h2>
+      <div class="proj"><h3>Dashboard Analytics</h3><p>Visualisation de données temps réel.</p><div class="t">Vue 3 · TypeScript · Tailwind · Pinia</div></div>
+      <div class="proj"><h3>E-commerce Frontend</h3><p>Interface complète, panier, Stripe, SSR.</p><div class="t">Nuxt 3 · Pinia · Stripe · Vitest</div></div>
+      <div class="proj"><h3>Ce site</h3><p>CSS toggle + View Transitions.</p><div class="t">Astro 5 · View Transitions · Vanilla CSS</div></div>
+    </section>
+    <section>
+      <h2>Télécharger CV</h2>
+      <div class="dl"><a href="#">CV Français</a><a href="#">CV English</a></div>
+    </section>
+  </div>
+</div>
+
+</body>
+</html>

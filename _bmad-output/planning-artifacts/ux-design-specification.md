@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 inputDocuments:
   - docs/product-brief.md
   - _bmad-output/planning-artifacts/prd.md
@@ -806,3 +806,244 @@ graph TD
 9. KeyboardShortcutsOverlay — power user feature
 10. VisitorCounter (SSE) — social proof
 11. DarkModeToggle — preference support
+
+## UX Consistency Patterns
+
+### Button Hierarchy
+
+**Primary Action:** CSSToggleButton — the only prominent interactive element
+- Raw state: black bg (#1a1a1a), white text, bold, 48px min-height — the only "alive" element
+- Styled state: inverted to raw look — thin border, serif font, muted color
+- Always visible, never competes with content
+
+**Secondary Actions:** CV Download links
+- Styled as button-like `<a>` elements (border + padding, not inline text links)
+- Side by side: CV Français / CV English
+- High contrast, 44px min touch target
+
+**Tertiary Actions:** External links (GitHub, LinkedIn, Email)
+- Styled as links, not buttons
+- Clearly distinguishable from body text
+- External links: subtle indicator (→ or ↗ symbol)
+
+**Rule:** No more than one primary action visible at a time. The toggle button is always primary. CV downloads are secondary. Everything else is tertiary.
+
+### Navigation Patterns
+
+**Section Navigation (ToC):**
+- Horizontal inline links in header area
+- Anchor links to `#section-id`
+- Visible without scrolling on all viewports
+- No sticky behavior — appears once at top
+
+**Language Navigation:**
+- FR | EN displayed in header
+- Current language visually distinct (bold or highlighted)
+- Full page reload (`<a href>`), not client-side swap
+- Position: consistent across both language versions
+
+**Keyboard Navigation:**
+- `1-5` jump to sections (Links, Skills, Experience, Projects, CV)
+- `t` toggle CSS, `l` switch language, `?` show shortcuts
+- No keyboard traps — Tab flows naturally through all interactive elements
+- Visible focus ring on every focusable element (`:focus-visible` only, not `:focus`)
+
+### Feedback Patterns
+
+**CSS Toggle Feedback:**
+- Radial View Transition from button position — instant visual confirmation
+- `prefers-reduced-motion`: instant class swap, no animation
+- Button text/appearance inverts immediately — state is always clear
+- No loading spinner, no delay — transition < 300ms
+
+**Link Feedback:**
+- Hover: visible state change (color shift or underline)
+- Active: brief visual acknowledgment
+- Focus: visible outline ring (2px offset)
+- Visited: distinct color in raw state (browser default purple)
+
+**Download Feedback:**
+- CV links use `download` attribute — browser handles feedback
+- No custom download progress or confirmation needed
+
+### State Patterns
+
+**Two-State System:**
+The entire site has exactly two states. No intermediate states, no loading states, no error states for core functionality.
+
+| State | Font | Colors | Toggle Button | CSS Layers |
+|-------|------|--------|---------------|------------|
+| Raw | System serif | Browser defaults | Styled/alive | `@layer base` only |
+| Styled | Custom self-hosted | Dark theme | Raw/brutalist | `@layer base, styled` |
+
+**No-JS State:**
+- Equivalent to raw state but toggle button hidden via `<noscript>` or non-functional
+- All content accessible, all links work
+- Language switch works (real `<a>` links)
+
+**Empty States:** N/A — all content is static, pre-rendered at build time. No data fetching, no loading, no empty.
+
+### Spacing & Layout Patterns
+
+**Content Rhythm:**
+- Sections separated by consistent vertical spacing
+- Mobile: `1.5rem` between sections
+- Desktop: `2.5rem` between sections
+- Content max-width capped (800-1000px) to prevent line length issues on wide screens
+
+**Touch Targets:**
+- Minimum 44x44px on all interactive elements
+- Adequate spacing between adjacent touch targets (8px minimum gap)
+- Thumb-zone aware: critical actions accessible without stretching
+
+### Transition & Animation Patterns
+
+**CSS Toggle Transition:** Radial View Transition
+- Origin: button's `getBoundingClientRect()` center
+- Duration: ~250ms, `ease-out`
+- Clip-path: `circle()` expanding from button position
+- Fallback: instant class swap if API unsupported
+
+**Styled State Animations (inside `@layer styled`):**
+- **Entrance animations:** Subtle staggered reveals when styled state loads (opacity + slight translateY on sections, `animation-delay` per section for cascade effect)
+- **Hover transitions:** Color shifts, underline reveals, scale micro-interactions on interactive elements (~150ms, `ease-out`)
+- **Focus transitions:** Smooth focus ring appearance
+- **Section links:** Smooth scroll behavior (`scroll-behavior: smooth` in styled layer)
+
+**Raw State:** Zero animations. Static. Browser defaults. This contrast makes the styled state hit harder.
+
+**`prefers-reduced-motion: reduce`:** All animations disabled — both the radial transition AND the styled state's entrance/hover animations. Instant state changes only.
+
+**Rule:** Animations live exclusively in `@layer styled`. The raw layer has zero motion. This reinforces the progressive enhancement story — CSS brings the page to life, literally.
+
+## Responsive Design & Accessibility
+
+### Responsive Strategy
+
+**Mobile-First Approach:** CSS written for mobile by default, enhanced via `min-width` media queries.
+
+**Mobile (default):**
+- Single column, stacked sections
+- Padding: 1rem
+- Full-width content
+- Touch-optimized: all targets 44x44px+
+- Toggle button prominent, easy thumb reach
+- ToC: horizontal scrollable or wrapped inline links
+
+**Tablet (768px+):**
+- Padding grows to 2rem
+- Skills start flowing into 2 columns
+- Experience entries: date alongside title
+- Content breathes — more whitespace between sections
+- Both orientations considered (landscape gives more horizontal space)
+
+**Desktop (1024px+):**
+- Full layout expression
+- Skills: 3 columns
+- Experience: date left / content right
+- Projects: side by side
+- Max-width starts applying (~900px content width)
+- Keyboard shortcuts fully active (no conflict with mobile gestures)
+
+**Wide (1536px+):**
+- Max-width capped at 900-1000px, centered
+- Content doesn't stretch — generous side margins
+- No layout change from desktop, just containment
+
+### Breakpoint Strategy
+
+| Breakpoint | Target | Layout Change |
+|-----------|--------|---------------|
+| Default | Mobile 320px+ | Single column, stacked |
+| `min-width: 768px` | Tablet | 2-column skills, dates inline |
+| `min-width: 1024px` | Desktop | Full multi-column, side-by-side |
+| `min-width: 1536px` | Wide | Max-width cap, centered |
+
+**Implementation:** CSS custom properties for spacing that scale with breakpoints:
+```css
+:root {
+  --space-section: 1.5rem;
+  --space-page: 1rem;
+}
+@media (min-width: 768px) {
+  :root { --space-section: 2rem; --space-page: 2rem; }
+}
+@media (min-width: 1024px) {
+  :root { --space-section: 2.5rem; --space-page: 3rem; }
+}
+```
+
+### Accessibility Strategy
+
+**Target: WCAG AAA compliance** (per PRD NFR7)
+
+**Color Contrast:**
+- Minimum 7:1 ratio for normal text (AAA)
+- Minimum 4.5:1 for large text (AAA)
+- Raw state: black on white — infinite contrast
+- Styled state: all text/background combos must pass AAA checker
+
+**Keyboard Accessibility:**
+- Skip link as first focusable element
+- Tab order follows visual reading order
+- `:focus-visible` outline on all interactive elements (not `:focus` to avoid mouse click outlines)
+- Custom shortcuts (`1-5`, `t`, `l`, `?`) only fire when no input is focused
+- Esc closes keyboard shortcut overlay
+
+**Screen Readers:**
+- Semantic HTML: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`
+- `aria-label` on navigation regions
+- `aria-pressed` on toggle button
+- `aria-current="page"` on active language
+- `lang="fr"` / `lang="en"` on `<html>`
+- Section headings create navigable outline (h1 > h2 > h3)
+
+**Motion:**
+- `prefers-reduced-motion: reduce` → zero animation (radial transition + styled entrance animations)
+- CSS toggle still functions — instant state swap
+
+**Zoom:**
+- Content readable and functional at 200% zoom (NFR11)
+- No horizontal scroll at 200% zoom on mobile
+- Relative units throughout (rem, em, %)
+
+### Testing Strategy
+
+**Responsive Testing:**
+- Chrome DevTools device emulation for breakpoint validation
+- Real device: iPhone (Safari), Android (Chrome)
+- Both portrait and landscape orientations
+- Test at 320px (smallest target), 768px, 1024px, 1536px
+
+**Accessibility Testing:**
+- Lighthouse accessibility audit (target: 100)
+- axe DevTools automated scan
+- VoiceOver (macOS/iOS) manual walkthrough
+- Keyboard-only navigation test: can reach every section and action without mouse
+- Color contrast checker on all text/bg combinations in styled state
+
+**Browser Matrix:**
+- Chrome/Edge (latest 2): full functionality including View Transitions
+- Firefox (latest 2): full functionality, instant swap fallback for View Transitions
+- Safari (latest 2): full functionality, instant swap fallback for View Transitions
+
+### Implementation Guidelines
+
+**CSS:**
+- Mobile-first: base styles for mobile, `min-width` queries for larger
+- `rem` for font sizes, spacing, max-widths
+- `%` or `vw` only where proportional sizing is needed
+- No `px` except borders (1px) and specific fixed dimensions
+- CSS Layers: accessibility-critical styles in `@layer base` (works without styled layer)
+
+**HTML:**
+- Semantic elements over `<div>` — always
+- Heading hierarchy: one `<h1>`, sections use `<h2>`, sub-sections `<h3>`
+- Links have descriptive text (not "click here")
+- Images: N/A for MVP (no images), but any future images need `alt`
+- Language: `<html lang="fr">` or `<html lang="en">`
+
+**JS:**
+- Keyboard shortcuts: `addEventListener('keydown')`, check `e.target` to avoid firing in inputs
+- View Transition: feature-detect with `document.startViewTransition`, fallback to class toggle
+- No JS required for content access — progressive enhancement
