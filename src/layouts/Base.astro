@@ -2,6 +2,11 @@
 // Base Layout - HTML shell for all pages
 // Implements CSS Layer system with lazy loading strategy
 const currentLocale = Astro.currentLocale || 'fr'; // Default to French
+
+// Bilingual skip link text
+const skipLinkText = currentLocale === 'fr'
+  ? 'Aller au contenu principal'
+  : 'Skip to main content';
 ---
 <!DOCTYPE html>
 <html lang={currentLocale}>
@@ -22,7 +27,7 @@ const currentLocale = Astro.currentLocale || 'fr'; // Default to French
   </head>
   <body>
     <!-- Skip link - first focusable element -->
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <a href="#main" class="skip-link">{skipLinkText}</a>
 
     <!-- Page content -->
     <slot />

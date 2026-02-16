@@ -1,0 +1,18 @@
+---
+/**
+ * Reusable section wrapper component (Story 1.4 - Task 1)
+ * Provides consistent structure and heading hierarchy for all content sections
+ */
+
+interface Props {
+  id: string;      // For anchor links (e.g., "skills", "experience")
+  heading: string; // Section title (e.g., "Compétences", "Skills")
+}
+
+const { id, heading } = Astro.props;
+---
+
+<section id={id}>
+  <h2>{heading}</h2>
+  <slot />
+</section>

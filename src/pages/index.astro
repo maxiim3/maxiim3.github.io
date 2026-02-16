@@ -1,14 +1,44 @@
 ---
+/**
+ * French Home Page
+ * Story 1.4 - Integrated content display with all components
+ */
+
 import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import LinksList from '../components/LinksList.astro';
+import SkillsList from '../components/SkillsList.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import ProjectsList from '../components/ProjectsList.astro';
+
+import content from '../content/fr';
 ---
+
 <Base>
   <header>
     <h1>Maxime Tamburrini</h1>
-  </header>
-  <main id="main">
     <p>Développeur Front-End Vue/Nuxt</p>
+  </header>
+
+  <main id="main">
+    <Section id="links" heading="Liens">
+      <LinksList links={content.links} />
+    </Section>
+
+    <Section id="skills" heading="Compétences">
+      <SkillsList skills={content.skills} />
+    </Section>
+
+    <Section id="experience" heading="Expérience">
+      <ExperienceList experience={content.experience} />
+    </Section>
+
+    <Section id="projects" heading="Projets">
+      <ProjectsList projects={content.projects} />
+    </Section>
+
+    <Section id="cv" heading="CV">
+      <p>Téléchargement du CV à venir</p>
+    </Section>
   </main>
-  <footer>
-    <p>&copy; 2026 Maxime Tamburrini</p>
-  </footer>
 </Base>

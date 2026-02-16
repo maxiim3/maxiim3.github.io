@@ -68,7 +68,7 @@ describe('Bilingual Routing - Story 1.1', () => {
       const html = await readFile(frPath, 'utf-8');
       expect(html).toContain('<header>');
       expect(html).toContain('<main');
-      expect(html).toContain('<footer>');
+      // Note: footer removed in Story 1.4 code review (out of scope)
     });
 
     it('should include semantic landmarks in English page', async () => {
@@ -76,7 +76,7 @@ describe('Bilingual Routing - Story 1.1', () => {
       const html = await readFile(enPath, 'utf-8');
       expect(html).toContain('<header>');
       expect(html).toContain('<main');
-      expect(html).toContain('<footer>');
+      // Note: footer removed in Story 1.4 code review (out of scope)
     });
   });
 });

@@ -1,0 +1,43 @@
+---
+/**
+ * Skills List Component (Story 1.4 - Task 2)
+ * Displays skills in three distinct tiers: Expertise, Experience, Curiosity
+ */
+
+import type { Skills } from '../content/types';
+
+interface Props {
+  skills: Skills;
+}
+
+const { skills } = Astro.props;
+
+// Bilingual tier labels
+const currentLocale = Astro.currentLocale || 'fr';
+const tierLabels = currentLocale === 'fr'
+  ? { expertise: 'Expertise', experience: 'Expérience', curiosity: 'Curiosité' }
+  : { expertise: 'Expertise', experience: 'Experience', curiosity: 'Curiosity' };
+---
+
+<div class="skills-container">
+  <div class="skills-tier">
+    <h3>{tierLabels.expertise}</h3>
+    <ul>
+      {skills.expertise.map(skill => <li>{skill}</li>)}
+    </ul>
+  </div>
+
+  <div class="skills-tier">
+    <h3>{tierLabels.experience}</h3>
+    <ul>
+      {skills.experience.map(skill => <li>{skill}</li>)}
+    </ul>
+  </div>
+
+  <div class="skills-tier">
+    <h3>{tierLabels.curiosity}</h3>
+    <ul>
+      {skills.curiosity.map(skill => <li>{skill}</li>)}
+    </ul>
+  </div>
+</div>

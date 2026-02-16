@@ -1,0 +1,26 @@
+---
+/**
+ * Experience List Component (Story 1.4 - Task 3)
+ * Displays professional experience in scannable timeline format
+ */
+
+import type { ExperienceEntry } from '../content/types';
+
+interface Props {
+  experience: ExperienceEntry[];
+}
+
+const { experience } = Astro.props;
+---
+
+<div class="experience-list">
+  {experience.map(entry => (
+    <article class="experience-entry">
+      <h3>{entry.role}</h3>
+      <p class="experience-meta">
+        <strong>{entry.company}</strong> · <time>{entry.period}</time>
+      </p>
+      <p class="experience-description">{entry.description}</p>
+    </article>
+  ))}
+</div>

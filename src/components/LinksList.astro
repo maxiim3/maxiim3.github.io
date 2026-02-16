@@ -1,0 +1,36 @@
+---
+/**
+ * Links List Component (Story 1.4 - Task 5)
+ * Displays professional network links (GitHub, LinkedIn, Email, etc.)
+ */
+
+import type { Link } from '../content/types';
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+
+// Bilingual aria-label
+const currentLocale = Astro.currentLocale || 'fr';
+const ariaLabel = currentLocale === 'fr'
+  ? 'Liens professionnels'
+  : 'Professional links';
+---
+
+<nav class="links-list" aria-label={ariaLabel}>
+  <ul>
+    {links.map(link => (
+      <li>
+        <a
+          href={link.url}
+          target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+          rel={link.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
