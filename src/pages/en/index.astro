@@ -5,6 +5,7 @@
  */
 
 import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
 import Section from '../../components/Section.astro';
 import LinksList from '../../components/LinksList.astro';
 import SkillsList from '../../components/SkillsList.astro';
@@ -15,10 +16,7 @@ import content from '../../content/en';
 ---
 
 <Base>
-  <header>
-    <h1>Maxime Tamburrini</h1>
-    <p>Front-End Developer Vue/Nuxt</p>
-  </header>
+  <Header currentLocale={Astro.currentLocale} />
 
   <main id="main">
     <Section id="links" heading="Links">

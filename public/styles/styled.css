@@ -60,6 +60,41 @@
     margin-bottom: var(--cv-space-md);
   }
 
+  /* Header refinements */
+  html[data-styled] header {
+    padding-bottom: var(--cv-space-lg);
+    margin-bottom: var(--cv-space-xl);
+    border-bottom: 2px solid var(--cv-color-border);
+  }
+
+  html[data-styled] header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--cv-space-xs);
+  }
+
+  html[data-styled] header p {
+    color: var(--cv-color-text-secondary);
+    margin-bottom: var(--cv-space-md);
+    font-size: 1.125rem;
+  }
+
+  html[data-styled] .current-language {
+    color: var(--cv-color-text);
+    font-weight: 600;
+  }
+
+  html[data-styled] .language-switch {
+    color: var(--cv-color-accent);
+    border-color: var(--cv-color-accent);
+    transition: all 0.2s ease;
+  }
+
+  html[data-styled] .language-switch:hover {
+    background-color: var(--cv-color-accent);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
   /* Links */
   html[data-styled] a {
     color: var(--cv-color-accent);
