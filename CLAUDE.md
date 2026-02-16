@@ -4,20 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal CV/Portfolio website built as a Nuxt 3 static site for GitHub Pages deployment. The goal is to showcase front-end expertise in Vue/Nuxt while providing an ATS-optimized resume and interactive portfolio.
+Personal CV/Portfolio website built with Astro for GitHub Pages deployment. The goal is to showcase front-end expertise while providing an ATS-optimized resume and interactive portfolio.
 
-**Current Status:** Planning phase complete. Technical implementation not yet started.
+**Current Status:** Astro project initialized and migrated to root level.
 
 ## Stack
 
-- **Framework:** Nuxt 3 with TypeScript (strict mode)
+- **Framework:** Astro with TypeScript
 - **Deployment:** GitHub Pages (static site generation)
 - **Build Tool:** Bun (not npm/node)
 - **CI/CD:** GitHub Actions for automated builds
 
 ## Development Commands
-
-Once the Nuxt project is initialized, use these commands:
 
 ```bash
 # Install dependencies
@@ -27,16 +25,10 @@ bun install
 bun run dev
 
 # Build for production (static generation)
-bun run generate
+bun run build
 
 # Preview production build locally
 bun run preview
-
-# Type checking
-bun run typecheck
-
-# Linting (if configured)
-bun run lint
 ```
 
 ## Architecture & Key Requirements
@@ -55,20 +47,14 @@ bun run lint
 - **Static:** Must generate as static site for GitHub Pages
 
 ### Positioning
-The site positions the developer as a "Développeur Front-End Vue/Nuxt" specialist (not a generalist). Content and design should reflect deep expertise in the Vue ecosystem.
-
-### Skills Hierarchy
-When displaying technical skills, use this three-tier structure:
-1. **Expertise:** Core Vue/Nuxt competencies
-2. **Expérience:** Secondary but proven skills
-3. **Curiosité:** Technologies being explored
+The site positions the developer as a front-end specialist. Content and design should reflect technical expertise and attention to detail.
 
 ## GitHub Pages Deployment
 
 - Site will be deployed from the `gh-pages` branch or `/docs` folder
-- Static files generated via `nuxt generate`
+- Static files generated via `bun run build` (creates `dist/` directory)
 - GitHub Actions workflow should automate the build and deployment process
-- Ensure `baseURL` and router configuration are compatible with GitHub Pages subdirectory routing if not using a custom domain
+- Ensure `base` configuration in `astro.config.mjs` is set correctly for GitHub Pages if using subdirectory routing
 
 ## Project Goals
 
