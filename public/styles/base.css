@@ -1,0 +1,91 @@
+/* Base CSS Layer - Render-blocking, <1KB
+ * Structural styles for raw state - works standalone
+ * Progressive enhancement baseline
+ */
+
+/* Layer declaration - MUST be first */
+@layer base, styled;
+
+@layer base {
+  /* Minimal CSS Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body, h1, h2, h3, p, ul, ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* System font stack */
+  :root {
+    --cv-font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    font-family: var(--cv-font-body);
+    line-height: 1.6;
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  /* Typography hierarchy */
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul, ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+
+  /* Focus indicators - visible in both states */
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  /* Skip link styles */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    z-index: 100;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+}

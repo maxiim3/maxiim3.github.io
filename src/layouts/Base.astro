@@ -1,0 +1,30 @@
+---
+// Base Layout - HTML shell for all pages
+// Implements CSS Layer system with lazy loading strategy
+const currentLocale = Astro.currentLocale || 'fr'; // Default to French
+---
+<!DOCTYPE html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CV - Maxime Tamburrini - Développeur Front-End</title>
+    <meta name="description" content="CV et portfolio de Maxime Tamburrini, développeur front-end spécialisé Vue/Nuxt" />
+
+    <!-- Font preload - downloads in background -->
+    <link rel="preload" as="font" href="/fonts/inter-var.woff2" type="font/woff2" crossorigin />
+
+    <!-- Base CSS - render-blocking, <1KB -->
+    <link rel="stylesheet" href="/styles/base.css" />
+
+    <!-- Styled CSS - lazy-loaded, non-blocking -->
+    <link rel="stylesheet" href="/styles/styled.css" media="print" onload="this.media='all'" />
+  </head>
+  <body>
+    <!-- Skip link - first focusable element -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Page content -->
+    <slot />
+  </body>
+</html>

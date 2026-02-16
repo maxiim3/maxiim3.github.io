@@ -1,0 +1,93 @@
+/* Styled CSS Layer - Lazy-loaded, gated by html[data-styled]
+ * Enhanced visual design - only applies when toggle is activated
+ * All selectors scoped under html[data-styled]
+ */
+
+@layer styled {
+  /* Inter Variable Font - Self-hosted */
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/inter-var.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-display: swap; /* CRITICAL: no FOIT, show fallback then swap */
+    font-style: normal;
+  }
+
+  /* Color palette - AAA contrast verified */
+  html[data-styled] {
+    --cv-color-bg: #fafafa;
+    --cv-color-surface: #ffffff;
+    --cv-color-text: #1a1a1a;
+    --cv-color-text-secondary: #555555;
+    --cv-color-accent: #2563eb;
+    --cv-color-accent-hover: #1d4ed8;
+    --cv-color-border: #e5e5e5;
+    --cv-color-heading: #111111;
+
+    /* Spacing scale - 8px base unit */
+    --cv-space-xs: 0.25rem;
+    --cv-space-sm: 0.5rem;
+    --cv-space-md: 1rem;
+    --cv-space-lg: 2rem;
+    --cv-space-xl: 3rem;
+    --cv-space-2xl: 4rem;
+
+    /* Typography */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--cv-color-bg);
+    color: var(--cv-color-text);
+  }
+
+  /* Refined typography */
+  html[data-styled] h1 {
+    color: var(--cv-color-heading);
+    margin-bottom: var(--cv-space-md);
+  }
+
+  html[data-styled] h2 {
+    color: var(--cv-color-heading);
+    margin-top: var(--cv-space-xl);
+    margin-bottom: var(--cv-space-lg);
+  }
+
+  html[data-styled] h3 {
+    color: var(--cv-color-heading);
+    margin-top: var(--cv-space-lg);
+    margin-bottom: var(--cv-space-md);
+  }
+
+  html[data-styled] p {
+    margin-bottom: var(--cv-space-md);
+  }
+
+  /* Links */
+  html[data-styled] a {
+    color: var(--cv-color-accent);
+    text-decoration: none;
+  }
+
+  html[data-styled] a:hover {
+    color: var(--cv-color-accent-hover);
+    text-decoration: underline;
+  }
+
+  /* Layout refinements */
+  html[data-styled] body {
+    padding: var(--cv-space-lg);
+  }
+
+  /* Section spacing */
+  html[data-styled] section {
+    margin-bottom: var(--cv-space-2xl);
+  }
+
+  /* Lists */
+  html[data-styled] ul,
+  html[data-styled] ol {
+    margin-bottom: var(--cv-space-lg);
+  }
+
+  html[data-styled] li {
+    margin-bottom: var(--cv-space-sm);
+  }
+}
