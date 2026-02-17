@@ -146,4 +146,13 @@
   ::view-transition-new(root) {
     animation: radial-reveal 250ms ease-out;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-new(root) {
+      animation: none;
+    }
+    .css-toggle {
+      transition: none;
+    }
+  }
 }

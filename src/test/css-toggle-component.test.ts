@@ -1,7 +1,8 @@
 /**
- * Component tests for CssToggle.astro (Stories 2.1 + 2.2)
+ * Component tests for CssToggle.astro (Stories 2.1 + 2.2 + 2.3)
  * Verifies toggle button structure, accessibility attributes, integration,
- * and View Transitions radial animation logic.
+ * View Transitions radial animation logic, reduced motion support,
+ * and keyboard activation.
  */
 
 import { describe, it, expect } from 'bun:test';
@@ -243,10 +244,9 @@ describe('CssToggle — View Transitions (Story 2.2)', () => {
   it('should capture getBoundingClientRect before calling startViewTransition', async () => {
     const content = await readFile(COMPONENT_PATH, 'utf-8');
     expect(content).toContain('getBoundingClientRect()');
-    // getBoundingClientRect must appear before startViewTransition in the click handler
-    const clickHandler = content.slice(content.indexOf("addEventListener('click'"));
-    const rectPos = clickHandler.indexOf('getBoundingClientRect');
-    const vtPos = clickHandler.indexOf('startViewTransition');
+    // getBoundingClientRect must appear before startViewTransition in the toggle logic
+    const rectPos = content.indexOf('getBoundingClientRect');
+    const vtPos = content.indexOf('startViewTransition');
     expect(rectPos).toBeGreaterThan(-1);
     expect(vtPos).toBeGreaterThan(-1);
     expect(rectPos).toBeLessThan(vtPos);
@@ -276,5 +276,91 @@ describe('CssToggle — View Transitions (Story 2.2)', () => {
     const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
     expect(content).toContain('--vt-x: 50%');
     expect(content).toContain('--vt-y: 50%');
+  });
+});
+
+describe('CssToggle — Reduced Motion & Keyboard (Story 2.3)', () => {
+  it('should check prefers-reduced-motion before calling startViewTransition', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain("window.matchMedia('(prefers-reduced-motion: reduce)').matches");
+  });
+
+  it('should skip View Transition when prefers-reduced-motion is set', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    // The condition must include both feature-detect and reduced motion checks
+    expect(content).toMatch(/!document\.startViewTransition\s*\|\|\s*prefersReducedMotion/);
+  });
+
+  it('should call doToggle() directly when reduced motion is preferred', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    // prefersReducedMotion condition must lead to direct doToggle() call
+    expect(content).toContain('prefersReducedMotion');
+    expect(content).toContain('doToggle()');
+  });
+
+  it('should activate on Enter key', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain("event.key !== 'Enter'");
+    expect(content).toContain("addEventListener('keydown'");
+  });
+
+  it('should activate on Space key', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain("event.key !== ' '");
+  });
+
+  it('should prevent default only for keyboard events', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('instanceof KeyboardEvent');
+    expect(content).toContain('event.preventDefault()');
+  });
+
+  it('should have handleToggle function that accepts optional Event parameter', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('function handleToggle');
+    expect(content).toMatch(/handleToggle\(event\?/);
+  });
+
+  it('should call handleToggle from click listener', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain("addEventListener('click', handleToggle)");
+  });
+
+  it('should call handleToggle from keydown listener', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('handleToggle(event)');
+  });
+
+  it('should have @media prefers-reduced-motion rule in base.css', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toContain('@media (prefers-reduced-motion: reduce)');
+  });
+
+  it('should override ::view-transition-new animation to none in reduced motion media query', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toMatch(/@media \(prefers-reduced-motion: reduce\)\s*\{[^}]*::view-transition-new\(root\)\s*\{[^}]*animation:\s*none/);
+  });
+
+  it('should have aria-label="Toggle CSS" for screen reader clarity', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('aria-label="Toggle CSS"');
+  });
+
+  it('should restore focus after View Transition completes', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('.finished.then(');
+    expect(content).toContain('toggleButton?.focus()');
+  });
+
+  it('should disable button hover transition for reduced motion users', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toMatch(/@media \(prefers-reduced-motion: reduce\)\s*\{[^}]*\}[^}]*\.css-toggle\s*\{[^}]*transition:\s*none/);
+  });
+
+  it('should preserve aria-pressed management in doToggle', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    const doToggleFn = content.slice(content.indexOf('function doToggle'), content.indexOf('function handleToggle'));
+    expect(doToggleFn).toContain("setAttribute('aria-pressed'");
+    expect(doToggleFn).toContain('data-styled');
   });
 });

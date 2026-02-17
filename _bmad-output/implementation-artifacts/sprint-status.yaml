@@ -50,10 +50,10 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: CSS Toggle & Visual Transformation
-  epic-2: in-progress
+  epic-2: done
   2-1-css-toggle-button-component-state-management: done
   2-2-view-transitions-integration-radial-animation: done
-  2-3-reduced-motion-support-accessibility: backlog
+  2-3-reduced-motion-support-accessibility: done
   epic-2-retrospective: optional
 
   # Epic 3: Enhanced Navigation & Keyboard Shortcuts

@@ -1,8 +1,10 @@
 ---
 /**
- * CssToggle Component - Story 2.2
+ * CssToggle Component - Story 2.3 (Complete)
  * Toggle button that switches between raw and styled visual states.
  * Starts disabled, enables after styled.css loads.
+ * Supports both click and keyboard (Enter/Space) activation.
+ * Respects prefers-reduced-motion setting.
  * Manages state via data-styled attribute on <html> element.
  * Uses View Transitions API for radial animation (graceful degradation).
  */
@@ -12,6 +14,7 @@ interface Props {}
 <button
   id="css-toggle"
   class="css-toggle"
+  aria-label="Toggle CSS"
   aria-pressed="false"
   disabled
 >
@@ -48,20 +51,44 @@ interface Props {}
     }
   }
 
-  toggleButton?.addEventListener('click', () => {
+  function handleToggle(event?: Event): void {
+    // Prevent default only for keyboard events (avoid double-firing from synthetic click)
+    if (event instanceof KeyboardEvent) {
+      event.preventDefault();
+    }
+
     // Capture button center for radial animation origin
-    const rect = toggleButton.getBoundingClientRect();
+    const rect = toggleButton?.getBoundingClientRect();
+    if (!rect) return;
+
     const x = Math.round(rect.left + rect.width / 2);
     const y = Math.round(rect.top + rect.height / 2);
     htmlElement.style.setProperty('--vt-x', `${x}px`);
     htmlElement.style.setProperty('--vt-y', `${y}px`);
 
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Feature-detect View Transitions API (progressive enhancement)
-    if (!document.startViewTransition) {
+    if (!document.startViewTransition || prefersReducedMotion) {
       doToggle();
       return;
     }
 
-    document.startViewTransition(doToggle);
+    // Restore focus after View Transition completes (accessibility guarantee)
+    document.startViewTransition(doToggle).finished.then(() => {
+      toggleButton?.focus();
+    });
+  }
+
+  // Mouse click handler
+  toggleButton?.addEventListener('click', handleToggle);
+
+  // Keyboard handler for Enter and Space
+  toggleButton?.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+    handleToggle(event);
   });
 </script>
