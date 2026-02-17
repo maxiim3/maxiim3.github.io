@@ -3,7 +3,9 @@
     "allow": [
       "Bash(bun run build:*)",
       "Bash(bunx astro build:*)",
-      "Bash(bun test:*)"
+      "Bash(bun test:*)",
+      "Bash(gh pr list:*)",
+      "Bash(git add:*)"
     ]
   }
 }

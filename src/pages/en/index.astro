@@ -6,17 +6,20 @@
 
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
 import Section from '../../components/Section.astro';
 import LinksList from '../../components/LinksList.astro';
 import SkillsList from '../../components/SkillsList.astro';
 import ExperienceList from '../../components/ExperienceList.astro';
 import ProjectsList from '../../components/ProjectsList.astro';
 
+import KeyboardNav from '../../components/KeyboardNav.astro';
 import content from '../../content/en';
 ---
 
 <Base>
   <Header currentLocale={Astro.currentLocale} />
+  <TableOfContents lang={Astro.currentLocale || 'en'} />
 
   <main id="main">
     <Section id="links" heading="Links">
@@ -39,4 +42,6 @@ import content from '../../content/en';
       <p>CV download coming soon</p>
     </Section>
   </main>
+
+  <KeyboardNav />
 </Base>

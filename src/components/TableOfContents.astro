@@ -1,0 +1,43 @@
+---
+/**
+ * TableOfContents Component - Story 3.1
+ * Static navigation with anchor links to all main content sections.
+ * Bilingual: accepts lang prop for FR/EN label localization.
+ * No JavaScript required — pure semantic HTML.
+ */
+
+interface Props {
+  lang: 'fr' | 'en';
+}
+
+const { lang } = Astro.props;
+
+// Bilingual ToC items — IDs must match Section component id props in page templates
+const tocItems = lang === 'fr'
+  ? [
+      { id: 'links', label: 'Liens' },
+      { id: 'skills', label: 'Compétences' },
+      { id: 'experience', label: 'Expérience' },
+      { id: 'projects', label: 'Projets' },
+      { id: 'cv', label: 'CV' },
+    ]
+  : [
+      { id: 'links', label: 'Links' },
+      { id: 'skills', label: 'Skills' },
+      { id: 'experience', label: 'Experience' },
+      { id: 'projects', label: 'Projects' },
+      { id: 'cv', label: 'CV' },
+    ];
+
+const ariaLabel = lang === 'fr' ? 'Table des matières' : 'Table of contents';
+---
+
+<nav class="toc" aria-label={ariaLabel}>
+  <ol>
+    {tocItems.map(item => (
+      <li>
+        <a href={`#${item.id}`}>{item.label}</a>
+      </li>
+    ))}
+  </ol>
+</nav>

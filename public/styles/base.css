@@ -88,6 +88,36 @@
     flex-wrap: wrap;
   }
 
+  /* Table of Contents Navigation */
+  .toc {
+    margin-bottom: 1.5rem;
+  }
+
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .toc li {
+    margin: 0;
+  }
+
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.25rem 0.75rem;
+    text-decoration: underline;
+  }
+
+  .toc a:hover {
+    text-decoration: none;
+  }
+
   /* CSS Toggle Button - Raw State (only styled element on raw page) */
   .css-toggle {
     /* Visual weight - must stand out */

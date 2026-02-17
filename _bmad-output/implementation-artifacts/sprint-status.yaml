@@ -57,10 +57,10 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Enhanced Navigation & Keyboard Shortcuts
-  epic-3: backlog
-  3-1-table-of-contents-anchor-navigation: backlog
-  3-2-keyboard-shortcuts-system: backlog
-  3-3-keyboard-shortcuts-help-overlay: backlog
+  epic-3: in-progress
+  3-1-table-of-contents-anchor-navigation: done
+  3-2-keyboard-shortcuts-system: done
+  3-3-keyboard-shortcuts-help-overlay: in-progress
   epic-3-retrospective: optional
 
   # Epic 4: Downloads & Professional Contact

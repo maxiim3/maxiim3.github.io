@@ -1,0 +1,83 @@
+---
+/**
+ * KeyboardNav Component - Story 3.2
+ * Keyboard shortcuts for section navigation, CSS toggle, and language switch.
+ * Client-side island — script runs automatically via Astro's bundling.
+ * No UI output — script-only component.
+ */
+interface Props {}
+---
+
+<script>
+  // Section code map — uses event.code (physical key position) for AZERTY compatibility.
+  // AZERTY users need Shift to produce digits 1-5; event.code is layout-independent.
+  const sectionCodeMap: Record<string, string> = {
+    Digit1: 'links',
+    Digit2: 'skills',
+    Digit3: 'experience',
+    Digit4: 'projects',
+    Digit5: 'cv',
+  };
+
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
+    // Guard: ignore if user is typing in an input/textarea/select/contenteditable
+    const target = event.target as HTMLElement;
+    const tagName = target.tagName;
+    if (
+      tagName === 'INPUT' ||
+      tagName === 'TEXTAREA' ||
+      tagName === 'SELECT' ||
+      target.isContentEditable
+    ) {
+      return;
+    }
+
+    // Section navigation: physical digit keys 1-5 (event.code for AZERTY compatibility)
+    // Checked before modifier guard — AZERTY requires Shift to produce digits, so shiftKey
+    // must be allowed here. Ctrl/Meta/Alt still blocked to avoid browser conflicts.
+    if (event.code in sectionCodeMap && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      const sectionId = sectionCodeMap[event.code];
+      const section = document.getElementById(sectionId);
+      if (section) {
+        event.preventDefault();
+        const heading = section.querySelector('h2');
+        if (heading) {
+          // Make heading focusable (non-interactive elements need tabindex)
+          if (!heading.hasAttribute('tabindex')) {
+            heading.setAttribute('tabindex', '-1');
+          }
+          heading.focus();
+          // Browser scrolls focused element into view automatically
+        }
+      }
+      return;
+    }
+
+    // Guard: ignore remaining shortcuts if any modifier key is held
+    if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) {
+      return;
+    }
+
+    const key = event.key;
+
+    // CSS toggle: key t (case-insensitive: works with CapsLock)
+    if (key.toLowerCase() === 't') {
+      event.preventDefault();
+      const toggleButton = document.getElementById('css-toggle') as HTMLButtonElement | null;
+      if (toggleButton && !toggleButton.disabled) {
+        toggleButton.click();
+      }
+      return;
+    }
+
+    // Language switch: key l (case-insensitive: works with CapsLock)
+    if (key.toLowerCase() === 'l') {
+      event.preventDefault();
+      const langLink = document.querySelector('.language-switch') as HTMLAnchorElement | null;
+      if (langLink) {
+        langLink.click();
+      }
+      return;
+    }
+  });
+</script>

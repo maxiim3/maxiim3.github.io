@@ -15,7 +15,7 @@ interface Props {}
   id="css-toggle"
   class="css-toggle"
   aria-label="Toggle CSS"
-  aria-pressed="false"
+  aria-pressed="true"
   disabled
 >
   CSS
@@ -26,6 +26,11 @@ interface Props {}
   const toggleButton = document.getElementById('css-toggle') as HTMLButtonElement | null;
   const htmlElement = document.documentElement;
   const styledLink = document.getElementById('styled-css');
+
+  // Sync aria-pressed to actual DOM state (anti-FOUC script may have removed data-styled)
+  if (toggleButton) {
+    toggleButton.setAttribute('aria-pressed', htmlElement.hasAttribute('data-styled') ? 'true' : 'false');
+  }
 
   // Enable button after styled CSS loads
   // Guard against race condition: module scripts are deferred, so the CSS
@@ -45,9 +50,11 @@ interface Props {}
     if (isStyled) {
       htmlElement.removeAttribute('data-styled');
       toggleButton?.setAttribute('aria-pressed', 'false');
+      localStorage.setItem('css-toggle', 'raw');
     } else {
       htmlElement.setAttribute('data-styled', '');
       toggleButton?.setAttribute('aria-pressed', 'true');
+      localStorage.setItem('css-toggle', 'styled');
     }
   }
 
@@ -56,6 +63,9 @@ interface Props {}
     if (event instanceof KeyboardEvent) {
       event.preventDefault();
     }
+
+    // Remember where focus was before the transition (for keyboard shortcut callers)
+    const previouslyFocused = document.activeElement as HTMLElement | null;
 
     // Capture button center for radial animation origin
     const rect = toggleButton?.getBoundingClientRect();
@@ -76,8 +86,14 @@ interface Props {}
     }
 
     // Restore focus after View Transition completes (accessibility guarantee)
+    // If focus was already on the button (physical click), keep it there.
+    // If triggered from elsewhere (keyboard shortcut), restore original focus.
     document.startViewTransition(doToggle).finished.then(() => {
-      toggleButton?.focus();
+      if (previouslyFocused && previouslyFocused !== toggleButton) {
+        previouslyFocused.focus();
+      } else {
+        toggleButton?.focus();
+      }
     });
   }
 
