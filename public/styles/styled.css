@@ -153,4 +153,46 @@
   html[data-styled] li {
     margin-bottom: var(--cv-space-sm);
   }
+
+  /* Table of Contents — Styled state */
+  html[data-styled] .toc {
+    margin-bottom: var(--cv-space-xl);
+    padding: var(--cv-space-md) 0;
+    border-bottom: 1px solid var(--cv-color-border);
+  }
+
+  html[data-styled] .toc ol {
+    gap: var(--cv-space-md);
+    margin-bottom: 0;
+  }
+
+  html[data-styled] .toc li {
+    margin-bottom: 0;
+  }
+
+  html[data-styled] .toc a {
+    color: var(--cv-color-accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.375rem 0.75rem;
+    border-radius: 2px;
+    transition: color 150ms ease-out;
+  }
+
+  html[data-styled] .toc a:hover {
+    color: var(--cv-color-accent-hover);
+    text-decoration: underline;
+  }
+
+  /* Smooth scroll — styled state only */
+  html[data-styled] {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html[data-styled] {
+      scroll-behavior: auto;
+    }
+  }
 }
