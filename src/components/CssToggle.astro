@@ -1,9 +1,10 @@
 ---
 /**
- * CssToggle Component - Story 2.1
+ * CssToggle Component - Story 2.2
  * Toggle button that switches between raw and styled visual states.
  * Starts disabled, enables after styled.css loads.
  * Manages state via data-styled attribute on <html> element.
+ * Uses View Transitions API for radial animation (graceful degradation).
  */
 interface Props {}
 ---
@@ -36,16 +37,31 @@ interface Props {}
     }
   }
 
-  // Toggle handler
-  toggleButton?.addEventListener('click', () => {
+  function doToggle(): void {
     const isStyled = htmlElement.hasAttribute('data-styled');
-
     if (isStyled) {
       htmlElement.removeAttribute('data-styled');
-      toggleButton.setAttribute('aria-pressed', 'false');
+      toggleButton?.setAttribute('aria-pressed', 'false');
     } else {
       htmlElement.setAttribute('data-styled', '');
-      toggleButton.setAttribute('aria-pressed', 'true');
+      toggleButton?.setAttribute('aria-pressed', 'true');
     }
+  }
+
+  toggleButton?.addEventListener('click', () => {
+    // Capture button center for radial animation origin
+    const rect = toggleButton.getBoundingClientRect();
+    const x = Math.round(rect.left + rect.width / 2);
+    const y = Math.round(rect.top + rect.height / 2);
+    htmlElement.style.setProperty('--vt-x', `${x}px`);
+    htmlElement.style.setProperty('--vt-y', `${y}px`);
+
+    // Feature-detect View Transitions API (progressive enhancement)
+    if (!document.startViewTransition) {
+      doToggle();
+      return;
+    }
+
+    document.startViewTransition(doToggle);
   });
 </script>

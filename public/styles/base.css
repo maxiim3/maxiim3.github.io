@@ -4,7 +4,11 @@
   *, *::before, *::after { box-sizing: border-box; }
   body, h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
 
-  :root { --cv-font-body: system-ui, -apple-system, sans-serif; }
+  :root {
+    --cv-font-body: system-ui, -apple-system, sans-serif;
+    --vt-x: 50%;
+    --vt-y: 50%;
+  }
 
   body {
     font-family: var(--cv-font-body);
@@ -123,5 +127,23 @@
   .css-toggle:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  /* View Transitions — Radial CSS Toggle Animation */
+  @keyframes radial-reveal {
+    from {
+      clip-path: circle(0% at var(--vt-x) var(--vt-y));
+    }
+    to {
+      clip-path: circle(200% at var(--vt-x) var(--vt-y));
+    }
+  }
+
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: radial-reveal 250ms ease-out;
   }
 }

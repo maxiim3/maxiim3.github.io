@@ -1,6 +1,7 @@
 /**
- * Component tests for CssToggle.astro (Story 2.1)
- * Verifies toggle button structure, accessibility attributes, and integration.
+ * Component tests for CssToggle.astro (Stories 2.1 + 2.2)
+ * Verifies toggle button structure, accessibility attributes, integration,
+ * and View Transitions radial animation logic.
  */
 
 import { describe, it, expect } from 'bun:test';
@@ -197,5 +198,83 @@ describe('CssToggle Component - Story 2.1', () => {
       expect(content).toContain('.header-actions');
       expect(content).toContain('display: flex');
     });
+  });
+});
+
+describe('CssToggle — View Transitions (Story 2.2)', () => {
+  it('should call document.startViewTransition when available', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('document.startViewTransition');
+  });
+
+  it('should fall back to direct toggle when startViewTransition unavailable', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    // Feature detect: if (!document.startViewTransition) { doToggle(); return; }
+    expect(content).toMatch(/!document\.startViewTransition/);
+    expect(content).toContain('doToggle()');
+  });
+
+  it('should set --vt-x and --vt-y CSS properties before transition', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain("setProperty('--vt-x'");
+    expect(content).toContain("setProperty('--vt-y'");
+  });
+
+  it('should set --vt-x and --vt-y to px values (not percentages)', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    // Values must use px suffix via template literal
+    expect(content).toContain('`${x}px`');
+    expect(content).toContain('`${y}px`');
+  });
+
+  it('should update aria-pressed inside View Transition callback (doToggle)', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    // doToggle function must contain aria-pressed setAttribute
+    const doToggleFn = content.slice(content.indexOf('function doToggle'), content.indexOf('toggleButton?.addEventListener'));
+    expect(doToggleFn).toContain("setAttribute('aria-pressed'");
+  });
+
+  it('should toggle data-styled inside View Transition callback (doToggle)', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    const doToggleFn = content.slice(content.indexOf('function doToggle'), content.indexOf('toggleButton?.addEventListener'));
+    expect(doToggleFn).toContain('data-styled');
+  });
+
+  it('should capture getBoundingClientRect before calling startViewTransition', async () => {
+    const content = await readFile(COMPONENT_PATH, 'utf-8');
+    expect(content).toContain('getBoundingClientRect()');
+    // getBoundingClientRect must appear before startViewTransition in the click handler
+    const clickHandler = content.slice(content.indexOf("addEventListener('click'"));
+    const rectPos = clickHandler.indexOf('getBoundingClientRect');
+    const vtPos = clickHandler.indexOf('startViewTransition');
+    expect(rectPos).toBeGreaterThan(-1);
+    expect(vtPos).toBeGreaterThan(-1);
+    expect(rectPos).toBeLessThan(vtPos);
+  });
+
+  it('should have @keyframes radial-reveal in base.css', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toContain('@keyframes radial-reveal');
+    expect(content).toContain('clip-path: circle(0%');
+    expect(content).toContain('clip-path: circle(200%');
+  });
+
+  it('should have ::view-transition-old with no animation in base.css', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toContain('::view-transition-old(root)');
+    expect(content).toMatch(/::view-transition-old\(root\)\s*\{[^}]*animation:\s*none/);
+  });
+
+  it('should have ::view-transition-new with radial-reveal animation in base.css', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toContain('::view-transition-new(root)');
+    expect(content).toMatch(/::view-transition-new\(root\)\s*\{[^}]*radial-reveal/);
+    expect(content).toContain('250ms ease-out');
+  });
+
+  it('should have --vt-x and --vt-y defaults in base.css :root', async () => {
+    const content = await readFile(join(process.cwd(), 'public/styles/base.css'), 'utf-8');
+    expect(content).toContain('--vt-x: 50%');
+    expect(content).toContain('--vt-y: 50%');
   });
 });

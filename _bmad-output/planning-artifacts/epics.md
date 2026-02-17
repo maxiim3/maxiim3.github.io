@@ -221,7 +221,7 @@ Visitors can download CV PDFs (FR/EN), access email contact, and reach GitHub/Li
 
 **User Value:** Recruiters get the CV. Clients can reach out. Technical credibility is established through project links.
 
-**FRs covered:** FR23, FR24, FR25, FR26
+**FRs covered:** FR23, FR24, FR25, FR26, NIP-05 (self-hosted Nostr identity)
 
 **NFRs addressed:** NFR12 (touch targets for download buttons)
 
@@ -772,6 +772,58 @@ So that I can review their work or reach out.
 **And** when the page is in styled state
 **Then** links use the accent color `#2563eb` with AAA contrast
 **And** functionality is identical in both states
+
+---
+
+### Story 4.3: NIP-05 Self-Hosted Nostr Identity
+
+As a Nostr user,
+I want to host my NIP-05 identifier (`me@maxiim3.github.io`) on GitHub Pages,
+So that I have a verifiable, self-hosted Nostr identity independent of third-party services.
+
+**Acceptance Criteria:**
+
+**Given** the NIP-05 file needs to be served
+**When** I create `public/.well-known/nostr.json`
+**Then** it contains the following JSON:
+
+```json
+{
+  "names": {
+    "me": "15a1989c2c483f6c6f18f2dda1033897a003669f449fc2fda4fa2fb6c9210900"
+  },
+  "relays": {
+    "15a1989c2c483f6c6f18f2dda1033897a003669f449fc2fda4fa2fb6c9210900": [
+      "wss://relay.damus.io",
+      "wss://relay.primal.net",
+      "wss://nos.lol",
+      "wss://relay.nostr.band"
+    ]
+  }
+}
+```
+
+**And** Astro copies the file to `dist/.well-known/nostr.json` during build
+
+**Given** Nostr clients need CORS access
+**When** a client fetches `https://maxiim3.github.io/.well-known/nostr.json`
+**Then** the response includes `Access-Control-Allow-Origin: *`
+**And** the Content-Type is `application/json` or `text/plain`
+
+**Given** the Nostr profile needs to be updated
+**When** the profile is configured
+**Then** relays are added: `wss://relay.damus.io`, `wss://relay.primal.net`, `wss://nos.lol`, `wss://relay.nostr.band`
+**And** the NIP-05 field is set to `me@maxiim3.github.io`
+**And** a single Lightning address is configured (no duplicates)
+**And** the profile is saved (broadcast `kind 0` on all relays)
+
+**Given** the NIP-05 needs to be verified across clients
+**When** the profile propagates
+**Then** the verified badge displays correctly on Primal, Habla, and Nosta
+
+**Given** the NIP-05 setup needs automated verification
+**When** a test script queries the endpoint
+**Then** it confirms HTTP 200, correct hex key in JSON, and CORS header presence
 
 ---
 
