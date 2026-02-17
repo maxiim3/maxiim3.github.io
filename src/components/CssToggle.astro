@@ -1,0 +1,51 @@
+---
+/**
+ * CssToggle Component - Story 2.1
+ * Toggle button that switches between raw and styled visual states.
+ * Starts disabled, enables after styled.css loads.
+ * Manages state via data-styled attribute on <html> element.
+ */
+interface Props {}
+---
+
+<button
+  id="css-toggle"
+  class="css-toggle"
+  aria-pressed="false"
+  disabled
+>
+  CSS
+</button>
+<noscript><style>.css-toggle { display: none; }</style></noscript>
+
+<script>
+  const toggleButton = document.getElementById('css-toggle') as HTMLButtonElement | null;
+  const htmlElement = document.documentElement;
+  const styledLink = document.getElementById('styled-css');
+
+  // Enable button after styled CSS loads
+  // Guard against race condition: module scripts are deferred, so the CSS
+  // may have already loaded before this runs. Check first, then listen.
+  if (styledLink) {
+    if ((styledLink as HTMLLinkElement).sheet || (styledLink as HTMLLinkElement).media === 'all') {
+      toggleButton?.removeAttribute('disabled');
+    } else {
+      styledLink.addEventListener('load', () => {
+        toggleButton?.removeAttribute('disabled');
+      });
+    }
+  }
+
+  // Toggle handler
+  toggleButton?.addEventListener('click', () => {
+    const isStyled = htmlElement.hasAttribute('data-styled');
+
+    if (isStyled) {
+      htmlElement.removeAttribute('data-styled');
+      toggleButton.setAttribute('aria-pressed', 'false');
+    } else {
+      htmlElement.setAttribute('data-styled', '');
+      toggleButton.setAttribute('aria-pressed', 'true');
+    }
+  });
+</script>

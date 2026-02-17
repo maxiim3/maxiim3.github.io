@@ -116,6 +116,34 @@
     margin-bottom: var(--cv-space-2xl);
   }
 
+  /* Header actions group */
+  html[data-styled] .header-actions {
+    gap: var(--cv-space-md);
+  }
+
+  /* CSS Toggle Button - Styled State (aesthetic inversion) */
+  html[data-styled] .css-toggle {
+    background-color: transparent;
+    color: var(--cv-color-text);
+    border: 1px solid var(--cv-color-text);
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-weight: 400;
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 150ms ease-out, color 150ms ease-out;
+  }
+
+  html[data-styled] .css-toggle:hover:not(:disabled) {
+    background-color: var(--cv-color-text);
+    color: var(--cv-color-bg);
+  }
+
+  html[data-styled] .css-toggle:focus-visible {
+    outline: 2px solid var(--cv-color-text);
+    outline-offset: 2px;
+  }
+
   /* Lists */
   html[data-styled] ul,
   html[data-styled] ol {

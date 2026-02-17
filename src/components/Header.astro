@@ -1,8 +1,10 @@
 ---
 /**
- * Header Component - Story 1.5
- * Site header with language switch navigation
+ * Header Component - Story 1.5 + 2.1
+ * Site header with CSS toggle and language switch navigation
  */
+import CssToggle from './CssToggle.astro';
+
 interface Props {
   currentLocale: string; // 'fr' or 'en' from Astro.currentLocale
 }
@@ -31,12 +33,15 @@ const currentLanguageDisplay = currentLocale === 'fr' ? 'Français' : 'English';
   <h1>Maxime Tamburrini</h1>
   <p>{subtitle}</p>
 
-  <!-- Language switch navigation -->
-  <nav aria-label="Language">
-    <span class="current-language" aria-label="Current language">{currentLanguageDisplay}</span>
-    <span aria-hidden="true"> | </span>
-    <a href={alternateUrl} lang={alternateLocale} class="language-switch">
-      {languageLabel}
-    </a>
-  </nav>
+  <div class="header-actions">
+    <CssToggle />
+    <!-- Language switch navigation -->
+    <nav aria-label="Language">
+      <span class="current-language" aria-label="Current language">{currentLanguageDisplay}</span>
+      <span aria-hidden="true"> | </span>
+      <a href={alternateUrl} lang={alternateLocale} class="language-switch">
+        {languageLabel}
+      </a>
+    </nav>
+  </div>
 </header>

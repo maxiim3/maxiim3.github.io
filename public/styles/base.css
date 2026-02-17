@@ -75,4 +75,53 @@
   .language-switch:hover {
     text-decoration: underline;
   }
+
+  /* Header actions group - toggle + language switch */
+  .header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* CSS Toggle Button - Raw State (only styled element on raw page) */
+  .css-toggle {
+    /* Visual weight - must stand out */
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 2px solid #1a1a1a;
+
+    /* Typography */
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: var(--cv-font-body);
+
+    /* Sizing - 48px minimum touch target */
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.75rem 1.5rem;
+
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Interaction */
+    cursor: pointer;
+    transition: background-color 150ms ease-out;
+  }
+
+  .css-toggle:hover:not(:disabled) {
+    background-color: #333333;
+  }
+
+  .css-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .css-toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

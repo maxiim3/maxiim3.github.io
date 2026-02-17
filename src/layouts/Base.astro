@@ -22,8 +22,8 @@ const skipLinkText = currentLocale === 'fr'
     <!-- Base CSS - render-blocking, <1KB -->
     <link rel="stylesheet" href="/styles/base.css" />
 
-    <!-- Styled CSS - lazy-loaded, non-blocking -->
-    <link rel="stylesheet" href="/styles/styled.css" media="print" onload="this.media='all'" />
+    <!-- Styled CSS - lazy-loaded, non-blocking; id required for CssToggle gating -->
+    <link id="styled-css" rel="stylesheet" href="/styles/styled.css" media="print" onload="this.media='all'" />
   </head>
   <body>
     <!-- Skip link - first focusable element -->
