@@ -65,7 +65,7 @@ development_status:
 
   # Epic 4: Downloads & Professional Contact
   epic-4: in-progress
-  4-1-cv-download-component-pdf-files: ready-for-dev
+  4-1-cv-download-component-pdf-files: done
   4-2-professional-links-contact: backlog
   4-3-nip-05-self-hosted-nostr-identity: backlog
   epic-4-retrospective: optional

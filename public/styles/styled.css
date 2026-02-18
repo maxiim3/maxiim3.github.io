@@ -229,4 +229,28 @@
     color: var(--cv-color-text, #1a1a1a);
     font-family: monospace;
   }
+
+  /* ========================
+     CV Download — styled state
+     ======================== */
+
+  html[data-styled] .cv-download-link {
+    background: var(--cv-color-accent, #2563eb);
+    color: #fff;
+    border-color: var(--cv-color-accent, #2563eb);
+    border-radius: 4px;
+    font-family: var(--cv-font-body, system-ui, sans-serif);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  html[data-styled] .cv-download-link:hover {
+    background: var(--cv-color-accent-hover, #1d4ed8);
+    border-color: var(--cv-color-accent-hover, #1d4ed8);
+    text-decoration: none;
+  }
+
+  html[data-styled] .cv-download-link:focus-visible {
+    outline: 2px solid var(--cv-color-text, #1a1a1a);
+    outline-offset: 2px;
+  }
 }

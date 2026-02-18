@@ -246,4 +246,32 @@
     font-family: monospace;
     font-size: 0.875em;
   }
+
+  /* ========================
+     CV Download — Story 4.1
+     Raw state styles
+     ======================== */
+
+  .cv-download {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .cv-download-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    min-width: 44px;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid currentColor;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .cv-download-link:hover {
+    text-decoration: underline;
+  }
 }

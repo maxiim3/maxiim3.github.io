@@ -1,6 +1,6 @@
 # Story 4.1: CV Download Component with PDF Files
 
-Status: ready-for-dev
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -63,29 +63,29 @@ so that I can review their qualifications offline.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Place PDF files in public/cv/ (AC: #1)
-  - [ ] 1.1 Create `public/cv/` directory
-  - [ ] 1.2 Copy/rename root PDF → `public/cv/cv-fr.pdf`
-  - [ ] 1.3 Copy/rename root PDF → `public/cv/cv-en.pdf`
+- [x] Task 1: Place PDF files in public/cv/ (AC: #1)
+  - [x] 1.1 Create `public/cv/` directory
+  - [x] 1.2 Copy/rename root PDF → `public/cv/cv-fr.pdf`
+  - [x] 1.3 Copy/rename root PDF → `public/cv/cv-en.pdf`
 
-- [ ] Task 2: Create `src/components/CvDownload.astro` (AC: #2, #3)
-  - [ ] 2.1 Create component file (no props needed — both links are always shown)
-  - [ ] 2.2 Add FR download `<a href="/cv/cv-fr.pdf" download>` with label "Download CV (FR)"
-  - [ ] 2.3 Add EN download `<a href="/cv/cv-en.pdf" download>` with label "Download CV (EN)"
-  - [ ] 2.4 No `<style>` in component — CSS goes in `public/styles/base.css` / `public/styles/styled.css`
+- [x] Task 2: Create `src/components/CvDownload.astro` (AC: #2, #3)
+  - [x] 2.1 Create component file (no props needed — both links are always shown)
+  - [x] 2.2 Add FR download `<a href="/cv/cv-fr.pdf" download>` with label "Download CV (FR)"
+  - [x] 2.3 Add EN download `<a href="/cv/cv-en.pdf" download>` with label "Download CV (EN)"
+  - [x] 2.4 No `<style>` in component — CSS goes in `public/styles/base.css` / `public/styles/styled.css`
 
-- [ ] Task 3: Add CSS in `public/styles/base.css` (AC: #4, #5)
-  - [ ] 3.1 Style `.cv-download` container (flex layout, gap)
-  - [ ] 3.2 Style `.cv-download-link` with min-height 48px, padding, border, visible focus indicators
-  - [ ] 3.3 Add styled state overrides in `public/styles/styled.css` scoped under `html[data-styled]`
+- [x] Task 3: Add CSS in `public/styles/base.css` (AC: #4, #5)
+  - [x] 3.1 Style `.cv-download` container (flex layout, gap)
+  - [x] 3.2 Style `.cv-download-link` with min-height 48px, padding, border, visible focus indicators
+  - [x] 3.3 Add styled state overrides in `public/styles/styled.css` scoped under `html[data-styled]`
 
-- [ ] Task 4: Integrate into both pages (AC: #6)
-  - [ ] 4.1 In `src/pages/index.astro`: import `CvDownload` and replace placeholder `<p>` with `<CvDownload />`
-  - [ ] 4.2 In `src/pages/en/index.astro`: import `CvDownload` and replace placeholder `<p>` with `<CvDownload />`
+- [x] Task 4: Integrate into both pages (AC: #6)
+  - [x] 4.1 In `src/pages/index.astro`: import `CvDownload` and replace placeholder `<p>` with `<CvDownload />`
+  - [x] 4.2 In `src/pages/en/index.astro`: import `CvDownload` and replace placeholder `<p>` with `<CvDownload />`
 
-- [ ] Task 5: Build verification (AC: all)
-  - [ ] 5.1 Run `bun run build` → zero TypeScript errors, both pages generated
-  - [ ] 5.2 Verify `dist/cv/cv-fr.pdf` and `dist/cv/cv-en.pdf` present in build output
+- [x] Task 5: Build verification (AC: all)
+  - [x] 5.1 Run `bun run build` → zero TypeScript errors, both pages generated
+  - [x] 5.2 Verify `dist/cv/cv-fr.pdf` and `dist/cv/cv-en.pdf` present in build output
   - [ ] 5.3 Manual test: click FR button → PDF downloads; click EN button → PDF downloads
 
 ## Dev Notes
@@ -487,6 +487,29 @@ claude-sonnet-4-6
 
 ### Debug Log References
 
+None.
+
 ### Completion Notes List
 
+- Copied FR and EN PDFs from project root to `public/cv/` — both verified in `dist/cv/` after build.
+- Created `src/components/CvDownload.astro` as static component with hardcoded dual-language download links and no props.
+- Added `.cv-download` and `.cv-download-link` base styles in `public/styles/base.css` (min-height 48px, visible focus, flex layout).
+- Added styled-state overrides in `public/styles/styled.css` scoped under `html[data-styled]` (accent color, hover, border-radius).
+- Updated `src/pages/index.astro` and `src/pages/en/index.astro` to import and render `<CvDownload />` in the `#cv` section, replacing placeholders.
+- `bun run build` passes with zero errors; both PDFs present in `dist/cv/`.
+- Task 5.3 (manual browser test) left for user to verify.
+
 ### File List
+
+- public/cv/cv-fr.pdf (created)
+- public/cv/cv-en.pdf (created)
+- src/components/CvDownload.astro (created)
+- public/styles/base.css (modified)
+- public/styles/styled.css (modified)
+- src/pages/index.astro (modified)
+- src/pages/en/index.astro (modified)
+
+## Change Log
+
+- 2026-02-18: Implemented Story 4.1 — CV download component created, PDFs placed in public/cv/, CSS added to base/styled layers, integrated into both FR and EN pages. Build verified.
+- 2026-02-18: Code review (claude-opus-4-6) — 8 issues found (1H, 3M, 4L). Fixed 3: added :focus-visible override for styled state (WCAG AA), added professional download filenames, added type="application/pdf". M2 (binary files in git) accepted as trade-off for GitHub Pages compatibility. 4 LOW issues noted but not fixed.
