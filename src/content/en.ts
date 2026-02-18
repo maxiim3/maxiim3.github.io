@@ -9,17 +9,17 @@ const content: Content = {
 
   links: [
     {
-      label: 'GitHub',
+      label: 'GitHub Profile',
       url: 'https://github.com/maxiim3',
       icon: 'github',
     },
     {
-      label: 'LinkedIn',
-      url: 'https://linkedin.com/in/max-graux',
+      label: 'LinkedIn Profile',
+      url: 'https://www.linkedin.com/in/max-graux',
       icon: 'linkedin',
     },
     {
-      label: 'Email',
+      label: 'Contact by email',
       url: 'mailto:max@maxgraux.dev',
       icon: 'email',
     },
