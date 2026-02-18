@@ -1,6 +1,6 @@
 # Story 3.3: Keyboard Shortcuts Help Overlay
 
-Status: ready-for-dev
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -59,48 +59,48 @@ so that I know what shortcuts are available.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Add overlay HTML to `KeyboardNav.astro` (AC: #1, #2, #3)
-  - [ ] 1.0 Update component header comment from `"Story 3.2"` to `"Story 3.3 (extends Story 3.2)"`
-  - [ ] 1.1 Add `<dialog id="shortcuts-help">` element with `aria-modal="true"` and `aria-label="Keyboard shortcuts"` (native `<dialog>` has implicit ARIA `role="dialog"` — do NOT add it explicitly)
-  - [ ] 1.2 Add close button `<button id="shortcuts-help-close">` inside dialog
-  - [ ] 1.3 List all shortcuts: 1–5 (sections), t (CSS toggle), l (language), ? (help), Esc (close)
-  - [ ] 1.4 Click-outside detection: attach click listener on `<dialog>` element — `event.target === dialog` detects backdrop clicks (native `showModal()` top-layer — no extra HTML wrapper needed)
+- [x] Task 1: Add overlay HTML to `KeyboardNav.astro` (AC: #1, #2, #3)
+  - [x] 1.0 Update component header comment from `"Story 3.2"` to `"Story 3.3 (extends Story 3.2)"`
+  - [x] 1.1 Add `<dialog id="shortcuts-help">` element with `aria-modal="true"` and `aria-label="Keyboard shortcuts"` (native `<dialog>` has implicit ARIA `role="dialog"` — do NOT add it explicitly)
+  - [x] 1.2 Add close button `<button id="shortcuts-help-close">` inside dialog
+  - [x] 1.3 List all shortcuts: 1–5 (sections), t (CSS toggle), l (language), ? (help), Esc (close)
+  - [x] 1.4 Click-outside detection: attach click listener on `<dialog>` element — `event.target === dialog` detects backdrop clicks (native `showModal()` top-layer — no extra HTML wrapper needed)
 
-- [ ] Task 2: Implement `?` key handler (AC: #1, #4)
-  - [ ] 2.1 Add `?` handler BEFORE the modifier guard (critical: `?` requires Shift)
-  - [ ] 2.2 On `?` keydown: save currently focused element, open dialog, trap focus
-  - [ ] 2.3 On `?` keydown when dialog already open: close dialog, restore focus
-  - [ ] 2.4 On `Escape` keydown when dialog open: close dialog, restore focus
-  - [ ] 2.5 Click-outside: attach click handler on backdrop/overlay to close
+- [x] Task 2: Implement `?` key handler (AC: #1, #4)
+  - [x] 2.1 Add `?` handler BEFORE the modifier guard (critical: `?` requires Shift)
+  - [x] 2.2 On `?` keydown: save currently focused element, open dialog, trap focus
+  - [x] 2.3 On `?` keydown when dialog already open: close dialog, restore focus
+  - [x] 2.4 On `Escape` keydown when dialog open: close dialog, restore focus
+  - [x] 2.5 Click-outside: attach click handler on backdrop/overlay to close
 
-- [ ] Task 3: Implement focus trap (AC: #2, #4)
-  - [ ] 3.1 On dialog open: find all focusable elements inside dialog
-  - [ ] 3.2 Focus the first focusable element (close button)
-  - [ ] 3.3 On `Tab`: if last focusable → wrap to first; if `Shift+Tab`: if first → wrap to last
-  - [ ] 3.4 On dialog close: restore focus to the element that was focused before opening
+- [x] Task 3: Implement focus trap (AC: #2, #4)
+  - [x] 3.1 On dialog open: find all focusable elements inside dialog
+  - [x] 3.2 Focus the first focusable element (close button)
+  - [x] 3.3 On `Tab`: if last focusable → wrap to first; if `Shift+Tab`: if first → wrap to last
+  - [x] 3.4 On dialog close: restore focus to the element that was focused before opening
 
-- [ ] Task 4: Add minimal overlay CSS to `public/styles/base.css` (AC: #5)
-  - [ ] 4.1 Style `dialog#shortcuts-help` for basic readability (position, background, border, padding)
-  - [ ] 4.2 Use `::backdrop` pseudo-element for the native dialog backdrop (dimmed overlay)
-  - [ ] 4.3 Ensure visible in raw state (works without styled CSS)
-  - [ ] 4.4 Respect `prefers-reduced-motion` (no fade animation if reduce motion)
+- [x] Task 4: Add minimal overlay CSS to `public/styles/base.css` (AC: #5)
+  - [x] 4.1 Style `dialog#shortcuts-help` for basic readability (position, background, border, padding)
+  - [x] 4.2 Use `::backdrop` pseudo-element for the native dialog backdrop (dimmed overlay)
+  - [x] 4.3 Ensure visible in raw state (works without styled CSS)
+  - [x] 4.4 Respect `prefers-reduced-motion` (no fade animation if reduce motion)
 
-- [ ] Task 5: Add styled overlay CSS to `public/styles/styled.css` (AC: #5)
-  - [ ] 5.1 Scope under `html[data-styled]` — enhanced design matching the design system
-  - [ ] 5.2 Apply spacing tokens (`--cv-space-*`) and color palette
-  - [ ] 5.3 Style shortcut key indicators (`<kbd>` tags) to visually distinguish keys
+- [x] Task 5: Add styled overlay CSS to `public/styles/styled.css` (AC: #5)
+  - [x] 5.1 Scope under `html[data-styled]` — enhanced design matching the design system
+  - [x] 5.2 Apply spacing tokens (`--cv-space-*`) and color palette
+  - [x] 5.3 Style shortcut key indicators (`<kbd>` tags) to visually distinguish keys
 
-- [ ] Task 6: Testing and validation (AC: all)
-  - [ ] 6.1 Press `?` → overlay opens, focus moves to close button
-  - [ ] 6.2 Press `?` again → overlay closes, focus restores to previous element
-  - [ ] 6.3 Press `Escape` → overlay closes, focus restores
-  - [ ] 6.4 Click outside dialog → overlay closes
-  - [ ] 6.5 Tab cycles within dialog (close button → focus wraps)
-  - [ ] 6.6 `Shift+Tab` cycles backwards within dialog
-  - [ ] 6.7 Shortcuts 1-5, t, l still work normally after dialog closes
-  - [ ] 6.8 Overlay readable in raw state (no styled CSS)
-  - [ ] 6.9 Overlay styled correctly in styled state
-  - [ ] 6.10 `bun run build` → zero TypeScript errors, both pages generated
+- [x] Task 6: Testing and validation (AC: all)
+  - [x] 6.1 Press `?` → overlay opens, focus moves to close button
+  - [x] 6.2 Press `?` again → overlay closes, focus restores to previous element
+  - [x] 6.3 Press `Escape` → overlay closes, focus restores
+  - [x] 6.4 Click outside dialog → overlay closes
+  - [x] 6.5 Tab cycles within dialog (close button → focus wraps)
+  - [x] 6.6 `Shift+Tab` cycles backwards within dialog
+  - [x] 6.7 Shortcuts 1-5, t, l still work normally after dialog closes
+  - [x] 6.8 Overlay readable in raw state (no styled CSS)
+  - [x] 6.9 Overlay styled correctly in styled state
+  - [x] 6.10 `bun run build` → zero TypeScript errors, both pages generated
 
 ## Dev Notes
 
@@ -646,6 +646,17 @@ claude-sonnet-4-5-20250929
 
 ### Completion Notes List
 
+- 2026-02-18: Implementation complete. All 6 tasks and 21 subtasks implemented and validated.
+  - KeyboardNav.astro replaced with Story 3.3 version: native `<dialog>` + `?` key + focus trap.
+  - AZERTY compatibility preserved: kept `event.code` (Digit1-Digit5) for section navigation from Story 3.2, not reverted to `event.key` as shown in Dev Notes blueprint.
+  - `?` key handler placed before modifier guard (critical: `?` = Shift+/ → shiftKey true).
+  - Focus trap: Tab/Shift+Tab cycle within dialog; focus restores on close.
+  - Click-outside via `event.target === dialog` on the dialog element.
+  - Escape handled in document keydown with `event.preventDefault()` to control focus restoration manually.
+  - base.css: overlay styles added inside `@layer base`; `prefers-reduced-motion` guard merged into existing media query.
+  - styled.css: overlay enhanced styles scoped under `html[data-styled]` inside `@layer styled`.
+  - `bun run build` → zero errors, both `/index.html` and `/en/index.html` generated.
+
 - 2026-02-17: Pre-implementation adversarial code review (story plan review). Fixes applied:
   - (C2) AC #2 + Task 1.1: Replaced explicit `role="dialog"` with `aria-modal="true"` — native `<dialog>` has implicit ARIA role, adding it explicitly is redundant and misleading.
   - (C3) Task 1.4: Replaced backdrop div approach with `event.target === dialog` click detection — the Dev Notes blueprint never used the div; aligned task spec with implementation.
@@ -656,3 +667,22 @@ claude-sonnet-4-5-20250929
   - (L4) Dev Notes CSS: Added `max-height: 80vh; overflow-y: auto` to `dialog#shortcuts-help`.
 
 ### File List
+
+- src/components/KeyboardNav.astro (modified)
+- public/styles/base.css (modified)
+- public/styles/styled.css (modified)
+
+### Change Log
+
+- 2026-02-18: Code review (adversarial) — 3 MEDIUM, 5 LOW issues found and auto-fixed:
+  - (M1) Close button: Added `min-height: 44px; min-width: 44px` + flex centering to meet NFR touch target requirement.
+  - (M2) Styled dialog: Removed `font-family: var(--cv-font-body)` that overrode inherited Inter font with system font.
+  - (M3) Dialog positioning: Removed manual `position: fixed` + `transform` centering; uses native `showModal()` centering.
+  - (L1) Removed dead no-op `close` event listener on dialog.
+  - (L2) Replaced undefined `--cv-color-bg-alt` var with literal `#f0f0f0` for kbd background.
+  - (L3) Replaced undefined `--cv-font-mono` var with literal `monospace` for kbd font.
+  - (L4) Added `dialog#shortcuts-help h2 { margin-top: 0 }` in base layer to fix raw state heading spacing.
+  - (L5) Float-based close button noted but not changed (works, risk of layout regression outweighs benefit).
+  - Build verified: zero errors, both pages generated.
+- 2026-02-18: Story 3.3 implemented — Keyboard Shortcuts Help Overlay. Added native `<dialog>` overlay with focus trap, `?` key toggle, Escape/click-outside dismissal, and CSS styles for both raw and styled states.
+

@@ -195,4 +195,38 @@
       scroll-behavior: auto;
     }
   }
+
+  /* ========================
+     Keyboard Shortcuts Help Overlay — styled state
+     ======================== */
+
+  html[data-styled] dialog#shortcuts-help {
+    background: var(--cv-color-bg, #fafafa);
+    border-color: var(--cv-color-text, #1a1a1a);
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    padding: var(--cv-space-lg, 2rem);
+  }
+
+  html[data-styled] dialog#shortcuts-help h2 {
+    margin-top: 0;
+    color: var(--cv-color-text, #1a1a1a);
+  }
+
+  html[data-styled] #shortcuts-help-close {
+    border-color: var(--cv-color-text, #1a1a1a);
+    color: var(--cv-color-text, #1a1a1a);
+  }
+
+  html[data-styled] #shortcuts-help-close:hover {
+    background: var(--cv-color-text, #1a1a1a);
+    color: var(--cv-color-bg, #fafafa);
+  }
+
+  html[data-styled] kbd {
+    background: #f0f0f0;
+    border-color: var(--cv-color-border, #ccc);
+    color: var(--cv-color-text, #1a1a1a);
+    font-family: monospace;
+  }
 }

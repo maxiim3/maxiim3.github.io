@@ -1,12 +1,34 @@
 ---
 /**
- * KeyboardNav Component - Story 3.2
- * Keyboard shortcuts for section navigation, CSS toggle, and language switch.
+ * KeyboardNav Component - Story 3.3 (extends Story 3.2)
+ * Keyboard shortcuts for section navigation, CSS toggle, language switch, and help overlay.
  * Client-side island — script runs automatically via Astro's bundling.
- * No UI output — script-only component.
  */
 interface Props {}
 ---
+
+<dialog
+  id="shortcuts-help"
+  aria-modal="true"
+  aria-label="Keyboard shortcuts"
+>
+  <div class="shortcuts-help-inner">
+    <button id="shortcuts-help-close" aria-label="Close keyboard shortcuts">×</button>
+    <h2>Keyboard Shortcuts</h2>
+    <dl class="shortcuts-list">
+      <dt><kbd>1</kbd>–<kbd>5</kbd></dt>
+      <dd>Jump to section</dd>
+      <dt><kbd>t</kbd></dt>
+      <dd>Toggle CSS</dd>
+      <dt><kbd>l</kbd></dt>
+      <dd>Switch language</dd>
+      <dt><kbd>?</kbd></dt>
+      <dd>Show / hide this help</dd>
+      <dt><kbd>Esc</kbd></dt>
+      <dd>Close this overlay</dd>
+    </dl>
+  </div>
+</dialog>
 
 <script>
   // Section code map — uses event.code (physical key position) for AZERTY compatibility.
@@ -19,6 +41,82 @@ interface Props {}
     Digit5: 'cv',
   };
 
+  const dialog = document.getElementById('shortcuts-help') as HTMLDialogElement | null;
+  const closeBtn = document.getElementById('shortcuts-help-close');
+  let previouslyFocused: HTMLElement | null = null;
+
+  function openHelp(): void {
+    if (!dialog) return;
+    previouslyFocused = document.activeElement as HTMLElement;
+    dialog.showModal();
+    closeBtn?.focus();
+  }
+
+  function closeHelp(): void {
+    if (!dialog) return;
+    // Capture before dialog.close() — the 'close' event fires synchronously inside close(),
+    // which would null previouslyFocused before we can use it.
+    const restoreFocus = previouslyFocused;
+    previouslyFocused = null;
+    dialog.close();
+    restoreFocus?.focus();
+  }
+
+  function toggleHelpOverlay(): void {
+    if (!dialog) return;
+    if (dialog.open) {
+      closeHelp();
+    } else {
+      openHelp();
+    }
+  }
+
+  // Close button click
+  closeBtn?.addEventListener('click', closeHelp);
+
+  // Click outside dialog (backdrop click)
+  dialog?.addEventListener('click', (event: MouseEvent) => {
+    if (event.target === dialog) {
+      closeHelp();
+    }
+  });
+
+  // Focus trap within dialog
+  dialog?.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (!dialog.open) return;
+
+    if (event.key === 'Escape') {
+      // Let document keydown handler handle Escape (calls closeHelp() + preventDefault)
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    const focusable = Array.from(
+      dialog.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter(el => !el.hasAttribute('disabled'));
+
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey) {
+      if (document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // Main keydown listener
   document.addEventListener('keydown', (event: KeyboardEvent) => {
     // Guard: ignore if user is typing in an input/textarea/select/contenteditable
     const target = event.target as HTMLElement;
@@ -32,6 +130,13 @@ interface Props {}
       return;
     }
 
+    // ? key MUST be before the modifier guard — ? = Shift+/ → shiftKey is true
+    if (event.key === '?') {
+      event.preventDefault();
+      toggleHelpOverlay();
+      return;
+    }
+
     // Section navigation: physical digit keys 1-5 (event.code for AZERTY compatibility)
     // Checked before modifier guard — AZERTY requires Shift to produce digits, so shiftKey
     // must be allowed here. Ctrl/Meta/Alt still blocked to avoid browser conflicts.
@@ -42,12 +147,10 @@ interface Props {}
         event.preventDefault();
         const heading = section.querySelector('h2');
         if (heading) {
-          // Make heading focusable (non-interactive elements need tabindex)
           if (!heading.hasAttribute('tabindex')) {
             heading.setAttribute('tabindex', '-1');
           }
           heading.focus();
-          // Browser scrolls focused element into view automatically
         }
       }
       return;
@@ -59,6 +162,15 @@ interface Props {}
     }
 
     const key = event.key;
+
+    // Escape: close help overlay if open
+    if (key === 'Escape') {
+      if (dialog?.open) {
+        closeHelp();
+        event.preventDefault();
+      }
+      return;
+    }
 
     // CSS toggle: key t (case-insensitive: works with CapsLock)
     if (key.toLowerCase() === 't') {

@@ -184,5 +184,66 @@
     .css-toggle {
       transition: none;
     }
+    dialog#shortcuts-help {
+      transition: none;
+    }
+  }
+
+  /* ========================
+     Keyboard Shortcuts Help Overlay — Story 3.3
+     Visible in raw state (base layer only)
+     ======================== */
+
+  dialog#shortcuts-help {
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: calc(100% - 2rem);
+    padding: 1.5rem;
+    border: 1px solid currentColor;
+    background: #fff;
+  }
+
+  dialog#shortcuts-help::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  dialog#shortcuts-help h2 {
+    margin-top: 0;
+  }
+
+  #shortcuts-help-close {
+    float: right;
+    font-size: 1.5rem;
+    line-height: 1;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shortcuts-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    margin-top: 1rem;
+  }
+
+  .shortcuts-list dt {
+    font-weight: bold;
+  }
+
+  kbd {
+    display: inline-block;
+    padding: 0.1em 0.4em;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    font-family: monospace;
+    font-size: 0.875em;
   }
 }

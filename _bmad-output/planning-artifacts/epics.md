@@ -175,6 +175,12 @@ This document provides the complete epic and story breakdown for github-page, de
 - FR32: Automatic deployment via GitHub Actions
 - FR33: Accessible at GitHub Pages URL
 
+**Epic 6: Case Studies & Professional Narrative**
+- NEW: Case study structured content (Sestini Pizza, Jamais 203)
+- NEW: Personal narrative / "Story" section (bilingual)
+- Extends content system with new data types
+- UX pattern TBD (popup / SPA / dedicated route)
+
 **Note:** FR29 (aria-live for counter) is deferred to Phase 2.
 
 ## Epic List
@@ -236,6 +242,20 @@ The site is live on GitHub Pages and automatically deploys on every commit to ma
 **FRs covered:** FR31, FR32, FR33
 
 **NFRs addressed:** NFR1, NFR2, NFR3, NFR4, NFR13
+
+---
+
+### Epic 6: Case Studies & Professional Narrative
+
+Visitors can explore detailed case studies of real client projects and read the developer's professional story, adding depth beyond the CV data.
+
+**User Value:** Recruiters and clients see proof of end-to-end delivery with measurable results. The personal narrative positions the developer's unconventional background as a competitive advantage.
+
+**FRs covered:** NEW (not in original PRD — extends professional presentation scope)
+
+**NFRs addressed:** NFR3 (page weight with screenshots), NFR7 (accessibility), NFR11 (zoom), NFR16 (content in structured data files), NFR17 (bilingual parity)
+
+**PRE-IMPLEMENTATION GATE:** Requires a cross-functional review round with PM, UX Designer, and Architect before stories are finalized. Key decisions: display pattern (popup / SPA / dedicated route), content data structure, screenshot/media strategy, navigation integration.
 
 ---
 
@@ -915,3 +935,145 @@ So that I can view the developer's portfolio.
 **And** First Contentful Paint is < 1 second (NFR2)
 **And** Total page weight is < 200KB excluding PDFs (NFR3)
 **And** Accessibility score is 100 (AAA compliance)
+
+---
+
+## Epic 6: Case Studies & Professional Narrative
+
+Visitors can explore detailed case studies of real client projects and read the developer's professional story, adding depth beyond the CV data.
+
+> **PRE-IMPLEMENTATION GATE:** This epic requires a cross-functional review round (PM + UX Designer + Architect) before stories are committed. Key open decisions:
+> - **Display pattern:** popup, SPA-style page, or dedicated route (impacts routing, SEO, shareability)
+> - **Content data structure:** extend existing `Content` interface or parallel data files
+> - **Media strategy:** screenshot format, optimization, impact on 200KB page weight budget (NFR3)
+> - **Navigation integration:** ToC entry, keyboard shortcut (`6`?), section anchor
+
+### Story 6.1: Case Study Content Structure & Data Files
+
+As a developer,
+I want a typed content structure for case studies with bilingual data files,
+So that case study content is maintainable and enforces FR/EN parity.
+
+**Scope (high-level — detail at pre-dev):**
+- Define TypeScript interface for case study data (context, role, deliverables, results, stack, link, screenshots)
+- Create FR data files from the base content below
+- Create EN translations
+- Integrate with or extend the existing content system
+
+---
+
+### Story 6.2: Case Study Display Component & Routing
+
+As a visitor,
+I want to view detailed case studies with structured information,
+So that I can evaluate the developer's real-world delivery capability.
+
+**Scope (high-level — detail at pre-dev):**
+- UX pattern decision (popup / SPA / route) — **blocked until cross-functional review**
+- Component(s) for case study rendering (context, deliverables list, results table, stack badges, link)
+- Screenshot/media display with lazy loading
+- Works in both raw and styled CSS states
+- Accessible and keyboard navigable
+
+---
+
+### Story 6.3: Professional Narrative ("Story") Section
+
+As a visitor,
+I want to read the developer's professional story,
+So that I understand the person behind the CV and the unconventional path that shaped their approach.
+
+**Scope (high-level — detail at pre-dev):**
+- Component for narrative display (free-form bilingual text)
+- Integration into page layout (positioning relative to other sections)
+- Works in both raw and styled CSS states
+
+---
+
+### Story 6.4: Navigation & Bilingual Integration
+
+As a visitor,
+I want case studies and the story section integrated into site navigation,
+So that I can discover and access them naturally.
+
+**Scope (high-level — detail at pre-dev):**
+- ToC entries for new sections
+- Keyboard shortcut allocation (if applicable)
+- Language switch continuity (FR ↔ EN for case study pages/sections)
+- SEO metadata for case study content
+
+---
+
+### Base Content (preserved as-is — source material for data files)
+
+#### Case Study 1 — Sestini Pizza
+
+**De zéro à 250k€ de CA : branding complet et présence digitale pour un food truck artisanal**
+
+**Contexte:** Un pizzaïolo lance son activité de pizza au feu de bois en camion à Villeneuve-lès-Maguelone, près de Montpellier. Aucune présence existante : pas de marque, pas de site, pas de visibilité.
+
+**Mon rôle:** Direction complète de l'identité de marque et de la présence digitale. Seul intervenant sur l'ensemble de la chaîne — du logo au référencement.
+
+**Livrables:**
+- Identité visuelle : logo, charte graphique
+- Print : flyers, cartes de visite, programme de fidélité, tampon
+- Covering : design complet du camion (habillage intégral)
+- Site web : site vitrine développé en Next.js + TailwindCSS, déployé sur Vercel. Carte interactive, intégration des avis Google, optimisation mobile.
+- SEO & Google Business : référencement local, fiche Google optimisée
+
+**Résultats:**
+
+| Indicateur | Valeur |
+|---|---|
+| CA en 3 ans | 0 → 250 000 € |
+| Avis Google | 100 avis, note moyenne 4.8/5 |
+| Fidélisation | Base client récurrente, bouche-à-oreille fort |
+| Suite | Le client passe en restaurant en dur (Trattoria di Sestini) et me sollicite à nouveau pour le rebranding complet |
+
+**Stack technique:** Next.js · TailwindCSS · Vercel · Cloudinary · Google Business
+
+**Lien:** [sestini-pizza.fr](https://www.sestini-pizza.fr)
+
+#### Case Study 2 — Jamais 203 Productions
+
+**Site vitrine bilingue pour une agence de production audiovisuelle travaillant avec des marques internationales**
+
+**Contexte:** Jamais 203 Productions est une agence de production musicale et audiovisuelle fondée par Jérôme Kuhn, Nathan Stornetta et Samuel Briand. Leurs clients incluent Balenciaga, Canal+, Disneyland Paris, Coca-Cola, Warner Music France, Citroën, Le Puy du Fou, la Fédération Française de Football, et le Crédit Agricole. L'agence avait besoin d'un site reflétant le niveau d'excellence de ses références.
+
+**Mon rôle:** Conception, design et développement complet du site — de la direction artistique au déploiement.
+
+**Livrables:**
+- Site bilingue (FR/EN) développé en Next.js, déployé sur Vercel
+- Back-office admin permettant au client de gérer ses projets, artistes et contenus de manière autonome
+- Direction artistique : design sombre et cinématique, cohérent avec l'univers de la production audiovisuelle haut de gamme
+- Galerie de références clients avec assets visuels optimisés
+
+**Impact:** Le client a ensuite internalisé la gestion de son site en migrant sur Webflow pour plus d'autonomie au quotidien, en conservant la direction artistique et la structure posées initialement. Il a depuis ouvert ses propres studios de production.
+
+**Stack technique:** Next.js · TailwindCSS · Vercel · Admin custom
+
+**Lien (version originale):** [prod203 — Vercel](https://prod203-next-app-maxiim3s-projects.vercel.app/en)
+
+*[Screenshots à ajouter]*
+
+#### Story — Personal Narrative
+
+**FR — Un parcours atypique, une approche complète**
+
+Avant le code, j'ai passé 15 ans dans la musique — batteur et ingénieur du son. J'ai travaillé en restauration, vécu dans plusieurs pays, appris quatre langues. Chaque étape m'a appris à comprendre des systèmes complexes, à collaborer avec des profils différents, et à livrer un résultat concret sous contrainte.
+
+En devenant développeur, j'ai gardé cette approche : comprendre le contexte avant de coder, penser produit avant de penser feature. Je ne suis pas un exécutant technique. Je suis quelqu'un qui comprend un business, identifie ce dont il a besoin, et le construit — de l'identité visuelle à l'architecture frontend.
+
+J'ai accompagné un restaurateur de zéro à 250 000 € de chiffre d'affaires en concevant l'intégralité de sa marque et de sa présence digitale. J'ai conçu le site d'une agence de production musicale dont les clients incluent Balenciaga, Disneyland Paris et Warner Music. En parallèle, je conçois des applications autour de la gouvernance collective et de la permaculture.
+
+Ce que j'apporte : une vision transversale, une exécution rigoureuse, et la capacité de faire le lien entre technique, design et stratégie.
+
+**EN — An unconventional path, a complete approach**
+
+Before code, I spent 15 years in music — as a drummer and sound engineer. I worked in hospitality, lived across multiple countries, and learned four languages. Each chapter taught me how to navigate complex systems, collaborate with diverse profiles, and deliver tangible results under real constraints.
+
+When I transitioned into development, I carried that mindset forward: understand the context before writing code, think product before feature. I'm not a pure executor. I'm someone who understands a business, identifies what it needs, and builds it — from visual identity to frontend architecture.
+
+I helped a restaurateur go from zero to €250,000 in revenue by designing his entire brand and digital presence. I built the website for a music production agency whose clients include Balenciaga, Disneyland Paris, and Warner Music. On the side, I'm building applications around collective governance and permaculture.
+
+What I bring: cross-disciplinary vision, rigorous execution, and the ability to bridge the gap between technology, design, and strategy.
