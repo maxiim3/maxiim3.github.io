@@ -1,0 +1,13 @@
+{
+  "names": {
+    "me": "15a1989c2c483f6c6f18f2dda1033897a003669f449fc2fda4fa2fb6c9210900"
+  },
+  "relays": {
+    "15a1989c2c483f6c6f18f2dda1033897a003669f449fc2fda4fa2fb6c9210900": [
+      "wss://relay.damus.io",
+      "wss://relay.primal.net",
+      "wss://nos.lol",
+      "wss://relay.nostr.band"
+    ]
+  }
+}
