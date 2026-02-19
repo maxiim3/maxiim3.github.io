@@ -9,7 +9,8 @@
       "WebSearch",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:nostr.how)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(python3:*)"
     ]
   },
   "disabledMcpjsonServers": [

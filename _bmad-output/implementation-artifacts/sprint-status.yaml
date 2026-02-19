@@ -71,8 +71,8 @@ development_status:
   epic-4-retrospective: optional
 
   # Epic 5: Automated Deployment Pipeline
-  epic-5: backlog
-  5-1-github-actions-deployment-workflow: backlog
+  epic-5: in-progress
+  5-1-github-actions-deployment-workflow: in-progress
   5-2-production-build-configuration-verification: backlog
   epic-5-retrospective: optional
 
