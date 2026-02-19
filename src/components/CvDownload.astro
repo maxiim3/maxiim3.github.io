@@ -5,13 +5,25 @@
  * Both links always visible regardless of current page locale.
  * Static component — no client:load.
  */
+interface Props {
+  locale?: string;
+}
+
+const { locale = 'fr' } = Astro.props;
+
+const labels = {
+  fr: { fr: 'Télécharger le CV (FR)', en: 'Télécharger le CV (EN)' },
+  en: { fr: 'Download CV (FR)', en: 'Download CV (EN)' },
+} as const;
+
+const t = labels[locale as keyof typeof labels] || labels.fr;
 ---
 
 <div class="cv-download">
   <a href="/cv/cv-fr.pdf" download="CV_Maxime_Tamburrini_FR.pdf" type="application/pdf" class="cv-download-link">
-    Download CV (FR)
+    {t.fr}
   </a>
   <a href="/cv/cv-en.pdf" download="CV_Maxime_Tamburrini_EN.pdf" type="application/pdf" class="cv-download-link">
-    Download CV (EN)
+    {t.en}
   </a>
 </div>

@@ -1,7 +1,22 @@
 ---
 // Base Layout - HTML shell for all pages
 // Implements CSS Layer system with lazy loading strategy
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
 const currentLocale = Astro.currentLocale || 'fr'; // Default to French
+
+// Bilingual fallback meta
+const pageTitle = title || (currentLocale === 'fr'
+  ? 'CV - Maxime Tamburrini - Développeur Front-End'
+  : 'CV - Maxime Tamburrini - Front-End Developer');
+const pageDescription = description || (currentLocale === 'fr'
+  ? 'CV et portfolio de Maxime Tamburrini, développeur front-end spécialisé Vue/Nuxt'
+  : 'CV and portfolio of Maxime Tamburrini, front-end developer specialized in Vue/Nuxt');
 
 // Bilingual skip link text
 const skipLinkText = currentLocale === 'fr'
@@ -13,11 +28,11 @@ const skipLinkText = currentLocale === 'fr'
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CV - Maxime Tamburrini - Développeur Front-End</title>
-    <meta name="description" content="CV et portfolio de Maxime Tamburrini, développeur front-end spécialisé Vue/Nuxt" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
 
-    <!-- Anti-FOUC: apply user preference before first paint -->
-    <script>if (localStorage.getItem('css-toggle') === 'raw') { document.documentElement.removeAttribute('data-styled'); }</script>
+    <!-- Anti-FOUC: apply user preference before first paint (is:inline = blocking, prevents FOUC) -->
+    <script is:inline>if (localStorage.getItem('css-toggle') === 'raw') { document.documentElement.removeAttribute('data-styled'); }</script>
 
     <!-- Font preload - downloads in background -->
     <link rel="preload" as="font" href="/fonts/inter-var.woff2" type="font/woff2" crossorigin />

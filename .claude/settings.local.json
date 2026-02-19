@@ -10,7 +10,8 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:nostr.how)",
       "Bash(chmod:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(timeout 8 bun run:*)"
     ]
   },
   "disabledMcpjsonServers": [

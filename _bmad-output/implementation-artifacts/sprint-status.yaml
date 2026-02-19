@@ -64,7 +64,7 @@ development_status:
   epic-3-retrospective: optional
 
   # Epic 4: Downloads & Professional Contact
-  epic-4: in-progress
+  epic-4: done
   4-1-cv-download-component-pdf-files: done
   4-2-professional-links-contact: done
   4-3-nip-05-self-hosted-nostr-identity: done
@@ -73,7 +73,7 @@ development_status:
   # Epic 5: Automated Deployment Pipeline
   epic-5: in-progress
   5-1-github-actions-deployment-workflow: in-progress
-  5-2-production-build-configuration-verification: backlog
+  5-2-production-build-configuration-verification: in-progress
   epic-5-retrospective: optional
 
   # Epic 6: Case Studies & Professional Narrative

@@ -4,28 +4,57 @@
  * Keyboard shortcuts for section navigation, CSS toggle, language switch, and help overlay.
  * Client-side island — script runs automatically via Astro's bundling.
  */
-interface Props {}
+interface Props {
+  locale?: string;
+}
+
+const { locale = 'fr' } = Astro.props;
+
+const labels = {
+  fr: {
+    ariaLabel: 'Raccourcis clavier',
+    closeLabel: 'Fermer les raccourcis clavier',
+    heading: 'Raccourcis clavier',
+    jumpToSection: 'Aller à la section',
+    toggleCss: 'Basculer le CSS',
+    switchLanguage: 'Changer de langue',
+    showHideHelp: 'Afficher / masquer cette aide',
+    closeOverlay: 'Fermer cette fenêtre',
+  },
+  en: {
+    ariaLabel: 'Keyboard shortcuts',
+    closeLabel: 'Close keyboard shortcuts',
+    heading: 'Keyboard Shortcuts',
+    jumpToSection: 'Jump to section',
+    toggleCss: 'Toggle CSS',
+    switchLanguage: 'Switch language',
+    showHideHelp: 'Show / hide this help',
+    closeOverlay: 'Close this overlay',
+  },
+} as const;
+
+const t = labels[locale as keyof typeof labels] || labels.fr;
 ---
 
 <dialog
   id="shortcuts-help"
   aria-modal="true"
-  aria-label="Keyboard shortcuts"
+  aria-label={t.ariaLabel}
 >
   <div class="shortcuts-help-inner">
-    <button id="shortcuts-help-close" aria-label="Close keyboard shortcuts">×</button>
-    <h2>Keyboard Shortcuts</h2>
+    <button id="shortcuts-help-close" aria-label={t.closeLabel}>×</button>
+    <h2>{t.heading}</h2>
     <dl class="shortcuts-list">
       <dt><kbd>1</kbd>–<kbd>5</kbd></dt>
-      <dd>Jump to section</dd>
+      <dd>{t.jumpToSection}</dd>
       <dt><kbd>t</kbd></dt>
-      <dd>Toggle CSS</dd>
+      <dd>{t.toggleCss}</dd>
       <dt><kbd>l</kbd></dt>
-      <dd>Switch language</dd>
+      <dd>{t.switchLanguage}</dd>
       <dt><kbd>?</kbd></dt>
-      <dd>Show / hide this help</dd>
+      <dd>{t.showHideHelp}</dd>
       <dt><kbd>Esc</kbd></dt>
-      <dd>Close this overlay</dd>
+      <dd>{t.closeOverlay}</dd>
     </dl>
   </div>
 </dialog>

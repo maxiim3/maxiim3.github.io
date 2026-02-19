@@ -18,7 +18,7 @@ import CvDownload from '../components/CvDownload.astro';
 import content from '../content/fr';
 ---
 
-<Base>
+<Base title={content.meta.title} description={content.meta.description}>
   <Header currentLocale={Astro.currentLocale} />
   <TableOfContents lang={Astro.currentLocale || 'fr'} />
 
@@ -40,9 +40,9 @@ import content from '../content/fr';
     </Section>
 
     <Section id="cv" heading="CV">
-      <CvDownload />
+      <CvDownload locale={Astro.currentLocale} />
     </Section>
   </main>
 
-  <KeyboardNav />
+  <KeyboardNav locale={Astro.currentLocale} />
 </Base>
