@@ -78,7 +78,7 @@ development_status:
 
   # Epic 6: Case Studies & Professional Narrative
   # ⚠ PRE-IMPLEMENTATION GATE: Requires PM + UX + Architect review before stories are finalized
-  epic-6: backlog
+  epic-6: in-progress
   6-1-case-study-content-structure-data-files: backlog
   6-2-case-study-display-component-routing: backlog
   6-3-professional-narrative-story-section: backlog
