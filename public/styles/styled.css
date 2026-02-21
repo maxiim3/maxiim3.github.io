@@ -258,4 +258,102 @@
     outline: 2px solid var(--cv-color-text);
     outline-offset: 2px;
   }
+
+  /* ========================
+     Case Studies — Story 6.2
+     Styled state
+     ======================== */
+
+  html[data-styled] .case-study-list {
+    gap: var(--cv-space-xl);
+  }
+
+  html[data-styled] .case-study-card {
+    background: var(--cv-color-surface);
+    border: 1px solid var(--cv-color-border);
+    border-radius: 4px;
+    padding: var(--cv-space-lg);
+  }
+
+  html[data-styled] .case-study-card h3 {
+    margin-top: 0;
+    color: var(--cv-color-heading);
+  }
+
+  html[data-styled] .case-study-context {
+    color: var(--cv-color-text-secondary);
+  }
+
+  html[data-styled] .stack-badge {
+    background: #f0f4ff;
+    color: var(--cv-color-accent);
+    border-color: #c7d8ff;
+    border-radius: 2px;
+    font-size: 0.8em;
+  }
+
+  html[data-styled] .case-study-link {
+    color: var(--cv-color-accent);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  html[data-styled] .case-study-link:hover {
+    color: var(--cv-color-accent-hover);
+    text-decoration: underline;
+  }
+
+  /* Detail page */
+  html[data-styled] .case-study-breadcrumb a {
+    color: var(--cv-color-accent);
+    text-decoration: none;
+  }
+
+  html[data-styled] .case-study-breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  html[data-styled] .case-study-section {
+    margin-bottom: var(--cv-space-xl);
+  }
+
+  html[data-styled] .results-table {
+    border: 1px solid var(--cv-color-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  html[data-styled] .results-table th,
+  html[data-styled] .results-table td {
+    border-bottom-color: var(--cv-color-border);
+    padding: var(--cv-space-sm) var(--cv-space-md);
+  }
+
+  html[data-styled] .results-table tr:last-child th,
+  html[data-styled] .results-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  html[data-styled] .results-table th {
+    background: #f5f7fa;
+    color: var(--cv-color-text-secondary);
+    font-size: 0.9em;
+  }
+
+  html[data-styled] .case-study-impact {
+    color: var(--cv-color-text-secondary);
+    border-left: 3px solid var(--cv-color-border);
+    padding-left: var(--cv-space-md);
+  }
+
+  html[data-styled] .case-study-external-link a {
+    color: var(--cv-color-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  html[data-styled] .case-study-external-link a:hover {
+    color: var(--cv-color-accent-hover);
+    text-decoration: underline;
+  }
 }

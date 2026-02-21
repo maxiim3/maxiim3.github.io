@@ -12,7 +12,8 @@
       "Bash(chmod:*)",
       "Bash(python3:*)",
       "Bash(timeout 8 bun run:*)",
-      "Bash(git diff-tree:*)"
+      "Bash(git diff-tree:*)",
+      "Bash(git stash pop:*)"
     ]
   },
   "disabledMcpjsonServers": [

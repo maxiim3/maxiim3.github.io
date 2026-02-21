@@ -295,4 +295,103 @@
     min-height: 44px;
     padding: 0.25rem 0;
   }
+
+  /* ========================
+     Case Studies — Story 6.2
+     Raw state styles
+     ======================== */
+
+  .case-study-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .case-study-card {
+    border-top: 1px solid #ddd;
+    padding-top: 1.5rem;
+  }
+
+  .case-study-context {
+    margin-bottom: 0.75rem;
+  }
+
+  .case-study-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  .stack-badge {
+    border: 1px solid currentColor;
+    padding: 0.1em 0.5em;
+    font-size: 0.85em;
+    font-family: monospace;
+  }
+
+  .case-study-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.25rem 0;
+    text-decoration: underline;
+  }
+
+  /* Case study detail page */
+  .case-study-breadcrumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .case-study-breadcrumb a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+  }
+
+  .case-study-detail {
+    margin-top: 1rem;
+  }
+
+  .case-study-section {
+    margin-bottom: 2rem;
+  }
+
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+  }
+
+  .results-table th,
+  .results-table td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  .results-table th {
+    font-weight: 600;
+    width: 40%;
+  }
+
+  .case-study-impact {
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .case-study-external-link {
+    margin-top: 2rem;
+  }
+
+  .case-study-external-link a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+  }
 }

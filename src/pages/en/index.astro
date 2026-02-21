@@ -15,6 +15,7 @@ import ProjectsList from '../../components/ProjectsList.astro';
 
 import KeyboardNav from '../../components/KeyboardNav.astro';
 import CvDownload from '../../components/CvDownload.astro';
+import CaseStudyList from '../../components/CaseStudyList.astro';
 import content from '../../content/en';
 ---
 
@@ -41,6 +42,10 @@ import content from '../../content/en';
 
     <Section id="cv" heading="CV">
       <CvDownload locale={Astro.currentLocale} />
+    </Section>
+
+    <Section id="case-studies" heading="Case Studies">
+      <CaseStudyList caseStudies={content.caseStudies} locale={Astro.currentLocale || 'en'} />
     </Section>
   </main>
 

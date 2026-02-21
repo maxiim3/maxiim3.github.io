@@ -45,7 +45,7 @@ const t = labels[locale as keyof typeof labels] || labels.fr;
     <button id="shortcuts-help-close" aria-label={t.closeLabel}>×</button>
     <h2>{t.heading}</h2>
     <dl class="shortcuts-list">
-      <dt><kbd>1</kbd>–<kbd>5</kbd></dt>
+      <dt><kbd>1</kbd>–<kbd>6</kbd></dt>
       <dd>{t.jumpToSection}</dd>
       <dt><kbd>t</kbd></dt>
       <dd>{t.toggleCss}</dd>
@@ -61,13 +61,14 @@ const t = labels[locale as keyof typeof labels] || labels.fr;
 
 <script>
   // Section code map — uses event.code (physical key position) for AZERTY compatibility.
-  // AZERTY users need Shift to produce digits 1-5; event.code is layout-independent.
+  // AZERTY users need Shift to produce digits 1-6; event.code is layout-independent.
   const sectionCodeMap: Record<string, string> = {
     Digit1: 'links',
     Digit2: 'skills',
     Digit3: 'experience',
     Digit4: 'projects',
     Digit5: 'cv',
+    Digit6: 'case-studies',
   };
 
   const dialog = document.getElementById('shortcuts-help') as HTMLDialogElement | null;
@@ -166,7 +167,7 @@ const t = labels[locale as keyof typeof labels] || labels.fr;
       return;
     }
 
-    // Section navigation: physical digit keys 1-5 (event.code for AZERTY compatibility)
+    // Section navigation: physical digit keys 1-6 (event.code for AZERTY compatibility)
     // Checked before modifier guard — AZERTY requires Shift to produce digits, so shiftKey
     // must be allowed here. Ctrl/Meta/Alt still blocked to avoid browser conflicts.
     if (event.code in sectionCodeMap && !event.ctrlKey && !event.metaKey && !event.altKey) {

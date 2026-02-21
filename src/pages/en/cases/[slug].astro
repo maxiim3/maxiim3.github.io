@@ -1,0 +1,74 @@
+---
+/**
+ * EN Case Study Detail Page — Story 6.2
+ * Dynamic route: /en/cases/[slug]
+ * Generates one page per case study from EN content.
+ */
+
+import Base from '../../../layouts/Base.astro';
+import content from '../../../content/en';
+
+export function getStaticPaths() {
+  return content.caseStudies.map(cs => ({ params: { slug: cs.slug } }));
+}
+
+const { slug } = Astro.params;
+const caseStudy = content.caseStudies.find(cs => cs.slug === slug)!;
+---
+
+<Base title={caseStudy.title} description={caseStudy.context}>
+  <main id="main">
+    <nav class="case-study-breadcrumb" aria-label="Breadcrumb">
+      <a href="/en/">← Back</a>
+    </nav>
+
+    <article class="case-study-detail">
+      <h1>{caseStudy.title}</h1>
+
+      <section class="case-study-section">
+        <h2>Context</h2>
+        <p>{caseStudy.context}</p>
+      </section>
+
+      <section class="case-study-section">
+        <h2>My role</h2>
+        <p>{caseStudy.role}</p>
+      </section>
+
+      <section class="case-study-section">
+        <h2>Deliverables</h2>
+        <ul>
+          {caseStudy.deliverables.map(d => <li>{d}</li>)}
+        </ul>
+      </section>
+
+      <section class="case-study-section">
+        <h2>Results</h2>
+        <table class="results-table">
+          <tbody>
+            {caseStudy.results.map(r => (
+              <tr>
+                <th scope="row">{r.metric}</th>
+                <td>{r.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {caseStudy.impact && <p class="case-study-impact">{caseStudy.impact}</p>}
+      </section>
+
+      <section class="case-study-section">
+        <h2>Stack</h2>
+        <ul class="case-study-stack" aria-label="Technologies used">
+          {caseStudy.stack.map(tech => <li class="stack-badge">{tech}</li>)}
+        </ul>
+      </section>
+
+      <p class="case-study-external-link">
+        <a href={caseStudy.link.url} target="_blank" rel="noopener noreferrer">
+          {caseStudy.link.label}
+        </a>
+      </p>
+    </article>
+  </main>
+</Base>

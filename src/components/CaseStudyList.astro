@@ -1,0 +1,22 @@
+---
+/**
+ * CaseStudyList Component — Story 6.2
+ * Renders a list of CaseStudyCard components.
+ */
+
+import type { CaseStudy } from '../content/types';
+import CaseStudyCard from './CaseStudyCard.astro';
+
+interface Props {
+  caseStudies: CaseStudy[];
+  locale: string;
+}
+
+const { caseStudies, locale } = Astro.props;
+---
+
+<div class="case-study-list">
+  {caseStudies.map(cs => (
+    <CaseStudyCard caseStudy={cs} locale={locale} />
+  ))}
+</div>

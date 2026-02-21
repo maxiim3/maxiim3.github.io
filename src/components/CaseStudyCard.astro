@@ -1,0 +1,33 @@
+---
+/**
+ * CaseStudyCard Component — Story 6.2
+ * Renders a single case study as a card with title, context, stack badges, and detail link.
+ * Heading hierarchy: h3 (card title within a h2 section on main page).
+ */
+
+import type { CaseStudy } from '../content/types';
+
+interface Props {
+  caseStudy: CaseStudy;
+  locale: string;
+}
+
+const { caseStudy, locale } = Astro.props;
+
+const detailHref = locale === 'en'
+  ? `/en/cases/${caseStudy.slug}`
+  : `/cases/${caseStudy.slug}`;
+
+const linkLabel = locale === 'en' ? 'View project' : 'Voir le projet';
+---
+
+<article class="case-study-card">
+  <h3>{caseStudy.title}</h3>
+  <p class="case-study-context">{caseStudy.context}</p>
+  <ul class="case-study-stack" aria-label={locale === 'en' ? 'Tech stack' : 'Stack technique'}>
+    {caseStudy.stack.map(tech => (
+      <li class="stack-badge">{tech}</li>
+    ))}
+  </ul>
+  <a href={detailHref} class="case-study-link">{linkLabel}</a>
+</article>
