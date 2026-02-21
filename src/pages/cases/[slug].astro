@@ -16,10 +16,11 @@ const { slug } = Astro.params;
 const caseStudy = content.caseStudies.find(cs => cs.slug === slug)!;
 ---
 
-<Base title={caseStudy.title} description={caseStudy.context}>
+<Base title={caseStudy.title} description={caseStudy.context} alternates={[{ hreflang: 'en', href: `https://maxiim3.github.io/en/cases/${slug}` }, { hreflang: 'fr', href: `https://maxiim3.github.io/cases/${slug}` }]}>
   <main id="main">
     <nav class="case-study-breadcrumb" aria-label="Fil d'Ariane">
       <a href="/">← Retour</a>
+      <a href={`/en/cases/${slug}`} lang="en" class="language-switch">EN</a>
     </nav>
 
     <article class="case-study-detail">
