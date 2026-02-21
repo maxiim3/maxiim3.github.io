@@ -3,6 +3,24 @@
  * Type-safe content structure for bilingual (FR/EN) content
  */
 
+export interface CaseStudyResult {
+  metric: string;
+  value: string;
+}
+
+export interface CaseStudy {
+  slug: string;
+  title: string;
+  context: string;
+  role: string;
+  deliverables: string[];
+  results: CaseStudyResult[];
+  impact?: string;
+  stack: string[];
+  link: { label: string; url: string };
+  screenshots: string[];
+}
+
 export interface Content {
   meta: Meta;
   links: Link[];
@@ -10,6 +28,7 @@ export interface Content {
   experience: ExperienceEntry[];
   projects: Project[];
   cv: CV;
+  caseStudies: CaseStudy[];
 }
 
 export interface Meta {

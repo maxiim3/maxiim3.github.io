@@ -77,10 +77,54 @@ describe('Content Structure Parity', () => {
   });
 
   test('All required top-level fields should exist', () => {
-    const requiredFields = ['meta', 'links', 'skills', 'experience', 'projects', 'cv'];
+    const requiredFields = ['meta', 'links', 'skills', 'experience', 'projects', 'cv', 'caseStudies'];
     requiredFields.forEach((field) => {
       expect(frContent).toHaveProperty(field);
       expect(enContent).toHaveProperty(field);
+    });
+  });
+
+  test('Both content files should have same number of case studies', () => {
+    expect(frContent.caseStudies.length).toBe(enContent.caseStudies.length);
+  });
+
+  test('Case study slugs should be identical across locales', () => {
+    frContent.caseStudies.forEach((frCase, index) => {
+      const enCase = enContent.caseStudies[index];
+      expect(enCase).toBeDefined();
+      expect(frCase.slug).toBe(enCase.slug);
+    });
+  });
+
+  test('Case study stack arrays should be identical across locales', () => {
+    frContent.caseStudies.forEach((frCase, index) => {
+      const enCase = enContent.caseStudies[index];
+      expect(enCase).toBeDefined();
+      expect(frCase.stack).toEqual(enCase.stack);
+    });
+  });
+
+  test('Case study link URLs should be identical across locales', () => {
+    frContent.caseStudies.forEach((frCase, index) => {
+      const enCase = enContent.caseStudies[index];
+      expect(enCase).toBeDefined();
+      expect(frCase.link.url).toBe(enCase.link.url);
+    });
+  });
+
+  test('Case study results count should match across locales', () => {
+    frContent.caseStudies.forEach((frCase, index) => {
+      const enCase = enContent.caseStudies[index];
+      expect(enCase).toBeDefined();
+      expect(frCase.results.length).toBe(enCase.results.length);
+    });
+  });
+
+  test('Case study deliverables count should match across locales', () => {
+    frContent.caseStudies.forEach((frCase, index) => {
+      const enCase = enContent.caseStudies[index];
+      expect(enCase).toBeDefined();
+      expect(frCase.deliverables.length).toBe(enCase.deliverables.length);
     });
   });
 });

@@ -102,6 +102,59 @@ const content: Content = {
     label: 'Download my CV',
     href: '/cv/cv-en.pdf',
   },
+
+  caseStudies: [
+    {
+      slug: 'sestini-pizza',
+      title: 'From zero to €250k revenue: full branding & digital presence for an artisan food truck',
+      context:
+        'A pizzaiolo launching a wood-fired pizza truck in Villeneuve-lès-Maguelone with zero existing presence.',
+      role: 'End-to-end ownership of brand identity and digital presence. Sole contributor.',
+      deliverables: [
+        'Logo and brand guidelines',
+        'Print materials (flyers, business cards, loyalty card, stamp)',
+        'Truck wrap design',
+        'Website built with Next.js + TailwindCSS + Vercel',
+        'SEO + Google Business setup',
+      ],
+      results: [
+        { metric: 'Revenue', value: '€0 → €250,000 over 3 years' },
+        { metric: 'Google reviews', value: '100 reviews · 4.8/5 rating' },
+        { metric: 'Customer base', value: 'Established loyal repeat clientele' },
+        { metric: 'Expansion', value: 'Opened a brick-and-mortar restaurant' },
+      ],
+      stack: ['Next.js', 'TailwindCSS', 'Vercel', 'Cloudinary', 'Google Business'],
+      link: { label: 'View website', url: 'https://www.sestini-pizza.fr' },
+      screenshots: [],
+    },
+    {
+      slug: 'jamais-203-productions',
+      title:
+        'Bilingual showcase website for an audiovisual production agency working with international brands',
+      context:
+        'A music and audiovisual production agency with credits including Balenciaga, Canal+, Disneyland Paris, Coca-Cola, Warner Music France, Citroën, Puy du Fou, FFF, and Crédit Agricole.',
+      role: 'Full ownership from artistic direction to deployment — design, development, and delivery.',
+      deliverables: [
+        'Bilingual FR/EN website with Next.js + Vercel',
+        'Custom admin back-office',
+        'Dark, cinematic art direction',
+        'Client references gallery',
+      ],
+      // TODO(M1): These results were inferred by the dev agent — verify and replace with real metrics
+      results: [
+        { metric: 'Delivery', value: 'Complete bilingual site shipped' },
+        { metric: 'Featured clients', value: '9 major international brands' },
+      ],
+      impact:
+        'The client later brought management in-house by migrating to Webflow, preserving the art direction and structure. They have since opened their own studios.',
+      stack: ['Next.js', 'TailwindCSS', 'Vercel', 'Admin custom'],
+      link: {
+        label: 'View project',
+        url: 'https://prod203-next-app-maxiim3s-projects.vercel.app/en',
+      },
+      screenshots: [],
+    },
+  ],
 };
 
 export default content;
