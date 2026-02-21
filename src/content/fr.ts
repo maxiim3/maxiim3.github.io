@@ -103,6 +103,16 @@ const content: Content = {
     href: '/cv/cv-fr.pdf',
   },
 
+  narrative: {
+    title: 'Mon Parcours',
+    paragraphs: [
+      "Avant le code, j'ai passé 15 ans dans la musique — batteur et ingénieur du son. J'ai travaillé en restauration, vécu dans plusieurs pays, appris quatre langues. Chaque étape m'a appris à comprendre des systèmes complexes, à collaborer avec des profils différents, et à livrer un résultat concret sous contrainte.",
+      "En devenant développeur, j'ai gardé cette approche : comprendre le contexte avant de coder, penser produit avant de penser feature. Je ne suis pas un exécutant technique. Je suis quelqu'un qui comprend un business, identifie ce dont il a besoin, et le construit — de l'identité visuelle à l'architecture frontend.",
+      "J'ai accompagné un restaurateur de zéro à 250 000 € de chiffre d'affaires en concevant l'intégralité de sa marque et de sa présence digitale. J'ai conçu le site d'une agence de production musicale dont les clients incluent Balenciaga, Disneyland Paris et Warner Music. En parallèle, je conçois des applications autour de la gouvernance collective et de la permaculture.",
+      "Ce que j'apporte : une vision transversale, une exécution rigoureuse, et la capacité de faire le lien entre technique, design et stratégie.",
+    ],
+  },
+
   caseStudies: [
     {
       slug: 'sestini-pizza',

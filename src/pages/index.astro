@@ -16,6 +16,7 @@ import ProjectsList from '../components/ProjectsList.astro';
 import KeyboardNav from '../components/KeyboardNav.astro';
 import CvDownload from '../components/CvDownload.astro';
 import CaseStudyList from '../components/CaseStudyList.astro';
+import ProfessionalNarrative from '../components/ProfessionalNarrative.astro';
 import content from '../content/fr';
 ---
 
@@ -46,6 +47,10 @@ import content from '../content/fr';
 
     <Section id="case-studies" heading="Réalisations">
       <CaseStudyList caseStudies={content.caseStudies} locale={Astro.currentLocale || 'fr'} />
+    </Section>
+
+    <Section id="story" heading={content.narrative.title}>
+      <ProfessionalNarrative narrative={content.narrative} />
     </Section>
   </main>
 

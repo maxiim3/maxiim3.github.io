@@ -21,6 +21,11 @@ export interface CaseStudy {
   screenshots: string[];
 }
 
+export interface Narrative {
+  title: string;
+  paragraphs: string[];
+}
+
 export interface Content {
   meta: Meta;
   links: Link[];
@@ -29,6 +34,7 @@ export interface Content {
   projects: Project[];
   cv: CV;
   caseStudies: CaseStudy[];
+  narrative: Narrative;
 }
 
 export interface Meta {

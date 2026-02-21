@@ -1,0 +1,15 @@
+---
+import type { Narrative } from '../content/types';
+
+interface Props {
+  narrative: Narrative;
+}
+
+const { narrative } = Astro.props;
+---
+
+<div class="narrative">
+  {narrative.paragraphs.map((paragraph) => (
+    <p>{paragraph}</p>
+  ))}
+</div>

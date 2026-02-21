@@ -356,4 +356,19 @@
     color: var(--cv-color-accent-hover);
     text-decoration: underline;
   }
+
+  /* Narrative / Story section - styled state */
+  html[data-styled] .narrative {
+    border-left: 3px solid var(--cv-color-accent);
+    padding-left: var(--cv-space-lg);
+  }
+
+  html[data-styled] .narrative p {
+    color: var(--cv-color-text);
+  }
+
+  html[data-styled] .narrative p:last-child {
+    font-weight: 500;
+    color: var(--cv-color-heading);
+  }
 }

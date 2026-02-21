@@ -77,7 +77,7 @@ describe('Content Structure Parity', () => {
   });
 
   test('All required top-level fields should exist', () => {
-    const requiredFields = ['meta', 'links', 'skills', 'experience', 'projects', 'cv', 'caseStudies'];
+    const requiredFields = ['meta', 'links', 'skills', 'experience', 'projects', 'cv', 'caseStudies', 'narrative'];
     requiredFields.forEach((field) => {
       expect(frContent).toHaveProperty(field);
       expect(enContent).toHaveProperty(field);
@@ -126,5 +126,23 @@ describe('Content Structure Parity', () => {
       expect(enCase).toBeDefined();
       expect(frCase.deliverables.length).toBe(enCase.deliverables.length);
     });
+  });
+
+  test('Both content files should have a narrative section', () => {
+    expect(frContent.narrative).toBeDefined();
+    expect(enContent.narrative).toBeDefined();
+  });
+
+  test('Narrative title should be a non-empty string in both locales', () => {
+    expect(typeof frContent.narrative.title).toBe('string');
+    expect(frContent.narrative.title.length).toBeGreaterThan(0);
+    expect(typeof enContent.narrative.title).toBe('string');
+    expect(enContent.narrative.title.length).toBeGreaterThan(0);
+  });
+
+  test('Narrative paragraphs count should match across locales', () => {
+    expect(frContent.narrative.paragraphs.length).toBe(enContent.narrative.paragraphs.length);
+    frContent.narrative.paragraphs.forEach((p, i) => expect(p.length, `FR paragraph ${i} is empty`).toBeGreaterThan(0));
+    enContent.narrative.paragraphs.forEach((p, i) => expect(p.length, `EN paragraph ${i} is empty`).toBeGreaterThan(0));
   });
 });

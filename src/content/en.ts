@@ -103,6 +103,16 @@ const content: Content = {
     href: '/cv/cv-en.pdf',
   },
 
+  narrative: {
+    title: 'My Story',
+    paragraphs: [
+      "Before code, I spent 15 years in music — as a drummer and sound engineer. I worked in hospitality, lived across multiple countries, and learned four languages. Each chapter taught me how to navigate complex systems, collaborate with diverse profiles, and deliver tangible results under real constraints.",
+      "When I transitioned into development, I carried that mindset forward: understand the context before writing code, think product before feature. I'm not a pure executor. I'm someone who understands a business, identifies what it needs, and builds it — from visual identity to frontend architecture.",
+      "I helped a restaurateur go from zero to €250,000 in revenue by designing his entire brand and digital presence. I built the website for a music production agency whose clients include Balenciaga, Disneyland Paris, and Warner Music. On the side, I'm building applications around collective governance and permaculture.",
+      "What I bring: cross-disciplinary vision, rigorous execution, and the ability to bridge the gap between technology, design, and strategy.",
+    ],
+  },
+
   caseStudies: [
     {
       slug: 'sestini-pizza',

@@ -394,4 +394,9 @@
     min-height: 44px;
     text-decoration: underline;
   }
+
+  /* Narrative / Story section - raw state */
+  .narrative p {
+    margin-bottom: 1rem;
+  }
 }
