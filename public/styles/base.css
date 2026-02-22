@@ -1,8 +1,21 @@
 @layer base, styled;
 
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; }
-  body, h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  body,
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
 
   :root {
     --vt-x: 50%;
@@ -13,7 +26,10 @@
     padding: 1rem;
   }
 
-  :focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
 
   .skip-link {
     position: absolute;
@@ -24,7 +40,9 @@
     text-decoration: none;
     z-index: 100;
   }
-  .skip-link:focus { top: 0; }
+  .skip-link:focus {
+    top: 0;
+  }
 
   /* Language switch — accessibility touch target only */
   .language-switch {
@@ -34,9 +52,16 @@
   }
 
   /* ToC links — touch target */
+  .toc ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
   .toc a {
     display: inline-block;
-    min-height: 44px;
   }
 
   /* CSS Toggle Button - Raw State (only styled element on raw page) */
@@ -49,7 +74,10 @@
     /* Typography */
     font-size: 0.875rem;
     font-weight: 600;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
 
     /* Sizing - 48px minimum touch target */
     min-height: 48px;
