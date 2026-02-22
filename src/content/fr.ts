@@ -55,46 +55,45 @@ const content: Content = {
 
   experience: [
     {
-      role: 'Développeur Front-End',
-      company: 'Tech Innovators',
-      period: 'Jan 2024 - Présent',
-      description: 'Développement d\'applications web modernes avec Vue 3 et Nuxt. Mise en place d\'architectures scalables et performantes.',
+      role: 'Développeur Front-End Vue.js / Nuxt',
+      company: 'Airddm (CDI)',
+      period: 'Fév 2024 - Présent',
+      description: 'Grands comptes (Heineken, Michelin, Bosch). Design système avec Storybook, testing e2e, architecture front-end. Application B2B2C from scratch, migration Django → Vue.js, state management Pinia, dataviz Chart.js.',
     },
     {
-      role: 'Développeur Full-Stack',
-      company: 'Digital Solutions',
-      period: 'Mar 2022 - Déc 2023',
-      description: 'Création d\'interfaces utilisateur réactives et accessibles. Migration de projets legacy vers Vue 3.',
+      role: 'Développeur Front-End Freelance',
+      company: 'Indépendant',
+      period: '2022 - Présent',
+      description: 'Clients directs, gestion complète de A à Z : recueil du besoin, design, maquettes, développement et déploiement. React, Next.js, Vue, Svelte.',
     },
     {
-      role: 'Développeur Web',
-      company: 'Creative Agency',
-      period: 'Jun 2020 - Fév 2022',
-      description: 'Développement de sites web et applications avec focus sur l\'expérience utilisateur et la performance.',
+      role: 'Formation & Parcours',
+      company: 'OpenClassrooms + Hackathon',
+      period: '2021 - 2023',
+      description: '10 projets React présentés devant jury. Hackathon Montpellier 2023 (app livrée en 24h). Avant : 10 ans de parcours pluridisciplinaire — musique, ingénierie son, restauration, 4 pays.',
     },
   ],
 
-  // Note: Sample project data for demonstration. Update with real projects before deployment.
   projects: [
     {
-      name: 'Portfolio Vue 3',
-      url: 'https://github.com/maxiim3/portfolio-vue3',
-      description: 'Site portfolio moderne avec Vue 3, animations CSS et mode sombre.',
+      name: 'Calcul TJM',
+      url: 'https://calcul-tjm.fr',
+      description: 'Simulateur de revenus freelance : comparaison micro-entreprise, SASU et EURL en temps réel.',
     },
     {
-      name: 'Dashboard Analytics',
-      url: 'https://github.com/maxiim3/analytics-dashboard',
-      description: 'Tableau de bord interactif avec Nuxt 3 et visualisations de données.',
+      name: 'Polishable',
+      url: 'https://polishable.app',
+      description: 'Extension navigateur pour le shipping d\'apps web : screenshots, icônes et analyse PWA.',
     },
     {
-      name: 'Component Library',
-      url: 'https://github.com/maxiim3/vue-components',
-      description: 'Bibliothèque de composants Vue 3 réutilisables avec TypeScript.',
+      name: 'Sestini Pizza',
+      url: 'https://www.sestini-pizza.fr',
+      description: 'Site vitrine Next.js — case study complète : branding, SEO, Google Business.',
     },
     {
-      name: 'E-commerce Platform',
-      url: 'https://github.com/maxiim3/shop-nuxt',
-      description: 'Plateforme e-commerce complète avec Nuxt 3, Stripe et gestion d\'état Pinia.',
+      name: 'Jamais 203',
+      url: 'https://prod203-next-app-maxiim3s-projects.vercel.app/en',
+      description: 'Site agence de production audiovisuelle — direction artistique sombre et cinématique, bilingue FR/EN.',
     },
   ],
 
@@ -150,13 +149,10 @@ const content: Content = {
         'Direction artistique sombre et cinématique',
         'Galerie de références clients',
       ],
-      // TODO(M1): These results were inferred by the dev agent — verify and replace with real metrics
       results: [
-        { metric: 'Livraison', value: 'Site bilingue complet déployé' },
-        { metric: 'Clients référencés', value: '9 grandes marques internationales' },
+        { metric: 'Clients', value: 'Balenciaga, Canal+, Disneyland Paris, Coca-Cola, Warner Music, Citroën...' },
+        { metric: 'Impact', value: 'Client autonome — migration Webflow, ouverture de studios de production' },
       ],
-      impact:
-        "Le client a ensuite internalisé la gestion en migrant vers Webflow, conservant la direction artistique et la structure. Il a depuis ouvert ses propres studios.",
       stack: ['Next.js', 'TailwindCSS', 'Vercel', 'Admin custom'],
       link: {
         label: 'Voir le projet',

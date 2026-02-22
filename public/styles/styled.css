@@ -8,9 +8,24 @@
   @font-face {
     font-family: 'Inter';
     src: url('/fonts/inter-var.woff2') format('woff2-variations');
-    font-weight: 100 900;
+    font-weight: 400 700;
     font-display: swap; /* CRITICAL: no FOIT, show fallback then swap */
     font-style: normal;
+  }
+
+  /* ========================
+     Entrance animation
+     ======================== */
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Color palette - AAA contrast verified */
@@ -36,22 +51,31 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--cv-color-bg);
     color: var(--cv-color-text);
+
+    /* Smooth scroll */
+    scroll-behavior: smooth;
   }
 
-  /* Refined typography */
+  /* ========================
+     Typography enhancement
+     ======================== */
+
   html[data-styled] h1 {
     color: var(--cv-color-heading);
+    letter-spacing: -0.02em;
     margin-bottom: var(--cv-space-md);
   }
 
   html[data-styled] h2 {
     color: var(--cv-color-heading);
+    letter-spacing: -0.02em;
     margin-top: var(--cv-space-xl);
     margin-bottom: var(--cv-space-lg);
   }
 
   html[data-styled] h3 {
     color: var(--cv-color-heading);
+    letter-spacing: -0.01em;
     margin-top: var(--cv-space-lg);
     margin-bottom: var(--cv-space-md);
   }
@@ -60,11 +84,16 @@
     margin-bottom: var(--cv-space-md);
   }
 
-  /* Header refinements */
+  /* ========================
+     Header refinement
+     ======================== */
+
   html[data-styled] header {
-    padding-bottom: var(--cv-space-lg);
+    padding: var(--cv-space-lg) 0 var(--cv-space-xl);
     margin-bottom: var(--cv-space-xl);
     border-bottom: 2px solid var(--cv-color-border);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    animation: fadeInUp 0.4s ease-out both;
   }
 
   html[data-styled] header h1 {
@@ -76,6 +105,7 @@
     color: var(--cv-color-text-secondary);
     margin-bottom: var(--cv-space-md);
     font-size: 1.125rem;
+    letter-spacing: 0.01em;
   }
 
   html[data-styled] .current-language {
@@ -86,6 +116,7 @@
   html[data-styled] .language-switch {
     color: var(--cv-color-accent);
     border-color: var(--cv-color-accent);
+    border-radius: 4px;
     transition: all 0.2s ease;
   }
 
@@ -95,10 +126,14 @@
     text-decoration: none;
   }
 
-  /* Links */
+  /* ========================
+     Links — underline reveal
+     ======================== */
+
   html[data-styled] a {
     color: var(--cv-color-accent);
     text-decoration: none;
+    transition: color 150ms ease;
   }
 
   html[data-styled] a:hover {
@@ -106,14 +141,44 @@
     text-decoration: underline;
   }
 
-  /* Layout refinements */
+  /* ========================
+     Layout
+     ======================== */
+
   html[data-styled] body {
+    max-width: 65ch;
+    margin: 0 auto;
     padding: var(--cv-space-lg);
+    line-height: 1.6;
   }
 
-  /* Section spacing */
-  html[data-styled] section {
-    margin-bottom: var(--cv-space-2xl);
+  /* ========================
+     Section cards — the biggest visual change
+     ======================== */
+
+  html[data-styled] main > section {
+    background: var(--cv-color-surface);
+    border: 1px solid var(--cv-color-border);
+    border-radius: 8px;
+    padding: var(--cv-space-lg);
+    margin-bottom: var(--cv-space-xl);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.4s ease-out both;
+  }
+
+  /* Staggered reveal — each section enters with a slight delay */
+  html[data-styled] main > section:nth-child(1) { animation-delay: 0.05s; }
+  html[data-styled] main > section:nth-child(2) { animation-delay: 0.1s; }
+  html[data-styled] main > section:nth-child(3) { animation-delay: 0.15s; }
+  html[data-styled] main > section:nth-child(4) { animation-delay: 0.2s; }
+  html[data-styled] main > section:nth-child(5) { animation-delay: 0.25s; }
+  html[data-styled] main > section:nth-child(6) { animation-delay: 0.3s; }
+  html[data-styled] main > section:nth-child(7) { animation-delay: 0.35s; }
+  html[data-styled] main > section:nth-child(8) { animation-delay: 0.4s; }
+
+  /* Reset h2 top margin inside cards (section already has padding) */
+  html[data-styled] main > section > h2:first-child {
+    margin-top: 0;
   }
 
   /* Header actions group */
@@ -121,7 +186,10 @@
     gap: var(--cv-space-md);
   }
 
-  /* CSS Toggle Button - Styled State (aesthetic inversion) */
+  /* ========================
+     CSS Toggle Button - Styled State (aesthetic inversion)
+     ======================== */
+
   html[data-styled] .css-toggle {
     background-color: transparent;
     color: var(--cv-color-text);
@@ -131,6 +199,7 @@
     min-height: 48px;
     min-width: 48px;
     padding: 0.75rem 1.5rem;
+    border-radius: 4px;
     transition: background-color 150ms ease-out, color 150ms ease-out;
   }
 
@@ -144,7 +213,10 @@
     outline-offset: 2px;
   }
 
-  /* Lists */
+  /* ========================
+     Lists
+     ======================== */
+
   html[data-styled] ul,
   html[data-styled] ol {
     margin-bottom: var(--cv-space-lg);
@@ -154,15 +226,21 @@
     margin-bottom: var(--cv-space-sm);
   }
 
-  /* Table of Contents — Styled state */
+  /* ========================
+     Table of Contents — enhanced
+     ======================== */
+
   html[data-styled] .toc {
+    background: var(--cv-color-surface);
+    border: 1px solid var(--cv-color-border);
+    border-radius: 8px;
+    padding: var(--cv-space-md) var(--cv-space-lg);
     margin-bottom: var(--cv-space-xl);
-    padding: var(--cv-space-md) 0;
-    border-bottom: 1px solid var(--cv-color-border);
+    animation: fadeInUp 0.4s ease-out 0.02s both;
   }
 
   html[data-styled] .toc ol {
-    gap: var(--cv-space-md);
+    gap: var(--cv-space-sm);
     margin-bottom: 0;
   }
 
@@ -176,23 +254,37 @@
     font-weight: 500;
     text-decoration: none;
     padding: 0.375rem 0.75rem;
-    border-radius: 2px;
-    transition: color 150ms ease-out;
+    border-radius: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 150ms ease-out, border-color 150ms ease-out, background-color 150ms ease-out;
   }
 
   html[data-styled] .toc a:hover {
     color: var(--cv-color-accent-hover);
-    text-decoration: underline;
+    border-bottom-color: var(--cv-color-accent);
+    background-color: rgba(37, 99, 235, 0.04);
+    text-decoration: none;
   }
 
-  /* Smooth scroll — styled state only */
-  html[data-styled] {
-    scroll-behavior: smooth;
-  }
+  /* ========================
+     Reduced motion
+     ======================== */
 
   @media (prefers-reduced-motion: reduce) {
     html[data-styled] {
       scroll-behavior: auto;
+    }
+
+    html[data-styled] header,
+    html[data-styled] main > section,
+    html[data-styled] .toc {
+      animation: none;
+    }
+
+    html[data-styled] .case-study-card,
+    html[data-styled] .cv-download-link,
+    html[data-styled] a {
+      transition: none;
     }
   }
 
@@ -203,8 +295,8 @@
   html[data-styled] dialog#shortcuts-help {
     background: var(--cv-color-bg, #fafafa);
     border-color: var(--cv-color-text, #1a1a1a);
-    border-radius: 4px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
     padding: var(--cv-space-lg, 2rem);
   }
 
@@ -216,6 +308,8 @@
   html[data-styled] #shortcuts-help-close {
     border-color: var(--cv-color-text, #1a1a1a);
     color: var(--cv-color-text, #1a1a1a);
+    border-radius: 4px;
+    transition: background 150ms ease, color 150ms ease;
   }
 
   html[data-styled] #shortcuts-help-close:hover {
@@ -228,6 +322,7 @@
     border-color: var(--cv-color-border, #ccc);
     color: var(--cv-color-text, #1a1a1a);
     font-family: monospace;
+    border-radius: 3px;
   }
 
   /* ========================
@@ -238,15 +333,16 @@
     background: var(--cv-color-accent, #2563eb);
     color: #fff;
     border-color: var(--cv-color-accent, #2563eb);
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: var(--cv-font-body, system-ui, sans-serif);
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
   }
 
   html[data-styled] .cv-download-link:hover {
     background: var(--cv-color-accent-hover, #1d4ed8);
     border-color: var(--cv-color-accent-hover, #1d4ed8);
     text-decoration: none;
+    transform: scale(1.02);
   }
 
   html[data-styled] .cv-download-link:focus-visible {
@@ -260,8 +356,7 @@
   }
 
   /* ========================
-     Case Studies — Story 6.2
-     Styled state
+     Case Studies — styled state
      ======================== */
 
   html[data-styled] .case-study-list {
@@ -271,8 +366,15 @@
   html[data-styled] .case-study-card {
     background: var(--cv-color-surface);
     border: 1px solid var(--cv-color-border);
-    border-radius: 4px;
+    border-radius: 8px;
     padding: var(--cv-space-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+
+  html[data-styled] .case-study-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   html[data-styled] .case-study-card h3 {
@@ -288,7 +390,7 @@
     background: #f0f4ff;
     color: var(--cv-color-accent);
     border-color: #c7d8ff;
-    border-radius: 2px;
+    border-radius: 4px;
     font-size: 0.8em;
   }
 
@@ -296,6 +398,7 @@
     color: var(--cv-color-accent);
     font-weight: 500;
     text-decoration: none;
+    transition: color 150ms ease;
   }
 
   html[data-styled] .case-study-link:hover {
@@ -319,7 +422,7 @@
 
   html[data-styled] .results-table {
     border: 1px solid var(--cv-color-border);
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
   }
 
@@ -357,7 +460,10 @@
     text-decoration: underline;
   }
 
-  /* Narrative / Story section - styled state */
+  /* ========================
+     Narrative / Story section - styled state
+     ======================== */
+
   html[data-styled] .narrative {
     border-left: 3px solid var(--cv-color-accent);
     padding-left: var(--cv-space-lg);

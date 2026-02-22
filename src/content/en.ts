@@ -55,46 +55,45 @@ const content: Content = {
 
   experience: [
     {
-      role: 'Front-End Developer',
-      company: 'Tech Innovators',
-      period: 'Jan 2024 - Present',
-      description: 'Development of modern web applications with Vue 3 and Nuxt. Implementation of scalable and performant architectures.',
+      role: 'Front-End Developer Vue.js / Nuxt',
+      company: 'Airddm (Permanent)',
+      period: 'Feb 2024 - Present',
+      description: 'Enterprise clients (Heineken, Michelin, Bosch). Design system with Storybook, e2e testing, front-end architecture. B2B2C app from scratch, Django → Vue.js migration, Pinia state management, Chart.js dataviz.',
     },
     {
-      role: 'Full-Stack Developer',
-      company: 'Digital Solutions',
-      period: 'Mar 2022 - Dec 2023',
-      description: 'Creation of reactive and accessible user interfaces. Migration of legacy projects to Vue 3.',
+      role: 'Freelance Front-End Developer',
+      company: 'Independent',
+      period: '2022 - Present',
+      description: 'Direct clients, end-to-end ownership: requirements gathering, design, mockups, development and deployment. React, Next.js, Vue, Svelte.',
     },
     {
-      role: 'Web Developer',
-      company: 'Creative Agency',
-      period: 'Jun 2020 - Feb 2022',
-      description: 'Development of websites and applications with focus on user experience and performance.',
+      role: 'Training & Background',
+      company: 'OpenClassrooms + Hackathon',
+      period: '2021 - 2023',
+      description: '10 React projects presented to a jury. Montpellier Hackathon 2023 (app shipped in 24h). Before tech: 10 years across music, sound engineering, hospitality, 4 countries.',
     },
   ],
 
-  // Note: Sample project data for demonstration. Update with real projects before deployment.
   projects: [
     {
-      name: 'Portfolio Vue 3',
-      url: 'https://github.com/maxiim3/portfolio-vue3',
-      description: 'Modern portfolio site with Vue 3, CSS animations and dark mode.',
+      name: 'Calcul TJM',
+      url: 'https://calcul-tjm.fr',
+      description: 'Freelance revenue simulator: real-time comparison of micro-entreprise, SASU and EURL structures.',
     },
     {
-      name: 'Dashboard Analytics',
-      url: 'https://github.com/maxiim3/analytics-dashboard',
-      description: 'Interactive dashboard with Nuxt 3 and data visualizations.',
+      name: 'Polishable',
+      url: 'https://polishable.app',
+      description: 'Browser extension for shipping web apps: screenshots, icons and PWA analysis.',
     },
     {
-      name: 'Component Library',
-      url: 'https://github.com/maxiim3/vue-components',
-      description: 'Reusable Vue 3 component library with TypeScript.',
+      name: 'Sestini Pizza',
+      url: 'https://www.sestini-pizza.fr',
+      description: 'Next.js showcase website — full case study: branding, SEO, Google Business.',
     },
     {
-      name: 'E-commerce Platform',
-      url: 'https://github.com/maxiim3/shop-nuxt',
-      description: 'Complete e-commerce platform with Nuxt 3, Stripe and Pinia state management.',
+      name: 'Jamais 203',
+      url: 'https://prod203-next-app-maxiim3s-projects.vercel.app/en',
+      description: 'Audiovisual production agency website — dark cinematic art direction, bilingual FR/EN.',
     },
   ],
 
@@ -150,13 +149,10 @@ const content: Content = {
         'Dark, cinematic art direction',
         'Client references gallery',
       ],
-      // TODO(M1): These results were inferred by the dev agent — verify and replace with real metrics
       results: [
-        { metric: 'Delivery', value: 'Complete bilingual site shipped' },
-        { metric: 'Featured clients', value: '9 major international brands' },
+        { metric: 'Clients', value: 'Balenciaga, Canal+, Disneyland Paris, Coca-Cola, Warner Music, Citroën...' },
+        { metric: 'Impact', value: 'Client autonomous — Webflow migration, opened own production studios' },
       ],
-      impact:
-        'The client later brought management in-house by migrating to Webflow, preserving the art direction and structure. They have since opened their own studios.',
       stack: ['Next.js', 'TailwindCSS', 'Vercel', 'Admin custom'],
       link: {
         label: 'View project',
