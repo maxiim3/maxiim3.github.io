@@ -37,7 +37,8 @@
       "mcp__chrome-devtools__click",
       "mcp__chrome-devtools__list_pages",
       "mcp__chrome-devtools__press_key",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(lsof:*)"
     ]
   },
   "disabledMcpjsonServers": [
