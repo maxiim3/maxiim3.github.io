@@ -24,7 +24,7 @@ Contact     → CTA clair
 ```
 
 **i18n :** Astro native routing (`/` FR, `/en/` EN) — pas de lib externe
-**Photo :** Oui. Améliorée via IA, cohérente avec la DA sombre.
+**Photo :** Non — la DA cosmique suffit comme identité visuelle.
 
 ## Stack
 
@@ -43,10 +43,9 @@ Repo : https://github.com/dillionverma/portfolio
 
 ## Composants magicui à explorer
 
-**Backgrounds :** Particles, Meteors, Dot Pattern, Warp Background, Light Rays
-**Texte :** Aurora Text, Animated Shiny Text, Blur Fade, Text Animate
-**Effets :** Border Beam, Magic Card, Orbiting Circles, Icon Cloud
-**UI :** Dock, Animated List, Bento Grid
+**Retenus :** Meteors / Dot Pattern (backgrounds), Border Beam, Bento Grid, Animated Shiny Text
+**Animations :** Framer Motion avec LazyMotion + `client:visible` partout
+**Écarté :** Icon Cloud → remplacé par grid CSS statique (perf)
 
 ## Ce qui NE change PAS
 

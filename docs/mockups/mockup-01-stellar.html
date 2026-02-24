@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stellar — Maxime Tamburrini</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #4F8EF7;
+  --blue-dim: rgba(79,142,247,0.12);
+  --blue-glow: rgba(79,142,247,0.4);
+  --bg: #050810;
+  --bg-card: #0a0e1a;
+  --text: #e8ecf4;
+  --muted: #6b7591;
+  --border: rgba(79,142,247,0.18);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.label { position: fixed; top: 16px; right: 16px; z-index: 999; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--blue); color: #fff; padding: 5px 10px; border-radius: 4px; }
+
+.starfield { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle var(--d,3s) ease-in-out infinite alternate; opacity: var(--o,.6); }
+@keyframes twinkle { 0% { opacity: var(--o,.6); } 100% { opacity: calc(var(--o,.6) * .15); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(5,8,16,.75); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(79,142,247,.07); }
+.nav-logo { font-size: 15px; font-weight: 800; letter-spacing: -.02em; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--blue); }
+
+.hero { position: relative; z-index: 10; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; }
+
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); background: var(--blue-dim); border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; margin-bottom: 32px; }
+.hero-badge i { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(.7); opacity: .4; } }
+
+.hero-name { font-size: clamp(60px,10vw,112px); font-weight: 900; letter-spacing: -.04em; line-height: .95; color: #fff; text-shadow: 0 0 40px rgba(79,142,247,.5), 0 0 100px rgba(79,142,247,.2); margin-bottom: 16px; animation: float 5s ease-in-out infinite; }
+.hero-title { font-size: clamp(16px,2.5vw,22px); font-weight: 400; color: var(--blue); letter-spacing: .04em; margin-bottom: 18px; }
+.hero-tagline { font-size: clamp(14px,1.8vw,17px); font-weight: 300; color: var(--muted); max-width: 480px; line-height: 1.65; margin-bottom: 32px; }
+.hero-stack { display: flex; gap: 10px; justify-content: center; margin-bottom: 40px; }
+.badge { font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--border); background: var(--blue-dim); color: var(--blue); }
+.hero-ctas { display: flex; gap: 12px; justify-content: center; }
+.btn-p { padding: 12px 28px; background: var(--blue); color: #fff; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; box-shadow: 0 0 28px var(--blue-glow); transition: all .2s; }
+.btn-p:hover { box-shadow: 0 0 48px var(--blue-glow); transform: translateY(-2px); }
+.btn-s { padding: 12px 28px; background: transparent; color: var(--text); font-size: 14px; font-weight: 600; border-radius: 8px; border: 1px solid var(--border); text-decoration: none; transition: all .2s; }
+.btn-s:hover { border-color: var(--blue); color: var(--blue); }
+
+section.s { position: relative; z-index: 10; max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+.s-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 36px; display: flex; align-items: center; gap: 14px; }
+.s-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
+.sk-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; transition: border-color .2s, transform .2s; }
+.sk-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+.sk-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag { font-size: 12px; padding: 3px 9px; border-radius: 4px; background: rgba(79,142,247,.07); color: var(--text); border: 1px solid rgba(79,142,247,.1); }
+
+.exp-list { display: flex; flex-direction: column; gap: 3px; }
+.exp { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 26px 30px; display: grid; grid-template-columns: 1fr auto; gap: 16px; transition: border-color .2s; position: relative; overflow: hidden; }
+.exp:hover { border-color: rgba(79,142,247,.4); }
+.exp::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--blue), transparent); opacity: 0; transition: opacity .2s; }
+.exp:hover::before { opacity: 1; }
+.exp-role { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.exp-co { font-size: 13px; font-weight: 500; color: var(--blue); margin-bottom: 8px; }
+.exp-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.exp-meta { text-align: right; }
+.exp-period { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.exp-type { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); background: var(--blue-dim); border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; margin-top: 5px; display: inline-block; }
+
+footer { position: relative; z-index: 10; border-top: 1px solid var(--border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--blue); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="label">01 · Stellar</div>
+<div class="starfield" id="sf"></div>
+
+<nav>
+  <div class="nav-logo">MT</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#exp">Expérience</a></li>
+    <li><a href="#projects">Projets</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge"><i></i>Disponible · Remote / Europe</div>
+  <h1 class="hero-name">Maxime<br>Tamburrini</h1>
+  <p class="hero-title">Frontend Developer</p>
+  <p class="hero-tagline">Construit avec le produit, l'utilisateur et le business en tête.</p>
+  <div class="hero-stack">
+    <span class="badge">React</span>
+    <span class="badge">Vue</span>
+    <span class="badge">Svelte</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#" class="btn-p">Télécharger le CV</a>
+    <a href="#" class="btn-s">Me contacter</a>
+  </div>
+</section>
+
+<section class="s" id="skills">
+  <div class="s-title">Stack technique</div>
+  <div class="skills-grid">
+    <div class="sk-card">
+      <div class="sk-label">Core</div>
+      <div class="tags">
+        <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Vue 3</span>
+        <span class="tag">Svelte</span><span class="tag">Next.js</span><span class="tag">Nuxt 3</span><span class="tag">Astro</span>
+      </div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-label">Tooling</div>
+      <div class="tags">
+        <span class="tag">Vite</span><span class="tag">TailwindCSS</span><span class="tag">Pinia</span>
+        <span class="tag">Zustand</span><span class="tag">Storybook</span><span class="tag">Framer Motion</span>
+      </div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-label">Pratiques</div>
+      <div class="tags">
+        <span class="tag">Responsive</span><span class="tag">WCAG</span><span class="tag">Tests E2E</span>
+        <span class="tag">Design Systems</span><span class="tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="sk-card">
+      <div class="sk-label">En exploration</div>
+      <div class="tags">
+        <span class="tag">Angular</span><span class="tag">WebAssembly</span><span class="tag">Rust</span><span class="tag">Go</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="exp">
+  <div class="s-title">Expérience</div>
+  <div class="exp-list">
+    <div class="exp">
+      <div>
+        <div class="exp-role">Développeur Front-End Vue.js / Nuxt</div>
+        <div class="exp-co">Airddm</div>
+        <div class="exp-desc">Grands comptes (Heineken, Michelin, Bosch). Design système avec Storybook, testing e2e, architecture front-end. Application B2B2C from scratch, migration Django → Vue.js.</div>
+      </div>
+      <div class="exp-meta"><div class="exp-period">Fév 2024 — Présent</div><span class="exp-type">CDI</span></div>
+    </div>
+    <div class="exp">
+      <div>
+        <div class="exp-role">Développeur Front-End Freelance</div>
+        <div class="exp-co">Indépendant</div>
+        <div class="exp-desc">Clients directs, gestion complète A à Z : recueil du besoin, design, maquettes, développement et déploiement. React, Next.js, Vue, Svelte.</div>
+      </div>
+      <div class="exp-meta"><div class="exp-period">2022 — Présent</div><span class="exp-type">Freelance</span></div>
+    </div>
+    <div class="exp">
+      <div>
+        <div class="exp-role">Ingénieur du son — Post-production cinéma</div>
+        <div class="exp-co">Indépendant</div>
+        <div class="exp-desc">Post-production sonore cinéma et audiovisuel. Crédité à l'IMDB. 10 ans de carrière internationale — musique, son, restauration, 4 pays.</div>
+      </div>
+      <div class="exp-meta"><div class="exp-period">2010 — 2021</div><span class="exp-type">Freelance</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/maxiim3">GitHub</a>
+    <a href="https://www.linkedin.com/in/max-graux">LinkedIn</a>
+    <a href="mailto:max@maxgraux.dev">Email</a>
+  </div>
+  <div class="footer-copy">Maxime Tamburrini · Frontend Developer</div>
+</footer>
+
+<script>
+const sf = document.getElementById('sf');
+for (let i = 0; i < 280; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const sz = Math.random() * 2.2 + .4;
+  s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--o:${Math.random()*.7+.1};--d:${Math.random()*4+2}s;animation-delay:${Math.random()*5}s`;
+  sf.appendChild(s);
+}
+</script>
+</body>
+</html>

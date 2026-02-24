@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Maxime Tamburrini</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0A0A0A;
+  --green: #10B981;
+  --green-dim: rgba(16,185,129,.1);
+  --green-glow: rgba(16,185,129,.25);
+  --text: #F0FDF4;
+  --muted: #4B5563;
+  --border: rgba(16,185,129,.12);
+  --card: rgba(255,255,255,.02);
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.label { position: fixed; top: 16px; right: 16px; z-index: 999; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--green); color: #000; padding: 5px 10px; border-radius: 4px; }
+
+/* Sticky nav with blur */
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 48px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-size: 14px; font-weight: 800; color: var(--text); letter-spacing: -.02em; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-size: 12px; font-weight: 600; padding: 7px 16px; background: var(--green); color: #000; border-radius: 6px; text-decoration: none; transition: opacity .15s; }
+.nav-cta:hover { opacity: .85; }
+
+/* Hero with animated border glow */
+.hero-wrap { padding: 80px 48px 60px; max-width: 860px; margin: 0 auto; }
+.hero-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 56px;
+  background: var(--card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated border glow */
+.hero-card::before {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: 22px;
+  background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, var(--green) 60deg, transparent 120deg, transparent 360deg);
+  animation: spin-glow 4s linear infinite;
+  z-index: -1;
+}
+.hero-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 20px;
+  background: var(--bg);
+  z-index: -1;
+}
+@keyframes spin-glow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-avail { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; color: var(--green); background: var(--green-dim); border: 1px solid var(--border); padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; }
+.hero-avail::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+.hero-name { font-size: clamp(40px,7vw,80px); font-weight: 900; letter-spacing: -.04em; line-height: .95; color: var(--text); margin-bottom: 12px; }
+.hero-title { font-size: 17px; font-weight: 300; color: var(--muted); margin-bottom: 18px; }
+.hero-tagline { font-size: 16px; font-weight: 300; color: rgba(240,253,244,.55); line-height: 1.65; max-width: 480px; margin-bottom: 28px; }
+
+/* Horizontal scrolling pills */
+.skill-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; margin-bottom: 32px; }
+.skill-scroll::-webkit-scrollbar { display: none; }
+.skill-pill { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--green-dim); color: var(--text); white-space: nowrap; flex-shrink: 0; }
+.skill-pill.accent { background: var(--green); color: #000; border-color: var(--green); font-weight: 700; }
+
+.hero-ctas { display: flex; gap: 10px; }
+.btn-p { padding: 11px 24px; background: var(--green); color: #000; font-size: 13px; font-weight: 700; border-radius: 8px; text-decoration: none; box-shadow: 0 0 24px var(--green-glow); transition: all .2s; }
+.btn-p:hover { box-shadow: 0 0 48px var(--green-glow); transform: translateY(-1px); }
+.btn-s { padding: 11px 24px; border: 1px solid var(--border); color: var(--text); font-size: 13px; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
+.btn-s:hover { border-color: var(--green); color: var(--green); }
+
+/* Sections */
+.section { max-width: 860px; margin: 0 auto; padding: 60px 48px; border-top: 1px solid var(--border); }
+.s-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 28px; }
+
+/* Accordion experience (CSS only) */
+.acc-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+.acc-label { padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+.acc-label:hover { background: var(--green-dim); }
+.acc-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.acc-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.acc-period { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.acc-body { padding: 0 22px 18px; }
+.acc-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* Projects cards with → hover */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; }
+.proj-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color .2s, transform .2s; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; }
+.proj-card:hover { border-color: var(--green); transform: translateY(-2px); }
+.proj-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.proj-tag { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+.proj-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.proj-arrow { font-size: 13px; color: var(--muted); transition: color .15s, transform .15s; display: inline-block; }
+.proj-card:hover .proj-arrow { color: var(--green); transform: translateX(3px); }
+
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--green); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="label">10 · Signal</div>
+
+<nav>
+  <div class="nav-logo">MT</div>
+  <ul class="nav-links">
+    <li><a href="#exp">Expérience</a></li>
+    <li><a href="#skills">Stack</a></li>
+    <li><a href="#projects">Projets</a></li>
+  </ul>
+  <a href="#" class="nav-cta">CV</a>
+</nav>
+
+<div class="hero-wrap">
+  <div class="hero-card">
+    <div class="hero-avail">Disponible · Remote / Europe</div>
+    <h1 class="hero-name">Maxime<br>Tamburrini</h1>
+    <p class="hero-title">Frontend Developer</p>
+    <p class="hero-tagline">Construit avec le produit, l'utilisateur et le business en tête.</p>
+    <div class="skill-scroll">
+      <span class="skill-pill accent">React</span>
+      <span class="skill-pill accent">Vue</span>
+      <span class="skill-pill accent">Svelte</span>
+      <span class="skill-pill">TypeScript</span>
+      <span class="skill-pill">Next.js</span>
+      <span class="skill-pill">Nuxt 3</span>
+      <span class="skill-pill">Astro</span>
+      <span class="skill-pill">TailwindCSS</span>
+      <span class="skill-pill">Vite</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#" class="btn-p">Télécharger le CV</a>
+      <a href="#" class="btn-s">Me contacter</a>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="exp">
+  <div class="s-label">Expérience</div>
+  <div>
+    <div class="acc-item">
+      <div class="acc-label">
+        <div><div class="acc-title">Développeur Front-End Vue.js / Nuxt</div><div class="acc-sub">Airddm · CDI</div></div>
+        <div class="acc-period">Fév 2024 — Présent</div>
+      </div>
+      <div class="acc-body"><div class="acc-desc">Grands comptes (Heineken, Michelin, Bosch). Design système avec Storybook, testing e2e, architecture front-end. Application B2B2C from scratch, migration Django → Vue.js.</div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-label">
+        <div><div class="acc-title">Développeur Front-End Freelance</div><div class="acc-sub">Indépendant</div></div>
+        <div class="acc-period">2022 — Présent</div>
+      </div>
+      <div class="acc-body"><div class="acc-desc">Clients directs, gestion A à Z. React, Next.js, Vue, Svelte.</div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-label">
+        <div><div class="acc-title">Ingénieur du son — Cinéma</div><div class="acc-sub">Indépendant · IMDB</div></div>
+        <div class="acc-period">2010 — 2021</div>
+      </div>
+      <div class="acc-body"><div class="acc-desc">Post-production sonore cinéma & audiovisuel. Carrière internationale, 4 pays.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="s-label">Projets</div>
+  <div class="proj-grid">
+    <div class="proj-card"><div><div class="proj-name">thepause.app</div><div class="proj-tag">Side project</div><div class="proj-desc">App de méditation — projet personnel déployé</div></div><span class="proj-arrow">→</span></div>
+    <div class="proj-card"><div><div class="proj-name">Calcul TJM</div><div class="proj-tag">Outil</div><div class="proj-desc">Simulateur revenus freelance (micro/SASU/EURL)</div></div><span class="proj-arrow">→</span></div>
+    <div class="proj-card"><div><div class="proj-name">Polishable</div><div class="proj-tag">Extension</div><div class="proj-desc">Extension browser — screenshots, icônes, PWA</div></div><span class="proj-arrow">→</span></div>
+    <div class="proj-card"><div><div class="proj-name">Sestini Pizza</div><div class="proj-tag">Case study</div><div class="proj-desc">0 → 250k€ CA · branding complet + site</div></div><span class="proj-arrow">→</span></div>
+    <div class="proj-card"><div><div class="proj-name">Jamais 203</div><div class="proj-tag">Case study</div><div class="proj-desc">Agence audiovisuelle · Balenciaga, Canal+, Warner</div></div><span class="proj-arrow">→</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/maxiim3">GitHub</a>
+    <a href="https://www.linkedin.com/in/max-graux">LinkedIn</a>
+    <a href="mailto:max@maxgraux.dev">Email</a>
+  </div>
+  <div class="footer-copy">Maxime Tamburrini · Frontend Developer</div>
+</footer>
+
+</body>
+</html>

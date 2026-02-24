@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebula — Maxime Tamburrini</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #06040f;
+  --purple: #8B5CF6;
+  --cyan: #06B6D4;
+  --text: #ede9fe;
+  --muted: #7c6faa;
+  --border: rgba(139,92,246,.2);
+  --card: rgba(139,92,246,.05);
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.label { position: fixed; top: 16px; right: 16px; z-index: 999; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: linear-gradient(135deg,var(--purple),var(--cyan)); color: #fff; padding: 5px 10px; border-radius: 4px; }
+
+/* Floating pill nav */
+nav {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100;
+  display: flex; align-items: center; gap: 32px;
+  background: rgba(10,6,20,.8); backdrop-filter: blur(16px);
+  border: 1px solid var(--border); border-radius: 40px;
+  padding: 12px 28px;
+}
+.nav-logo { font-size: 14px; font-weight: 800; background: linear-gradient(135deg,var(--purple),var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* Nebula background */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 24px 80px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(ellipse at center,
+    rgba(139,92,246,.25) 0%,
+    rgba(6,182,212,.12) 30%,
+    rgba(139,92,246,.06) 55%,
+    transparent 70%);
+  pointer-events: none;
+  animation: nebula-pulse 8s ease-in-out infinite alternate;
+}
+@keyframes nebula-pulse {
+  0% { transform: translateX(-50%) scale(1); opacity: .8; }
+  100% { transform: translateX(-50%) scale(1.12); opacity: 1; }
+}
+
+.hero-name {
+  font-size: clamp(56px,9vw,104px); font-weight: 900; letter-spacing: -.04em; line-height: .95;
+  background: linear-gradient(135deg, #fff 30%, var(--purple) 65%, var(--cyan) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 16px; position: relative; z-index: 1;
+}
+.hero-title { font-size: clamp(15px,2vw,20px); font-weight: 400; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; position: relative; z-index: 1; }
+.hero-tagline { font-size: clamp(14px,1.8vw,17px); color: rgba(237,233,254,.6); max-width: 460px; line-height: 1.65; margin-bottom: 32px; position: relative; z-index: 1; }
+
+.hero-stack { display: flex; gap: 12px; justify-content: center; margin-bottom: 40px; position: relative; z-index: 1; }
+.badge {
+  font-size: 13px; font-weight: 600; padding: 7px 18px; border-radius: 20px;
+  border: 1px solid var(--border); background: rgba(139,92,246,.1); color: var(--text);
+  position: relative; overflow: hidden;
+}
+.badge::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,.2), rgba(6,182,212,.1));
+  opacity: 0; transition: opacity .3s;
+}
+.badge:hover::before { opacity: 1; }
+
+.hero-avail { font-size: 12px; color: var(--muted); margin-bottom: 36px; position: relative; z-index: 1; letter-spacing: .04em; }
+
+.hero-ctas { display: flex; gap: 12px; justify-content: center; position: relative; z-index: 1; }
+.btn-p {
+  padding: 12px 28px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none;
+  background: linear-gradient(135deg,var(--purple),var(--cyan));
+  color: #fff;
+  box-shadow: 0 0 28px rgba(139,92,246,.4);
+  transition: all .2s;
+}
+.btn-p:hover { box-shadow: 0 0 50px rgba(139,92,246,.6); transform: translateY(-2px); }
+.btn-s { padding: 12px 28px; font-size: 14px; font-weight: 600; border-radius: 8px; border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: all .2s; }
+.btn-s:hover { border-color: var(--purple); background: rgba(139,92,246,.08); }
+
+/* Sections */
+.wrap { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+.s-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--purple); margin-bottom: 40px; }
+
+/* Left-border accent sections */
+.exp-list { display: flex; flex-direction: column; gap: 24px; }
+.exp {
+  padding: 24px 28px; border-left: 3px solid var(--purple);
+  background: var(--card); border-radius: 0 12px 12px 0;
+  display: grid; grid-template-columns: 1fr auto; gap: 16px;
+  transition: border-color .2s, background .2s;
+}
+.exp:hover { border-color: var(--cyan); background: rgba(6,182,212,.06); }
+.exp-role { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.exp-co { font-size: 13px; color: var(--purple); margin-bottom: 8px; }
+.exp-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.exp-period { font-size: 12px; color: var(--muted); white-space: nowrap; text-align: right; }
+
+/* Skills pills */
+.skills-wrap { display: flex; flex-direction: column; gap: 20px; }
+.skill-row { display: flex; align-items: baseline; gap: 14px; }
+.skill-row-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); min-width: 80px; flex-shrink: 0; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(139,92,246,.2); background: rgba(139,92,246,.07); color: var(--text); }
+
+/* Projects */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 16px; }
+.proj-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; transition: border-color .2s, transform .2s; }
+.proj-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+.proj-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.proj-tag { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px; }
+.proj-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--purple); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="label">02 · Nebula</div>
+
+<nav>
+  <div class="nav-logo">MT</div>
+  <ul class="nav-links">
+    <li><a href="#exp">Expérience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projets</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-name">Maxime<br>Tamburrini</h1>
+  <p class="hero-title">Frontend Developer</p>
+  <p class="hero-tagline">Construit avec le produit, l'utilisateur et le business en tête.</p>
+  <div class="hero-stack">
+    <span class="badge">React</span>
+    <span class="badge">Vue</span>
+    <span class="badge">Svelte</span>
+  </div>
+  <div class="hero-avail">Disponible · Remote / Europe</div>
+  <div class="hero-ctas">
+    <a href="#" class="btn-p">Télécharger le CV</a>
+    <a href="#" class="btn-s">Me contacter</a>
+  </div>
+</section>
+
+<div class="wrap" id="skills">
+  <div class="s-title">Stack technique</div>
+  <div class="skills-wrap">
+    <div class="skill-row"><span class="skill-row-label">Core</span><div class="pills"><span class="pill">TypeScript</span><span class="pill">React</span><span class="pill">Vue 3</span><span class="pill">Svelte</span><span class="pill">Next.js</span><span class="pill">Nuxt 3</span><span class="pill">Astro</span></div></div>
+    <div class="skill-row"><span class="skill-row-label">Tooling</span><div class="pills"><span class="pill">Vite</span><span class="pill">TailwindCSS</span><span class="pill">Pinia</span><span class="pill">Zustand</span><span class="pill">Storybook</span><span class="pill">Framer Motion</span></div></div>
+    <div class="skill-row"><span class="skill-row-label">Pratiques</span><div class="pills"><span class="pill">Responsive</span><span class="pill">WCAG</span><span class="pill">Tests E2E</span><span class="pill">Design Systems</span><span class="pill">REST APIs</span></div></div>
+  </div>
+</div>
+
+<div class="wrap" id="exp">
+  <div class="s-title">Expérience</div>
+  <div class="exp-list">
+    <div class="exp">
+      <div><div class="exp-role">Développeur Front-End Vue.js / Nuxt</div><div class="exp-co">Airddm</div><div class="exp-desc">Grands comptes (Heineken, Michelin, Bosch). Design système, testing e2e, architecture front-end. Application B2B2C from scratch, migration Django → Vue.js.</div></div>
+      <div class="exp-period">Fév 2024 — Présent</div>
+    </div>
+    <div class="exp">
+      <div><div class="exp-role">Développeur Front-End Freelance</div><div class="exp-co">Indépendant</div><div class="exp-desc">Clients directs, gestion complète A à Z. React, Next.js, Vue, Svelte.</div></div>
+      <div class="exp-period">2022 — Présent</div>
+    </div>
+    <div class="exp">
+      <div><div class="exp-role">Ingénieur du son — Post-production cinéma</div><div class="exp-co">Indépendant</div><div class="exp-desc">Post-production sonore cinéma & audiovisuel. Crédité à l'IMDB. Carrière internationale, 4 pays.</div></div>
+      <div class="exp-period">2010 — 2021</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="projects">
+  <div class="s-title">Projets</div>
+  <div class="proj-grid">
+    <div class="proj-card"><div class="proj-name">thepause.app</div><div class="proj-tag">Side project</div><div class="proj-desc">Application de méditation — projet personnel déployé. Conçu et développé de A à Z.</div></div>
+    <div class="proj-card"><div class="proj-name">Calcul TJM</div><div class="proj-tag">Outil</div><div class="proj-desc">Simulateur de revenus freelance : comparaison micro-entreprise, SASU et EURL en temps réel.</div></div>
+    <div class="proj-card"><div class="proj-name">Polishable</div><div class="proj-tag">Extension</div><div class="proj-desc">Extension navigateur pour le shipping d'apps web : screenshots, icônes et analyse PWA.</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/maxiim3">GitHub</a>
+    <a href="https://www.linkedin.com/in/max-graux">LinkedIn</a>
+    <a href="mailto:max@maxgraux.dev">Email</a>
+  </div>
+  <div class="footer-copy">Maxime Tamburrini · Frontend Developer</div>
+</footer>
+
+</body>
+</html>

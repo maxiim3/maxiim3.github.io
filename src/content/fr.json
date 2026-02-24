@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Maxime Tamburrini — Développeur Frontend",
+    "description": "Développeur frontend multi-framework (React, Vue, Svelte). Vision produit, sens du design, exécution rigoureuse.",
+    "lang": "fr"
+  },
+
+  "hero": {
+    "name": "Maxime Tamburrini",
+    "title": "Frontend Developer",
+    "tagline": "Construit avec le produit, l'utilisateur et le business en tête.",
+    "stack": ["React", "Vue", "Svelte"],
+    "availability": "Disponible · Remote / Europe",
+    "cta": {
+      "cv": "Télécharger le CV",
+      "contact": "Me contacter"
+    }
+  },
+
+  "about": {
+    "short": "Développeur frontend multi-framework. Avant le code, 10 ans dans la musique et le cinéma — ingénieur du son crédité à l'IMDB. Cette expérience transversale me permet d'aborder chaque projet avec une vision produit et business, pas seulement technique.",
+    "paragraphs": [
+      "Avant le code, j'ai passé 15 ans dans la musique — batteur et ingénieur du son post-production cinéma. J'ai travaillé en restauration, vécu dans plusieurs pays, appris quatre langues. Chaque étape m'a appris à comprendre des systèmes complexes, à collaborer avec des profils différents, et à livrer un résultat concret sous contrainte.",
+      "En devenant développeur, j'ai gardé cette approche : comprendre le contexte avant de coder, penser produit avant de penser feature. Je ne suis pas un exécutant technique. Je suis quelqu'un qui comprend un business, identifie ce dont il a besoin, et le construit — de l'identité visuelle à l'architecture frontend.",
+      "J'ai accompagné un restaurateur de zéro à 250 000 € de chiffre d'affaires en concevant l'intégralité de sa marque et de sa présence digitale. J'ai conçu le site d'une agence de production musicale dont les clients incluent Balenciaga, Disneyland Paris et Warner Music.",
+      "Ce que j'apporte : une vision transversale, une exécution rigoureuse, et la capacité de faire le lien entre technique, design et stratégie."
+    ],
+    "languages": ["Français (natif)", "Anglais (courant)", "Espagnol (intermédiaire)", "Italien (notions)"]
+  },
+
+  "skills": {
+    "core": ["TypeScript", "React", "Vue 3", "Svelte", "Next.js", "Nuxt 3", "Astro"],
+    "tooling": ["Vite", "TailwindCSS", "Pinia", "Zustand", "Storybook", "Framer Motion", "Vitest"],
+    "practices": ["Responsive Design", "Accessibilité (WCAG)", "Tests E2E", "Design Systems", "REST APIs", "Git"],
+    "exploring": ["Angular", "WebAssembly", "Rust", "Go"]
+  },
+
+  "experience": [
+    {
+      "role": "Développeur Front-End Vue.js / Nuxt",
+      "company": "Airddm",
+      "type": "CDI",
+      "period": "Fév 2024 — Présent",
+      "description": "Grands comptes (Heineken, Michelin, Bosch). Design système avec Storybook, testing e2e, architecture front-end. Application B2B2C from scratch, migration Django → Vue.js, state management Pinia, dataviz Chart.js."
+    },
+    {
+      "role": "Développeur Front-End Freelance",
+      "company": "Indépendant",
+      "type": "Freelance",
+      "period": "2022 — Présent",
+      "description": "Clients directs, gestion complète de A à Z : recueil du besoin, design, maquettes, développement et déploiement. React, Next.js, Vue, Svelte."
+    },
+    {
+      "role": "Formation intensive",
+      "company": "OpenClassrooms + Hackathon",
+      "type": "Formation",
+      "period": "2021 — 2023",
+      "description": "10 projets React présentés devant jury. Hackathon Montpellier 2023 — app livrée en 24h."
+    },
+    {
+      "role": "Ingénieur du son — Post-production cinéma",
+      "company": "Indépendant",
+      "type": "Freelance",
+      "period": "2010 — 2021",
+      "description": "Post-production sonore pour le cinéma et l'audiovisuel. Crédité à l'IMDB. 10 ans de carrière internationale — musique, son, restauration, 4 pays."
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "thepause.app",
+      "url": "https://thepause.app",
+      "description": "Application de méditation — projet personnel déployé. Conçu et développé de A à Z.",
+      "tag": "Side project"
+    },
+    {
+      "name": "Calcul TJM",
+      "url": "https://calcul-tjm.fr",
+      "description": "Simulateur de revenus freelance : comparaison micro-entreprise, SASU et EURL en temps réel.",
+      "tag": "Outil"
+    },
+    {
+      "name": "Polishable",
+      "url": "https://polishable.app",
+      "description": "Extension navigateur pour le shipping d'apps web : screenshots, icônes et analyse PWA.",
+      "tag": "Extension"
+    }
+  ],
+
+  "caseStudies": [
+    {
+      "slug": "sestini-pizza",
+      "title": "De zéro à 250k€ de CA : branding complet et présence digitale pour un food truck artisanal",
+      "context": "Pizzaiolo lançant une activité pizza au feu de bois en camion à Villeneuve-lès-Maguelone. Aucune présence existante.",
+      "role": "Direction complète de l'identité de marque et de la présence digitale. Seul intervenant.",
+      "deliverables": [
+        "Logo et charte graphique",
+        "Print (flyers, cartes de visite, carte de fidélité, tampon)",
+        "Covering camion",
+        "Site web Next.js + TailwindCSS + Vercel",
+        "SEO + Google Business"
+      ],
+      "results": [
+        { "metric": "Chiffre d'affaires", "value": "0 → 250 000 € en 3 ans" },
+        { "metric": "Avis Google", "value": "100 avis · note 4,8/5" },
+        { "metric": "Clientèle", "value": "Base client récurrente établie" },
+        { "metric": "Expansion", "value": "Ouverture d'un restaurant en dur" }
+      ],
+      "stack": ["Next.js", "TailwindCSS", "Vercel", "Cloudinary", "Google Business"],
+      "link": { "label": "Voir le site", "url": "https://www.sestini-pizza.fr" },
+      "screenshots": []
+    },
+    {
+      "slug": "jamais-203-productions",
+      "title": "Site vitrine bilingue pour une agence de production audiovisuelle travaillant avec des marques internationales",
+      "context": "Agence de production musicale et audiovisuelle — clients : Balenciaga, Canal+, Disneyland Paris, Coca-Cola, Warner Music France, Citroën, Puy du Fou, FFF, Crédit Agricole.",
+      "role": "Conception, design et développement complet — de la direction artistique au déploiement.",
+      "deliverables": [
+        "Site bilingue FR/EN Next.js + Vercel",
+        "Back-office administrateur custom",
+        "Direction artistique sombre et cinématique",
+        "Galerie de références clients"
+      ],
+      "results": [
+        { "metric": "Clients", "value": "Balenciaga, Canal+, Disneyland Paris, Coca-Cola, Warner Music, Citroën..." },
+        { "metric": "Impact", "value": "Client autonome — migration Webflow, ouverture de studios de production" }
+      ],
+      "stack": ["Next.js", "TailwindCSS", "Vercel", "Admin custom"],
+      "link": { "label": "Voir le projet", "url": "https://prod203-next-app-maxiim3s-projects.vercel.app/en" },
+      "screenshots": []
+    }
+  ],
+
+  "cv": {
+    "label": "Télécharger le CV",
+    "href": "/cv/cv-fr.pdf"
+  },
+
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/maxiim3",
+      "icon": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/max-graux",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:max@maxgraux.dev",
+      "icon": "email"
+    }
+  ]
+}

@@ -51,8 +51,8 @@ _Date: 2026-02-23_
 
 - Section About (bio courte, mention cinéma, langues)
 - Section Skills (stack complète, TypeScript mis en avant)
-- Section Projects (sélection + angle)
-- Case studies (2-3, lesquels ?)
+- Section Projects → Calcul TJM, Polishable, **thepause.app** (app méditation, side project déployé), + Sestini Pizza / Jamais203 en lien vers case studies
+- Case studies → **Sestini Pizza** + **Jamais 203** (les 2 retenus, les plus impactants)
 - Performance : Icon Cloud → remplacer par grid CSS statique
 - Composants magicui retenus : Meteors/Dot Pattern (bg), Border Beam, Bento Grid, Animated Shiny Text
 - Framer Motion : LazyMotion + client:visible partout

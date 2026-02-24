@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Horizon — Maxime Tamburrini</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #000000;
+  --gold: #F59E0B;
+  --gold-dim: rgba(245,158,11,.1);
+  --text: #f5f0e8;
+  --muted: #555048;
+  --border: rgba(245,158,11,.12);
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.label { position: fixed; top: 16px; right: 16px; z-index: 999; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--gold); color: #000; padding: 5px 10px; border-radius: 4px; }
+
+/* Event horizon glow */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 24px;
+  overflow: hidden;
+}
+
+/* The glow radiating out */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  width: 700px; height: 700px;
+  background: radial-gradient(ellipse at center,
+    rgba(245,158,11,.08) 0%,
+    rgba(99,62,0,.1) 20%,
+    rgba(30,20,0,.12) 40%,
+    rgba(10,6,0,.06) 60%,
+    transparent 75%);
+  animation: horizon-pulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Outer ring */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    rgba(0,0,0,.98) 42%,
+    rgba(245,158,11,.06) 50%,
+    rgba(0,0,0,.5) 60%,
+    transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes horizon-pulse {
+  0% { opacity: .7; transform: translate(-50%,-55%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%,-55%) scale(1.08); }
+}
+
+.hero-content { position: relative; z-index: 10; }
+.hero-name { font-size: clamp(48px,8vw,96px); font-weight: 800; letter-spacing: -.04em; line-height: .95; color: var(--text); margin-bottom: 20px; }
+.hero-name em { color: var(--gold); font-style: normal; font-weight: 200; }
+.hero-title { font-size: clamp(13px,1.8vw,16px); font-weight: 300; color: var(--muted); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 28px; }
+.hero-tagline { font-size: clamp(15px,2vw,19px); font-weight: 300; color: rgba(245,240,232,.55); max-width: 440px; margin: 0 auto 32px; line-height: 1.65; }
+.hero-stack { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
+.hero-stack span { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+.hero-stack span:not(:last-child)::after { content: ' ·'; color: var(--muted); margin-left: 20px; }
+.hero-avail { font-size: 11px; letter-spacing: .08em; color: var(--muted); margin-bottom: 40px; text-transform: uppercase; }
+.hero-ctas { display: flex; gap: 14px; justify-content: center; }
+.btn-p { padding: 13px 32px; background: var(--gold); color: #000; font-size: 13px; font-weight: 700; letter-spacing: .04em; border-radius: 6px; text-decoration: none; transition: all .2s; box-shadow: 0 0 32px rgba(245,158,11,.3); }
+.btn-p:hover { box-shadow: 0 0 56px rgba(245,158,11,.5); transform: translateY(-2px); }
+.btn-s { padding: 13px 32px; border: 1px solid var(--border); color: var(--text); font-size: 13px; font-weight: 600; border-radius: 6px; text-decoration: none; transition: all .2s; }
+.btn-s:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Thin divider */
+.divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
+
+/* Sections */
+.wrap { max-width: 760px; margin: 0 auto; padding: 72px 24px; }
+.s-title { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
+
+/* Experience minimal */
+.exp-list { display: flex; flex-direction: column; }
+.exp { padding: 28px 0; border-bottom: 1px solid rgba(245,158,11,.06); display: grid; grid-template-columns: 1fr 120px; gap: 20px; align-items: start; }
+.exp:last-child { border-bottom: none; }
+.exp-role { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.exp-co { font-size: 12px; color: var(--gold); letter-spacing: .04em; margin-bottom: 10px; }
+.exp-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.exp-period { font-size: 11px; color: var(--muted); text-align: right; letter-spacing: .02em; }
+
+/* Skills: just a line */
+.skills-line { font-size: 14px; color: var(--muted); line-height: 2; }
+.skills-line strong { color: var(--text); font-weight: 600; }
+
+/* Projects */
+.proj-list { display: flex; flex-direction: column; gap: 20px; }
+.proj { display: flex; align-items: baseline; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(245,158,11,.06); }
+.proj:last-child { border-bottom: none; }
+.proj-name { font-size: 15px; font-weight: 600; color: var(--text); min-width: 160px; }
+.proj-desc { font-size: 13px; color: var(--muted); }
+
+footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: .04em; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<div class="label">04 · Event Horizon</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-name">Maxime<br><em>Tamburrini</em></h1>
+    <p class="hero-title">Frontend Developer</p>
+    <p class="hero-tagline">Construit avec le produit, l'utilisateur et le business en tête.</p>
+    <div class="hero-stack">
+      <span>React</span>
+      <span>Vue</span>
+      <span>Svelte</span>
+    </div>
+    <div class="hero-avail">Disponible · Remote / Europe</div>
+    <div class="hero-ctas">
+      <a href="#" class="btn-p">Télécharger le CV</a>
+      <a href="#" class="btn-s">Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="s-title">Expérience</div>
+  <div class="exp-list">
+    <div class="exp">
+      <div>
+        <div class="exp-role">Développeur Front-End Vue.js / Nuxt</div>
+        <div class="exp-co">Airddm</div>
+        <div class="exp-desc">Grands comptes (Heineken, Michelin, Bosch). Design système, testing e2e, architecture front-end. Application B2B2C from scratch.</div>
+      </div>
+      <div class="exp-period">Fév 2024 — Présent</div>
+    </div>
+    <div class="exp">
+      <div>
+        <div class="exp-role">Développeur Front-End Freelance</div>
+        <div class="exp-co">Indépendant</div>
+        <div class="exp-desc">Clients directs, gestion complète A à Z. React, Next.js, Vue, Svelte.</div>
+      </div>
+      <div class="exp-period">2022 — Présent</div>
+    </div>
+    <div class="exp">
+      <div>
+        <div class="exp-role">Ingénieur du son — Cinéma</div>
+        <div class="exp-co">Indépendant · IMDB</div>
+        <div class="exp-desc">Post-production sonore cinéma & audiovisuel. Crédité à l'IMDB. Carrière internationale, 4 pays.</div>
+      </div>
+      <div class="exp-period">2010 — 2021</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="s-title">Stack</div>
+  <div class="skills-line">
+    <strong>Core :</strong> TypeScript · React · Vue 3 · Svelte · Next.js · Nuxt 3 · Astro<br>
+    <strong>Tooling :</strong> Vite · TailwindCSS · Pinia · Zustand · Storybook · Framer Motion<br>
+    <strong>Pratiques :</strong> Responsive · WCAG · Tests E2E · Design Systems · REST APIs
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="s-title">Projets</div>
+  <div class="proj-list">
+    <div class="proj"><span class="proj-name">thepause.app</span><span class="proj-desc">Application de méditation — projet personnel déployé</span></div>
+    <div class="proj"><span class="proj-name">Calcul TJM</span><span class="proj-desc">Simulateur de revenus freelance (micro/SASU/EURL)</span></div>
+    <div class="proj"><span class="proj-name">Polishable</span><span class="proj-desc">Extension browser — screenshots, icônes, analyse PWA</span></div>
+    <div class="proj"><span class="proj-name">Sestini Pizza →</span><span class="proj-desc">0 → 250k€ CA · branding complet + site web · <em style="color:var(--gold)">case study</em></span></div>
+    <div class="proj"><span class="proj-name">Jamais 203 →</span><span class="proj-desc">Agence audiovisuelle · Balenciaga, Canal+, Warner · <em style="color:var(--gold)">case study</em></span></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/maxiim3">GitHub</a>
+    <a href="https://www.linkedin.com/in/max-graux">LinkedIn</a>
+    <a href="mailto:max@maxgraux.dev">Email</a>
+  </div>
+  <div class="footer-copy">Maxime Tamburrini · Frontend Developer</div>
+</footer>
+
+</body>
+</html>

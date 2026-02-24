@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal Cosmos — Maxime Tamburrini</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D0D0D;
+  --green: #00FF41;
+  --green-dim: rgba(0,255,65,.08);
+  --green-mid: rgba(0,255,65,.5);
+  --text: #c8ffc8;
+  --muted: #4a7a4a;
+  --border: rgba(0,255,65,.15);
+}
+body { font-family: 'JetBrains Mono', 'Courier New', monospace; background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+
+/* Scanline effect */
+body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px); pointer-events: none; z-index: 9999; }
+
+.label { position: fixed; top: 16px; right: 16px; z-index: 9998; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--green); color: #000; padding: 5px 10px; border-radius: 2px; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: rgba(13,13,13,.95); border-bottom: 1px solid var(--border); }
+.nav-logo { font-size: 13px; font-weight: 700; color: var(--green); }
+.nav-logo span { color: var(--muted); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.nav-links a::before { content: '> '; color: var(--green); }
+.nav-links a:hover { color: var(--green); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 100px 48px 60px; max-width: 900px; }
+.prompt { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.prompt span { color: var(--green); }
+
+.hero-name { font-size: clamp(36px,6vw,72px); font-weight: 700; color: var(--green); line-height: 1.1; margin-bottom: 8px; letter-spacing: -.02em; }
+.cursor { display: inline-block; width: 3px; height: 1em; background: var(--green); margin-left: 4px; vertical-align: middle; animation: blink .8s step-end infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+.hero-title { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+.hero-title span { color: var(--text); }
+
+.hero-tagline { font-size: 14px; color: var(--text); line-height: 1.65; max-width: 520px; margin-bottom: 32px; border-left: 2px solid var(--green); padding-left: 16px; }
+
+.hero-stack { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.stack-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border: 1px solid var(--green); color: var(--green); border-radius: 2px; background: var(--green-dim); }
+
+.hero-avail { font-size: 11px; color: var(--muted); margin-bottom: 28px; }
+.hero-avail::before { content: '# '; color: var(--green); }
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-p { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; padding: 10px 22px; background: var(--green); color: #000; border: none; border-radius: 2px; cursor: pointer; text-decoration: none; transition: all .15s; }
+.btn-p:hover { background: #00cc33; }
+.btn-s { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; padding: 10px 22px; background: transparent; color: var(--green); border: 1px solid var(--green); border-radius: 2px; cursor: pointer; text-decoration: none; transition: all .15s; }
+.btn-s:hover { background: var(--green-dim); }
+
+/* Sections */
+.section { max-width: 900px; margin: 0 auto; padding: 60px 48px; border-top: 1px solid var(--border); }
+.s-header { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+.s-header::before { content: '~/'; color: var(--muted); }
+.s-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* Skills as terminal output */
+.terminal-block { background: rgba(0,0,0,.4); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; }
+.t-line { font-size: 12px; line-height: 2; }
+.t-key { color: var(--green); }
+.t-val { color: var(--text); }
+.t-sep { color: var(--muted); }
+
+/* Experience as log */
+.log-list { display: flex; flex-direction: column; gap: 20px; }
+.log-entry { padding: 0; }
+.log-timestamp { font-size: 10px; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+.log-level { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 2px; margin-right: 8px; }
+.log-level.info { background: rgba(0,255,65,.15); color: var(--green); }
+.log-level.work { background: rgba(0,180,255,.12); color: #00b4ff; }
+.log-title { font-size: 14px; font-weight: 600; color: var(--text); display: inline; }
+.log-company { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.log-desc { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.6; border-left: 1px solid var(--border); padding-left: 12px; }
+
+footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+.footer-links a:hover { color: var(--green); }
+.footer-copy { font-size: 11px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="label">03 · Terminal</div>
+
+<nav>
+  <div class="nav-logo">max<span>@portfolio</span>:~$</div>
+  <ul class="nav-links">
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#exp">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="prompt"><span>max@portfolio</span>:~$ whoami</div>
+  <h1 class="hero-name">Maxime Tamburrini<span class="cursor"></span></h1>
+  <div class="hero-title">role: <span>Frontend Developer</span></div>
+  <p class="hero-tagline">Construit avec le produit, l'utilisateur et le business en tête.</p>
+  <div class="hero-stack">
+    <span class="stack-tag">React</span>
+    <span class="stack-tag">Vue</span>
+    <span class="stack-tag">Svelte</span>
+    <span class="stack-tag">TypeScript</span>
+  </div>
+  <div class="hero-avail">Disponible · Remote / Europe</div>
+  <div class="hero-ctas">
+    <a href="#" class="btn-p">./download-cv.sh</a>
+    <a href="#" class="btn-s">./contact.sh</a>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="s-header">stack</div>
+  <div class="terminal-block">
+    <div class="t-line"><span class="t-key">core</span><span class="t-sep">:</span>    <span class="t-val">TypeScript · React · Vue 3 · Svelte · Next.js · Nuxt 3 · Astro</span></div>
+    <div class="t-line"><span class="t-key">tooling</span><span class="t-sep">:</span> <span class="t-val">Vite · TailwindCSS · Pinia · Zustand · Storybook · Framer Motion</span></div>
+    <div class="t-line"><span class="t-key">ops</span><span class="t-sep">:</span>     <span class="t-val">Responsive · WCAG · Tests E2E · Design Systems · REST APIs · Git</span></div>
+    <div class="t-line"><span class="t-key">next</span><span class="t-sep">:</span>    <span class="t-val">Angular · WebAssembly · Rust · Go</span></div>
+  </div>
+</section>
+
+<section class="section" id="exp">
+  <div class="s-header">experience</div>
+  <div class="log-list">
+    <div class="log-entry">
+      <div class="log-timestamp">2024-02-01 → now</div>
+      <div><span class="log-level work">CDI</span><span class="log-title">Développeur Front-End Vue.js / Nuxt</span></div>
+      <div class="log-company">@ Airddm</div>
+      <div class="log-desc">Grands comptes (Heineken, Michelin, Bosch). Design système avec Storybook, testing e2e, architecture front-end. B2B2C app from scratch, migration Django → Vue.js.</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-timestamp">2022-01-01 → now</div>
+      <div><span class="log-level info">Freelance</span><span class="log-title">Développeur Front-End Freelance</span></div>
+      <div class="log-company">@ Indépendant</div>
+      <div class="log-desc">Clients directs, gestion A à Z. React, Next.js, Vue, Svelte.</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-timestamp">2010-01-01 → 2021-12-31</div>
+      <div><span class="log-level info">Freelance</span><span class="log-title">Ingénieur du son — Post-production cinéma</span></div>
+      <div class="log-company">@ Indépendant · IMDB credited</div>
+      <div class="log-desc">Post-production sonore cinéma et audiovisuel. Carrière internationale, 4 pays.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="s-header">projects</div>
+  <div class="terminal-block">
+    <div class="t-line"><span class="t-key">thepause.app</span><span class="t-sep">  →</span> <span class="t-val">App méditation — side project déployé</span></div>
+    <div class="t-line"><span class="t-key">calcul-tjm.fr</span><span class="t-sep"> →</span> <span class="t-val">Simulateur revenus freelance (micro/SASU/EURL)</span></div>
+    <div class="t-line"><span class="t-key">polishable.app</span><span class="t-sep"> →</span> <span class="t-val">Extension browser — screenshots, icônes, PWA</span></div>
+    <div class="t-line"><span class="t-key">sestini-pizza</span><span class="t-sep"> →</span> <span class="t-val">0 → 250k€ CA · branding complet + site Next.js  [case study]</span></div>
+    <div class="t-line"><span class="t-key">jamais-203</span><span class="t-sep">    →</span> <span class="t-val">Agence audiovisuelle · Balenciaga, Canal+, Warner  [case study]</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/maxiim3">github</a>
+    <a href="https://www.linkedin.com/in/max-graux">linkedin</a>
+    <a href="mailto:max@maxgraux.dev">email</a>
+  </div>
+  <div class="footer-copy">max@portfolio:~$ exit</div>
+</footer>
+
+</body>
+</html>

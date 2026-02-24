@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bento Space — Maxime Tamburrini</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #080B14;
+  --indigo: #6366F1;
+  --indigo-dim: rgba(99,102,241,.1);
+  --indigo-glow: rgba(99,102,241,.25);
+  --text: #E2E8F0;
+  --muted: #64748B;
+  --border: rgba(99,102,241,.15);
+  --card: rgba(255,255,255,.03);
+  --card-hover: rgba(99,102,241,.05);
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+.label { position: fixed; top: 16px; right: 16px; z-index: 999; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--indigo); color: #fff; padding: 5px 10px; border-radius: 4px; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 56px; background: rgba(8,11,20,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-size: 14px; font-weight: 800; letter-spacing: -.02em; color: var(--text); }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--text); }
+
+/* Hero — traditional */
+.hero { max-width: 800px; margin: 0 auto; padding: 130px 40px 64px; }
+.hero-avail { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); background: var(--card); border: 1px solid var(--border); padding: 4px 12px; border-radius: 20px; margin-bottom: 24px; }
+.hero-avail::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+.hero-name { font-size: clamp(42px,7vw,82px); font-weight: 900; letter-spacing: -.04em; line-height: .95; color: var(--text); margin-bottom: 12px; }
+.hero-title { font-size: 18px; font-weight: 300; color: var(--muted); margin-bottom: 18px; }
+.hero-tagline { font-size: 16px; font-weight: 300; color: rgba(226,232,240,.55); line-height: 1.65; max-width: 480px; margin-bottom: 28px; }
+.hero-stack { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.stack-badge { font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--indigo-dim); color: var(--indigo); }
+.hero-ctas { display: flex; gap: 10px; }
+.btn-p { padding: 11px 24px; background: var(--indigo); color: #fff; font-size: 13px; font-weight: 600; border-radius: 8px; text-decoration: none; box-shadow: 0 0 24px var(--indigo-glow); transition: all .2s; }
+.btn-p:hover { box-shadow: 0 0 48px var(--indigo-glow); transform: translateY(-1px); }
+.btn-s { padding: 11px 24px; border: 1px solid var(--border); color: var(--text); font-size: 13px; font-weight: 500; border-radius: 8px; text-decoration: none; transition: all .2s; }
+.btn-s:hover { border-color: var(--indigo); color: var(--indigo); }
+
+/* BENTO GRID */
+.bento-wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px 80px; }
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 12px;
+}
+
+/* Card base */
+.bc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color .2s, background .2s, transform .2s;
+  position: relative;
+  overflow: hidden;
+}
+.bc:hover { border-color: rgba(99,102,241,.35); background: var(--card-hover); transform: translateY(-2px); }
+.bc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(99,102,241,.4), transparent); opacity: 0; transition: opacity .2s; }
+.bc:hover::before { opacity: 1; }
+
+.bc-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--indigo); margin-bottom: 16px; }
+
+/* Grid placement */
+.bc-about { grid-column: span 8; }
+.bc-contact { grid-column: span 4; display: flex; flex-direction: column; justify-content: space-between; }
+.bc-skills-core { grid-column: span 5; }
+.bc-skills-tools { grid-column: span 4; }
+.bc-skills-exp { grid-column: span 3; }
+.bc-exp1 { grid-column: span 6; }
+.bc-exp2 { grid-column: span 6; }
+.bc-proj1 { grid-column: span 4; }
+.bc-proj2 { grid-column: span 4; }
+.bc-proj3 { grid-column: span 4; }
+
+/* Corner glow accent */
+.bc-about::after { content: ''; position: absolute; bottom: -40px; right: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(99,102,241,.15), transparent 70%); pointer-events: none; }
+
+.bc-about p { font-size: 14px; color: rgba(226,232,240,.65); line-height: 1.7; }
+.bc-about strong { color: var(--text); font-weight: 600; }
+
+.contact-links { display: flex; flex-direction: column; gap: 10px; }
+.contact-link { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.contact-link:hover { color: var(--indigo); }
+.contact-link::before { content: '→'; color: var(--indigo); font-size: 11px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag { font-size: 11px; padding: 3px 9px; border-radius: 4px; background: var(--indigo-dim); color: var(--text); border: 1px solid rgba(99,102,241,.12); }
+
+.exp-role { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.exp-co { font-size: 12px; color: var(--indigo); margin-bottom: 4px; }
+.exp-period { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+.exp-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+.proj-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.proj-tag { font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--indigo); margin-bottom: 10px; }
+.proj-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.proj-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--indigo); text-decoration: none; margin-top: 12px; transition: gap .15s; }
+.proj-link:hover { gap: 8px; }
+
+footer { border-top: 1px solid var(--border); padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: var(--indigo); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="label">06 · Bento Space</div>
+
+<nav>
+  <div class="nav-logo">MT</div>
+  <ul class="nav-links">
+    <li><a href="#">Expérience</a></li>
+    <li><a href="#">Skills</a></li>
+    <li><a href="#">Projets</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-avail">Disponible · Remote / Europe</div>
+  <h1 class="hero-name">Maxime<br>Tamburrini</h1>
+  <p class="hero-title">Frontend Developer</p>
+  <p class="hero-tagline">Construit avec le produit, l'utilisateur et le business en tête.</p>
+  <div class="hero-stack">
+    <span class="stack-badge">React</span>
+    <span class="stack-badge">Vue</span>
+    <span class="stack-badge">Svelte</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#" class="btn-p">Télécharger le CV</a>
+    <a href="#" class="btn-s">Me contacter</a>
+  </div>
+</section>
+
+<div class="bento-wrap">
+  <div class="bento-grid">
+
+    <!-- About -->
+    <div class="bc bc-about">
+      <div class="bc-label">À propos</div>
+      <p>Développeur frontend multi-framework. Avant le code, <strong>10 ans dans la musique et le cinéma</strong> — ingénieur du son crédité à l'IMDB. Cette expérience transversale me permet d'aborder chaque projet avec une <strong>vision produit et business</strong>, pas seulement technique.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="bc bc-contact">
+      <div class="bc-label">Contact</div>
+      <div class="contact-links">
+        <a href="https://github.com/maxiim3" class="contact-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/max-graux" class="contact-link">LinkedIn</a>
+        <a href="mailto:max@maxgraux.dev" class="contact-link">Email</a>
+      </div>
+    </div>
+
+    <!-- Skills Core -->
+    <div class="bc bc-skills-core">
+      <div class="bc-label">Core</div>
+      <div class="tags">
+        <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Vue 3</span>
+        <span class="tag">Svelte</span><span class="tag">Next.js</span><span class="tag">Nuxt 3</span><span class="tag">Astro</span>
+      </div>
+    </div>
+
+    <!-- Skills Tooling -->
+    <div class="bc bc-skills-tools">
+      <div class="bc-label">Tooling</div>
+      <div class="tags">
+        <span class="tag">Vite</span><span class="tag">TailwindCSS</span><span class="tag">Pinia</span>
+        <span class="tag">Zustand</span><span class="tag">Storybook</span><span class="tag">Framer Motion</span>
+      </div>
+    </div>
+
+    <!-- Skills Exploring -->
+    <div class="bc bc-skills-exp">
+      <div class="bc-label">Exploring</div>
+      <div class="tags">
+        <span class="tag">Angular</span><span class="tag">Rust</span><span class="tag">Go</span><span class="tag">WASM</span>
+      </div>
+    </div>
+
+    <!-- Exp 1 -->
+    <div class="bc bc-exp1">
+      <div class="bc-label">CDI · Fév 2024 — Présent</div>
+      <div class="exp-role">Développeur Front-End Vue.js / Nuxt</div>
+      <div class="exp-co">Airddm</div>
+      <div class="exp-desc">Grands comptes (Heineken, Michelin, Bosch). Design système avec Storybook, testing e2e, architecture front-end. B2B2C from scratch.</div>
+    </div>
+
+    <!-- Exp 2 -->
+    <div class="bc bc-exp2">
+      <div class="bc-label">Freelance · 2022 — Présent</div>
+      <div class="exp-role">Développeur Front-End Freelance</div>
+      <div class="exp-co">Indépendant</div>
+      <div class="exp-desc">Clients directs, gestion complète A à Z. React, Next.js, Vue, Svelte.</div>
+    </div>
+
+    <!-- Projects -->
+    <div class="bc bc-proj1">
+      <div class="bc-label">Side project</div>
+      <div class="proj-name">thepause.app</div>
+      <div class="proj-desc">Application de méditation — projet personnel déployé. Conçu de A à Z.</div>
+      <a href="#" class="proj-link">Voir →</a>
+    </div>
+    <div class="bc bc-proj2">
+      <div class="bc-label">Outil</div>
+      <div class="proj-name">Calcul TJM</div>
+      <div class="proj-desc">Simulateur de revenus freelance : comparaison micro-entreprise, SASU et EURL en temps réel.</div>
+      <a href="#" class="proj-link">Voir →</a>
+    </div>
+    <div class="bc bc-proj3">
+      <div class="bc-label">Extension</div>
+      <div class="proj-name">Polishable</div>
+      <div class="proj-desc">Extension navigateur pour le shipping d'apps web : screenshots, icônes, PWA.</div>
+      <a href="#" class="proj-link">Voir →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/maxiim3">GitHub</a>
+    <a href="https://www.linkedin.com/in/max-graux">LinkedIn</a>
+    <a href="mailto:max@maxgraux.dev">Email</a>
+  </div>
+  <div class="footer-copy">Maxime Tamburrini · Frontend Developer</div>
+</footer>
+
+</body>
+</html>

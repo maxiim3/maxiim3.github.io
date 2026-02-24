@@ -39,7 +39,10 @@
       "mcp__chrome-devtools__press_key",
       "Bash(pkill:*)",
       "Bash(lsof:*)",
-      "Bash(echo \"\" >> ~/.bashrc && echo \"alias lg='lazygit'\" >> ~/.bashrc)"
+      "Bash(echo \"\" >> ~/.bashrc && echo \"alias lg='lazygit'\" >> ~/.bashrc)",
+      "Bash(bunx astro:*)",
+      "Bash(bunx magicui-cli@latest:*)",
+      "WebFetch(domain:magicui.design)"
     ]
   },
   "disabledMcpjsonServers": [
