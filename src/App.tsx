@@ -6,6 +6,7 @@ const concepts = {
   "starfield-typing": lazy(() => import("./concepts/v4-starfield-typing")),
   "monograph-2": lazy(() => import("./concepts/v3-1-monograph-2")),
   "monograph-typing": lazy(() => import("./concepts/v4-monograph-typing")),
+  "monograph-cold": lazy(() => import("./concepts/v4-monograph-cold")),
   "monograph-stars": lazy(() => import("./concepts/v4-monograph-stars")),
   "terminal-3": lazy(() => import("./concepts/v3-2-terminal-3")),
 } as const;
@@ -20,7 +21,7 @@ const aliases: Record<string, ConceptKey> = {
 const groups = [
   {
     label: "Monograph",
-    keys: ["monograph-2", "monograph-stars"] as ConceptKey[],
+    keys: ["monograph-2", "monograph-cold", "monograph-stars"] as ConceptKey[],
   },
 ];
 
@@ -29,6 +30,7 @@ const labels: Record<ConceptKey, string> = {
   "starfield-typing": "Stars + Typing",
   "monograph-2": "Bubbles",
   "monograph-typing": "Bubbles + Typing",
+  "monograph-cold": "Bubbles (Cold)",
   "monograph-stars": "Stars",
   "terminal-3": "Space Mono",
 };
