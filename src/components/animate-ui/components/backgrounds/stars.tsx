@@ -22,7 +22,7 @@ type StarLayerProps = HTMLMotionProps<'div'> & {
 function generateStars(count: number, starColor: string) {
   const shadows: string[] = [];
   for (let i = 0; i < count; i++) {
-    const x = Math.floor(Math.random() * 4000) - 2000;
+    const x = Math.floor(Math.random() * 6000) - 3000;
     const y = Math.floor(Math.random() * 4000) - 2000;
     shadows.push(`${x}px ${y}px ${starColor}`);
   }
@@ -37,11 +37,7 @@ function StarLayer({
   className,
   ...props
 }: StarLayerProps) {
-  const [boxShadow, setBoxShadow] = React.useState<string>('');
-
-  React.useEffect(() => {
-    setBoxShadow(generateStars(count, starColor));
-  }, [count, starColor]);
+  const boxShadow = React.useMemo(() => generateStars(count, starColor), [count, starColor]);
 
   return (
     <motion.div
@@ -111,13 +107,14 @@ function StarsBackground({
     <div
       data-slot="stars-background"
       className={cn(
-        'relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#161616_0%,_#000_100%)]',
+        'relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#0a0a0b_0%,_#000_100%)]',
         className,
       )}
       onMouseMove={handleMouseMove}
       {...props}
     >
       <motion.div
+        aria-hidden="true"
         style={{ x: springX, y: springY }}
         className={cn('absolute -inset-[10%]', { 'pointer-events-none': !pointerEvents })}
       >

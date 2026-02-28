@@ -66,7 +66,7 @@ function Switcher({
     <div className="fixed top-4 right-4 z-[100] font-sans select-none">
       <button
         onClick={() => setOpen(!open)}
-        className="mb-2 ml-auto flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-md px-3 py-1.5 text-[11px] text-white/70 hover:bg-white/15 transition-colors cursor-pointer border border-white/10"
+        className="mb-2 ml-auto flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-md px-3 py-1.5 text-[11px] text-[#b3b3b3] hover:bg-white/15 transition-colors cursor-pointer border border-white/10"
       >
         <span className="text-[9px]">{open ? "✕" : "◆"}</span>
         <span className="uppercase tracking-[0.15em] font-medium">
@@ -78,7 +78,7 @@ function Switcher({
         <div className="rounded-xl bg-black/80 backdrop-blur-xl border border-white/10 p-3 min-w-[160px]">
           {groups.map((group, gi) => (
             <div key={group.label} className={gi > 0 ? "mt-3" : ""}>
-              <div className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/30 mb-1.5 px-1">
+              <div className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#8a8a8a] mb-1.5 px-1">
                 {group.label}
               </div>
               <div className="flex flex-col gap-0.5">
@@ -89,10 +89,10 @@ function Switcher({
                     className={`text-left rounded-md px-2 py-1.5 text-xs transition-colors cursor-pointer ${
                       current === key
                         ? "bg-white/15 text-white"
-                        : "text-white/50 hover:text-white/80 hover:bg-white/5"
+                        : "text-[#999] hover:text-white/80 hover:bg-white/5"
                     }`}
                   >
-                    <span className="text-white/20 mr-1.5 text-[10px] tabular-nums">
+                    <span className="text-[#777] mr-1.5 text-[10px] tabular-nums">
                       {i + 1}
                     </span>
                     {labels[key]}

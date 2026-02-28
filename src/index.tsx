@@ -3,6 +3,10 @@ import index from "./index.html";
 
 const server = serve({
   routes: {
+    "/robots.txt": new Response(Bun.file("public/robots.txt"), {
+      headers: { "Content-Type": "text/plain" },
+    }),
+
     // Serve index.html for all unmatched routes.
     "/*": index,
 

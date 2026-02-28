@@ -61,7 +61,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <motion.h2
       {...fadeUp}
-      className="mb-16 font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-zinc-500"
+      className="mb-16 font-sans text-[11px] font-medium uppercase tracking-[0.3em] text-zinc-400"
     >
       {children}
     </motion.h2>
@@ -99,7 +99,7 @@ function ProjectCard({
         <span className="font-serif text-6xl md:text-7xl font-thin text-white/8 leading-none select-none">
           {num}
         </span>
-        <span className="font-sans text-[11px] tracking-[0.15em] text-zinc-600 tabular-nums">
+        <span className="font-sans text-[11px] tracking-[0.15em] text-zinc-400 tabular-nums">
           {year}
         </span>
       </div>
@@ -127,7 +127,7 @@ function ProjectCard({
           {tech.map((t) => (
             <span
               key={t}
-              className="border border-white/8 px-3 py-1 font-sans text-[11px] tracking-wide text-zinc-500"
+              className="border border-white/8 px-3 py-1 font-sans text-[11px] tracking-wide text-zinc-400"
             >
               {t}
             </span>
@@ -177,7 +177,7 @@ function ExperienceRow({
         </p>
       </div>
       <div className="md:col-span-2 flex items-start md:justify-end">
-        <span className="font-sans text-[11px] tracking-[0.15em] text-zinc-600 tabular-nums">
+        <span className="font-sans text-[11px] tracking-[0.15em] text-zinc-400 tabular-nums">
           {period}
         </span>
       </div>
@@ -218,10 +218,10 @@ export default function V3Monograph2() {
               onClick={() => setLang(l)}
               aria-current={lang === l ? "true" : undefined}
               className={cn(
-                "px-3 py-1.5 font-sans text-[11px] font-medium uppercase tracking-[0.3em] transition-colors duration-300 cursor-pointer",
+                "px-3 py-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center font-sans text-[11px] font-medium uppercase tracking-[0.3em] transition-colors duration-300 cursor-pointer",
                 lang === l
                   ? "text-zinc-100"
-                  : "text-zinc-600 hover:text-sky-400",
+                  : "text-zinc-400 hover:text-sky-400",
               )}
             >
               {l}
@@ -247,7 +247,7 @@ export default function V3Monograph2() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-              className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-zinc-500"
+              className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-zinc-400"
             >
               {content.title[lang]}
             </motion.p>
@@ -281,7 +281,7 @@ export default function V3Monograph2() {
               <a
                 href="/cv.pdf"
                 download
-                className="flex items-center gap-2 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-500 transition-colors duration-300 hover:text-sky-400"
+                className="flex items-center gap-2 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-400 transition-colors duration-300 hover:text-sky-400"
               >
                 <Download className="h-3.5 w-3.5" />
                 {content.cta.downloadCV[lang]}
@@ -295,8 +295,9 @@ export default function V3Monograph2() {
           className="flex justify-center pb-4"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
         >
-          <ChevronDown className="h-4 w-4 text-zinc-700" />
+          <ChevronDown className="h-4 w-4 text-zinc-500" />
         </motion.div>
       </header>
 
@@ -335,7 +336,7 @@ export default function V3Monograph2() {
                   <span className="font-serif text-5xl font-thin text-zinc-100 tabular-nums leading-none">
                     {stat.value}
                   </span>
-                  <span className="mt-2 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500 whitespace-pre-line">
+                  <span className="mt-2 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 whitespace-pre-line">
                     {stat.label[lang]}
                   </span>
                 </div>
@@ -449,7 +450,7 @@ export default function V3Monograph2() {
                   target={href.startsWith("mailto") ? undefined : "_blank"}
                   rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   aria-label={label}
-                  className="group flex items-center gap-3 font-sans text-sm text-zinc-500 transition-colors duration-300 hover:text-sky-400"
+                  className="group flex items-center gap-3 font-sans text-sm text-zinc-400 transition-colors duration-300 hover:text-sky-400"
                 >
                   <Icon className="h-4 w-4" />
                   <span className="font-medium uppercase tracking-[0.2em] text-[11px]">
@@ -474,10 +475,10 @@ export default function V3Monograph2() {
       {/* ── FOOTER ──────────────────────────────────────────────────────── */}
       <footer className="relative z-10 border-t border-white/10 px-6 md:px-12 lg:px-24 py-10">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-serif text-lg font-thin text-zinc-600">
+          <span className="font-serif text-lg font-thin text-zinc-400">
             {content.name}
           </span>
-          <p className="font-sans text-[11px] tracking-[0.2em] text-zinc-600">
+          <p className="font-sans text-[11px] tracking-[0.2em] text-zinc-400">
             &copy; {new Date().getFullYear()} &mdash;{" "}
             {lang === "en" ? "All rights reserved" : "Tous droits réservés"}
           </p>

@@ -158,7 +158,7 @@ export default function V3Terminal3() {
       {/* ── Nav ──────────────────────────────────────────────────────── */}
       <header className="fixed top-0 right-0 left-0 z-40 border-b border-[#e0def4]/10 bg-[#191724]/90 backdrop-blur-sm">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-2 text-sm text-[#e0def4]/70">
+          <div className="flex items-center gap-2 text-sm text-[#a4a2b6]">
             <Terminal className="h-4 w-4" />
             <span>maxi@portfolio:~$</span>
           </div>
@@ -169,10 +169,10 @@ export default function V3Terminal3() {
                 onClick={() => setLang(l)}
                 aria-current={lang === l ? "true" : undefined}
                 className={cn(
-                  "px-2 py-1 text-xs uppercase transition-colors",
+                  "px-2 py-1 min-h-[44px] min-w-[44px] flex items-center justify-center text-xs uppercase transition-colors",
                   lang === l
                     ? "bg-[#c4a7e7] text-[#191724]"
-                    : "text-[#e0def4]/50 hover:text-[#e0def4]"
+                    : "text-[#a4a2b6] hover:text-[#e0def4]"
                 )}
               >
                 {l}
@@ -190,7 +190,7 @@ export default function V3Terminal3() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-6 text-sm text-[#e0def4]/50">
+            <div className="mb-6 text-sm text-[#a4a2b6]">
               <span className="select-none">{"> "}</span>
               <span className="text-[#eb6f92]">whoami</span>
             </div>
@@ -211,9 +211,9 @@ export default function V3Terminal3() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 2.4 }}
-            className="mt-8 text-sm leading-relaxed text-[#e0def4]/70"
+            className="mt-8 text-sm leading-relaxed text-[#a4a2b6]"
           >
-            <span className="select-none text-[#e0def4]/40">{"> "}</span>
+            <span className="select-none text-[#908ea1]">{"> "}</span>
             {t(content.subtitle)}
           </motion.div>
           <motion.div
@@ -230,7 +230,7 @@ export default function V3Terminal3() {
             </a>
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm text-[#e0def4]/50 transition-colors hover:text-[#e0def4]"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm text-[#a4a2b6] transition-colors hover:text-[#e0def4]"
             >
               <Download className="h-3.5 w-3.5" />
               {t(content.cta.downloadCV)}
@@ -241,7 +241,7 @@ export default function V3Terminal3() {
         {/* ── About ──────────────────────────────────────────────────── */}
         <Section id="about">
           <Cmd>{`cat ${lang === "en" ? "about" : "a-propos"}.txt`}</Cmd>
-          <Line delay={0.15} className="text-[#e0def4]/80">
+          <Line delay={0.15} className="text-[#b7b5c7]">
             {t(content.about)}
           </Line>
           <div className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
@@ -252,7 +252,7 @@ export default function V3Terminal3() {
             ].map((stat, i) => (
               <Line key={stat.label} delay={0.25 + i * 0.1}>
                 <span className="text-white">{stat.value}</span>
-                <span className="ml-2 text-[#e0def4]/50">{stat.label}</span>
+                <span className="ml-2 text-[#a4a2b6]">{stat.label}</span>
               </Line>
             ))}
           </div>
@@ -275,27 +275,27 @@ export default function V3Terminal3() {
                 >
                   <div className="mb-1 flex items-baseline gap-3">
                     <span className="text-[#eb6f92] text-xs select-none">[{idx}]</span>
-                    <h3 className="text-base text-white">{project.title}</h3>
-                    <span className="text-xs text-[#e0def4]/40">{project.year}</span>
+                    <h2 className="text-base text-white">{project.title}</h2>
+                    <span className="text-xs text-[#908ea1]">{project.year}</span>
                   </div>
-                  <Line delay={0.05} className="text-[#e0def4]/60 mb-2">
+                  <Line delay={0.05} className="text-[#908ea1] mb-2">
                     {t(project.tagline)}
                   </Line>
-                  <Line delay={0.1} className="text-[#e0def4]/50 text-xs leading-relaxed">
+                  <Line delay={0.1} className="text-[#a4a2b6] text-xs leading-relaxed">
                     {t(project.description)}
                   </Line>
                   <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="text-xs text-[#e0def4]/30">
+                      <span key={tech} className="text-xs text-[#908ea1]">
                         {tech}
                       </span>
                     ))}
-                    <span className="text-xs text-[#e0def4]/20">|</span>
-                    <span className="text-xs text-[#eb6f92]/60">{t(project.role)}</span>
+                    <span className="text-xs text-[#a4a2b6]">|</span>
+                    <span className="text-xs text-[#c15d7c]">{t(project.role)}</span>
                   </div>
                   <a
                     href={project.url}
-                    className="mt-3 inline-flex items-center gap-1 text-xs text-[#e0def4]/40 transition-colors hover:text-[#e0def4]"
+                    className="mt-3 inline-flex items-center gap-1 text-xs text-[#908ea1] transition-colors hover:text-[#e0def4]"
                   >
                     {t(content.cta.viewProject)}
                     <ArrowUpRight className="h-3 w-3" />
@@ -319,12 +319,12 @@ export default function V3Terminal3() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
               >
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
-                  <h3 className="text-sm text-white">{t(exp.role)}</h3>
-                  <span className="text-xs text-[#e0def4]/40">@ {exp.company}</span>
-                  <span className="text-xs text-[#eb6f92]/70">{exp.period}</span>
+                  <h2 className="text-sm text-white">{t(exp.role)}</h2>
+                  <span className="text-xs text-[#908ea1]">@ {exp.company}</span>
+                  <span className="text-xs text-[#ac5571]">{exp.period}</span>
                 </div>
-                <Line delay={0.08} className="mt-2 text-[#e0def4]/50 text-xs leading-relaxed">
-                  <span className="select-none text-[#e0def4]/20">{"> "}</span>
+                <Line delay={0.08} className="mt-2 text-[#a4a2b6] text-xs leading-relaxed">
+                  <span className="select-none text-[#a4a2b6]">{"> "}</span>
                   {t(exp.description)}
                 </Line>
               </motion.div>
@@ -344,15 +344,15 @@ export default function V3Terminal3() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: catIdx * 0.12 }}
               >
-                <div className="mb-2 text-xs text-[#eb6f92]/70">{cat.label}</div>
+                <div className="mb-2 text-xs text-[#ac5571]">{cat.label}</div>
                 <div className="flex flex-wrap gap-x-4 gap-y-1">
                   {content.skills[cat.key].map((skill, skillIdx) => (
                     <Line
                       key={skill}
                       delay={catIdx * 0.1 + skillIdx * 0.04}
-                      className="text-[#e0def4]/70 text-xs"
+                      className="text-[#a4a2b6] text-xs"
                     >
-                      <span className="select-none text-[#e0def4]/25">- </span>
+                      <span className="select-none text-[#7d7b8c]">- </span>
                       {skill}
                     </Line>
                   ))}
@@ -365,8 +365,8 @@ export default function V3Terminal3() {
         {/* ── Contact ─────────────────────────────────────────────────── */}
         <Section id="contact">
           <Cmd>{t(content.sections.contact).toLowerCase()}</Cmd>
-          <Line delay={0.1} className="text-[#e0def4]/60 mb-6">
-            <span className="select-none text-[#e0def4]/20">{"> "}</span>
+          <Line delay={0.1} className="text-[#908ea1] mb-6">
+            <span className="select-none text-[#a4a2b6]">{"> "}</span>
             {lang === "en"
               ? "Open for freelance projects and interesting collaborations."
               : "Ouvert aux projets freelance et aux collaborations intéressantes."}
@@ -384,7 +384,7 @@ export default function V3Terminal3() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.15 + i * 0.08 }}
-                  className="flex items-center gap-2 border border-[#e0def4]/15 px-3 py-2 text-xs text-[#e0def4]/60 transition-colors hover:border-[#e0def4]/40 hover:text-[#e0def4]"
+                  className="flex items-center gap-2 border border-[#e0def4]/15 px-3 py-2 min-h-[44px] text-xs text-[#908ea1] transition-colors hover:border-[#e0def4]/60 hover:text-[#e0def4]"
                   aria-label={link.label}
                 >
                   <Icon className="h-3.5 w-3.5" />
@@ -393,7 +393,7 @@ export default function V3Terminal3() {
               );
             })}
           </div>
-          <Line delay={0.5} className="mt-6 text-[#e0def4]/40">
+          <Line delay={0.5} className="mt-6 text-[#908ea1]">
             <a
               href={`mailto:${content.socials.email}`}
               className="transition-colors hover:text-[#e0def4]"
@@ -406,14 +406,14 @@ export default function V3Terminal3() {
 
       {/* ── Footer ──────────────────────────────────────────────────── */}
       <footer className="border-t border-[#e0def4]/10 px-4 py-8 sm:px-6">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-2 text-center text-xs text-[#e0def4]/30">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-2 text-center text-xs text-[#908ea1]">
           <span>
             {"> "}exit 0
           </span>
           <span>
             &copy; {new Date().getFullYear()} {content.name}. All rights reserved.
           </span>
-          <span className="text-[#e0def4]/15">
+          <span className="text-[#7d7b8c]">
             PID 1 — uptime {content.stats.yearsExp}y — 0 errors
           </span>
         </div>

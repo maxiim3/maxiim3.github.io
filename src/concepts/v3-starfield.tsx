@@ -190,7 +190,7 @@ export default function V3Starfield() {
                   onClick={() => setLang(l)}
                   aria-current={lang === l ? "true" : undefined}
                   className={cn(
-                    "rounded-md px-3 py-1.5 text-xs font-light uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer",
+                    "rounded-md px-3 py-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-xs font-light uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer",
                     lang === l
                       ? "text-white"
                       : "text-zinc-300 hover:text-zinc-200",
@@ -262,8 +262,9 @@ export default function V3Starfield() {
             className="absolute bottom-10 left-1/2 -translate-x-1/2"
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
           >
-            <ChevronDown className="h-4 w-4 text-zinc-500" />
+            <ChevronDown className="h-4 w-4 text-zinc-400" />
           </motion.div>
         </section>
 
@@ -439,7 +440,7 @@ export default function V3Starfield() {
 
         {/* ── FOOTER ──────────────────────────────────────────────────────── */}
         <footer className="py-10 px-6 text-center">
-          <p className="text-xs font-light tracking-[0.25em] text-zinc-500">
+          <p className="text-xs font-light tracking-[0.25em] text-zinc-400">
             &copy; {new Date().getFullYear()} {content.name}
           </p>
         </footer>
