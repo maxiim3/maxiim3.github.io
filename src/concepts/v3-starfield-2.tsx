@@ -9,7 +9,7 @@ import {
   ChevronDown,
   ArrowUpRight,
 } from "lucide-react";
-import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
+import { GravityStarsBackground } from "@/components/animate-ui/components/backgrounds/gravity-stars";
 import { content, type Lang } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -161,17 +161,20 @@ function ExperienceRow({
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
-export default function V3Starfield() {
+export default function V3Starfield2() {
   const [lang, setLang] = useState<Lang>("en");
 
   return (
     <div className="min-h-screen text-zinc-100">
 
       {/* ── FIXED STAR BACKGROUND ─────────────────────────────────────────── */}
-      <StarsBackground
-        speed={80}
-        factor={0.03}
-        starColor="#e4e4e7"
+      <GravityStarsBackground
+        starsCount={100}
+        starsSize={2}
+        mouseGravity="attract"
+        gravityStrength={60}
+        movementSpeed={0.2}
+        glowIntensity={12}
         className="!fixed inset-0 z-0"
       />
 

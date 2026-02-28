@@ -9,7 +9,7 @@ import {
   ChevronDown,
   ArrowUpRight,
 } from "lucide-react";
-import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
+import { HoleBackground } from "@/components/animate-ui/components/backgrounds/hole";
 import { content, type Lang } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -161,17 +161,20 @@ function ExperienceRow({
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
-export default function V3Starfield() {
+export default function V3Starfield3() {
   const [lang, setLang] = useState<Lang>("en");
 
   return (
     <div className="min-h-screen text-zinc-100">
 
-      {/* ── FIXED STAR BACKGROUND ─────────────────────────────────────────── */}
-      <StarsBackground
-        speed={80}
-        factor={0.03}
-        starColor="#e4e4e7"
+      {/* ── FIXED HOLE BACKGROUND ─────────────────────────────────────────── */}
+      <HoleBackground
+        strokeColor="#38bdf8"
+        glowColor="#0ea5e9"
+        gradientColors={["#38bdf8", "#7dd3fc", "#e0f2fe"]}
+        numberOfLines={40}
+        numberOfDiscs={40}
+        particleRGBColor={[56, 189, 248]}
         className="!fixed inset-0 z-0"
       />
 
