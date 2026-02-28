@@ -110,7 +110,7 @@ function ProjectCard({
           <h3 className="font-serif text-3xl md:text-4xl font-thin tracking-tight text-zinc-100">
             {title}
           </h3>
-          <span className="font-sans text-xs font-medium uppercase tracking-[0.15em] text-amber-400">
+          <span className="font-sans text-xs font-medium uppercase tracking-[0.15em] text-sky-400">
             {role}
           </span>
         </div>
@@ -138,7 +138,7 @@ function ProjectCard({
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.2em] text-amber-400 transition-colors duration-300 hover:text-amber-300"
+          className="inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.2em] text-sky-400 transition-colors duration-300 hover:text-sky-300"
         >
           {viewLabel}
           <ArrowUpRight className="h-3.5 w-3.5" />
@@ -167,7 +167,7 @@ function ExperienceRow({
     >
       <div className="md:col-span-4 flex flex-col gap-1">
         <h3 className="font-serif text-xl font-thin text-zinc-100">{role}</h3>
-        <p className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-amber-400">
+        <p className="font-sans text-xs font-medium uppercase tracking-[0.2em] text-sky-400">
           {company}
         </p>
       </div>
@@ -221,7 +221,7 @@ export default function V3Monograph2() {
                 "px-3 py-1.5 font-sans text-[11px] font-medium uppercase tracking-[0.3em] transition-colors duration-300 cursor-pointer",
                 lang === l
                   ? "text-zinc-100"
-                  : "text-zinc-600 hover:text-amber-400",
+                  : "text-zinc-600 hover:text-sky-400",
               )}
             >
               {l}
@@ -273,7 +273,7 @@ export default function V3Monograph2() {
                     .getElementById("about")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="flex items-center gap-2 border border-white/12 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-300 transition-colors duration-300 hover:border-amber-400 hover:text-amber-400 cursor-pointer"
+                className="flex items-center gap-2 border border-white/12 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-300 transition-colors duration-300 hover:border-sky-400 hover:text-sky-400 cursor-pointer"
               >
                 {content.cta.explore[lang]}
                 <ChevronDown className="h-3 w-3" />
@@ -281,7 +281,7 @@ export default function V3Monograph2() {
               <a
                 href="/cv.pdf"
                 download
-                className="flex items-center gap-2 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-500 transition-colors duration-300 hover:text-amber-400"
+                className="flex items-center gap-2 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-500 transition-colors duration-300 hover:text-sky-400"
               >
                 <Download className="h-3.5 w-3.5" />
                 {content.cta.downloadCV[lang]}
@@ -429,7 +429,7 @@ export default function V3Monograph2() {
               <motion.a
                 {...fadeUp}
                 href={`mailto:${content.socials.email}`}
-                className="group mt-10 inline-flex items-center gap-3 font-serif text-3xl md:text-4xl font-thin text-amber-400 transition-colors duration-300 hover:text-amber-300"
+                className="group mt-10 inline-flex items-center gap-3 font-serif text-3xl md:text-4xl font-thin text-sky-400 transition-colors duration-300 hover:text-sky-300"
               >
                 {content.socials.email}
                 <ArrowUpRight className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
@@ -449,7 +449,7 @@ export default function V3Monograph2() {
                   target={href.startsWith("mailto") ? undefined : "_blank"}
                   rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                   aria-label={label}
-                  className="group flex items-center gap-3 font-sans text-sm text-zinc-500 transition-colors duration-300 hover:text-amber-400"
+                  className="group flex items-center gap-3 font-sans text-sm text-zinc-500 transition-colors duration-300 hover:text-sky-400"
                 >
                   <Icon className="h-4 w-4" />
                   <span className="font-medium uppercase tracking-[0.2em] text-[11px]">
@@ -461,7 +461,7 @@ export default function V3Monograph2() {
               <a
                 href="/cv.pdf"
                 download
-                className="mt-4 inline-flex items-center gap-2.5 border border-white/10 px-6 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-300 hover:border-amber-400 hover:text-amber-400 md:self-end"
+                className="mt-4 inline-flex items-center gap-2.5 border border-white/10 px-6 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-300 hover:border-sky-400 hover:text-sky-400 md:self-end"
               >
                 <Download className="h-3.5 w-3.5" />
                 {content.cta.downloadCV[lang]}

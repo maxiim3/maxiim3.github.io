@@ -77,7 +77,7 @@ function ProjectCard({
         "hover:border-white/[0.12] hover:bg-white/[0.05]",
       )}
     >
-      <span className="absolute top-8 right-8 text-xs tabular-nums text-zinc-400 font-light">
+      <span className="absolute top-8 right-8 text-xs tabular-nums text-zinc-300 font-light">
         {year}
       </span>
 
@@ -85,12 +85,12 @@ function ProjectCard({
         <h3 className="text-2xl font-light text-white tracking-tight mb-2">
           {title}
         </h3>
-        <p className="text-sm font-light text-zinc-300 leading-relaxed">
+        <p className="text-sm font-light text-zinc-200 leading-relaxed">
           {tagline}
         </p>
       </div>
 
-      <p className="mb-8 text-sm leading-[1.8] text-zinc-300 font-light">
+      <p className="mb-8 text-sm leading-[1.8] text-zinc-200 font-light">
         {description}
       </p>
 
@@ -98,7 +98,7 @@ function ProjectCard({
         {tech.map((t) => (
           <span
             key={t}
-            className="rounded-full border border-white/[0.06] px-3 py-1 text-xs font-light text-zinc-400"
+            className="rounded-full border border-white/[0.06] px-3 py-1 text-xs font-light text-zinc-300"
           >
             {t}
           </span>
@@ -106,7 +106,7 @@ function ProjectCard({
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="text-xs font-light text-zinc-300 uppercase tracking-[0.15em]">
+        <span className="text-xs font-light text-zinc-200 uppercase tracking-[0.15em]">
           {role}
         </span>
         <a
@@ -145,15 +145,15 @@ function ExperienceRow({
           <h3 className="text-lg font-light text-white leading-snug">
             {role}
           </h3>
-          <p className="mt-1 text-sm font-light text-zinc-400 uppercase tracking-[0.15em]">
+          <p className="mt-1 text-sm font-light text-zinc-300 uppercase tracking-[0.15em]">
             {company}
           </p>
         </div>
-        <span className="shrink-0 text-xs tabular-nums text-zinc-400 font-light">
+        <span className="shrink-0 text-xs tabular-nums text-zinc-300 font-light">
           {period}
         </span>
       </div>
-      <p className="text-sm leading-[1.8] text-zinc-300 font-light max-w-2xl">
+      <p className="text-sm leading-[1.8] text-zinc-200 font-light max-w-2xl">
         {description}
       </p>
     </motion.article>
@@ -193,7 +193,7 @@ export default function V3Starfield() {
                     "rounded-md px-3 py-1.5 text-xs font-light uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer",
                     lang === l
                       ? "text-white"
-                      : "text-zinc-400 hover:text-zinc-300",
+                      : "text-zinc-300 hover:text-zinc-200",
                   )}
                 >
                   {l}
@@ -215,7 +215,7 @@ export default function V3Starfield() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-            className="mb-4 text-base font-light uppercase tracking-[0.35em] text-zinc-300"
+            className="mb-4 text-base font-light uppercase tracking-[0.35em] text-zinc-200"
           >
             {content.title[lang]}
           </motion.p>
@@ -224,7 +224,7 @@ export default function V3Starfield() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.7 }}
-            className="mb-12 max-w-md text-sm font-light leading-loose text-zinc-300"
+            className="mb-12 max-w-md text-sm font-light leading-loose text-zinc-200"
           >
             {content.subtitle[lang]}
           </motion.p>
@@ -241,7 +241,7 @@ export default function V3Starfield() {
                   .getElementById("about")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="flex items-center gap-2 rounded-full border border-white/15 px-7 py-3 text-xs font-light uppercase tracking-[0.2em] text-zinc-300 hover:border-sky-400/40 hover:text-sky-300 transition-colors duration-300 cursor-pointer"
+              className="flex items-center gap-2 rounded-full border border-white/15 px-7 py-3 text-xs font-light uppercase tracking-[0.2em] text-zinc-200 hover:border-sky-400/40 hover:text-sky-300 transition-colors duration-300 cursor-pointer"
             >
               {content.cta.explore[lang]}
               <ChevronDown className="h-3.5 w-3.5" />
@@ -250,7 +250,7 @@ export default function V3Starfield() {
             <a
               href="/cv.pdf"
               download
-              className="flex items-center gap-2 rounded-full border border-white/[0.06] px-7 py-3 text-xs font-light uppercase tracking-[0.2em] text-zinc-300 hover:border-sky-400/30 hover:text-sky-300 transition-colors duration-300"
+              className="flex items-center gap-2 rounded-full border border-white/[0.06] px-7 py-3 text-xs font-light uppercase tracking-[0.2em] text-zinc-200 hover:border-sky-400/30 hover:text-sky-300 transition-colors duration-300"
             >
               <Download className="h-3.5 w-3.5" />
               {content.cta.downloadCV[lang]}
@@ -300,7 +300,7 @@ export default function V3Starfield() {
                 <span className="text-4xl font-thin text-sky-300 tabular-nums">
                   {stat.value}
                 </span>
-                <span className="text-xs font-light text-zinc-300 uppercase tracking-[0.2em]">
+                <span className="text-xs font-light text-zinc-200 uppercase tracking-[0.2em]">
                   {stat.label[lang]}
                 </span>
               </div>
@@ -365,7 +365,7 @@ export default function V3Starfield() {
                   {content.skills[cat.key].map((skill) => (
                     <span
                       key={skill}
-                      className="inline-block rounded-full border border-white/[0.06] bg-white/[0.03] px-4 py-1.5 text-sm font-light text-zinc-300"
+                      className="inline-block rounded-full border border-white/[0.06] bg-white/[0.03] px-4 py-1.5 text-sm font-light text-zinc-200"
                     >
                       {skill}
                     </span>
@@ -382,7 +382,7 @@ export default function V3Starfield() {
 
           <motion.p
             {...fade}
-            className="mb-16 text-sm font-light leading-loose text-zinc-300 max-w-md"
+            className="mb-16 text-sm font-light leading-loose text-zinc-200 max-w-md"
           >
             {lang === "en"
               ? "Available for freelance and full-time opportunities. Let's build something together."
@@ -393,10 +393,10 @@ export default function V3Starfield() {
           <motion.div {...fade} className="mb-16">
             <a
               href={`mailto:${content.socials.email}`}
-              className="group inline-flex items-center gap-3 text-2xl font-light text-zinc-300 border-b border-white/10 pb-3 transition-colors duration-300 hover:text-sky-300 hover:border-sky-400/30"
+              className="group inline-flex items-center gap-3 text-2xl font-light text-zinc-200 border-b border-white/10 pb-3 transition-colors duration-300 hover:text-sky-300 hover:border-sky-400/30"
             >
               {content.socials.email}
-              <ArrowUpRight className="h-5 w-5 text-zinc-400 transition-colors duration-300 group-hover:text-sky-400" />
+              <ArrowUpRight className="h-5 w-5 text-zinc-300 transition-colors duration-300 group-hover:text-sky-400" />
             </a>
           </motion.div>
 
@@ -414,7 +414,7 @@ export default function V3Starfield() {
                 target={href.startsWith("mailto") ? undefined : "_blank"}
                 rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
                 aria-label={label}
-                className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] px-5 py-3 text-sm font-light text-zinc-400 transition-colors duration-300 hover:border-sky-400/30 hover:text-sky-300"
+                className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] px-5 py-3 text-sm font-light text-zinc-300 transition-colors duration-300 hover:border-sky-400/30 hover:text-sky-300"
               >
                 <Icon className="h-4 w-4" />
                 {label}
@@ -427,7 +427,7 @@ export default function V3Starfield() {
             <a
               href="/cv.pdf"
               download
-              className="inline-flex items-center gap-3 rounded-full border border-white/[0.08] px-8 py-3.5 text-xs font-light uppercase tracking-[0.2em] text-zinc-300 hover:border-sky-400/30 hover:text-sky-300 transition-colors duration-500"
+              className="inline-flex items-center gap-3 rounded-full border border-white/[0.08] px-8 py-3.5 text-xs font-light uppercase tracking-[0.2em] text-zinc-200 hover:border-sky-400/30 hover:text-sky-300 transition-colors duration-500"
             >
               <Download className="h-3.5 w-3.5" />
               {content.cta.downloadCV[lang]}

@@ -3,48 +3,35 @@ import "./index.css";
 
 const concepts = {
   "starfield-1": lazy(() => import("./concepts/v3-starfield")),
-  "starfield-2": lazy(() => import("./concepts/v3-starfield-2")),
-  "starfield-3": lazy(() => import("./concepts/v3-starfield-3")),
-  "monograph-1": lazy(() => import("./concepts/v3-1-monograph")),
   "monograph-2": lazy(() => import("./concepts/v3-1-monograph-2")),
-  "monograph-3": lazy(() => import("./concepts/v3-1-monograph-3")),
-  "terminal-1": lazy(() => import("./concepts/v3-2-terminal")),
-  "terminal-2": lazy(() => import("./concepts/v3-2-terminal-2")),
   "terminal-3": lazy(() => import("./concepts/v3-2-terminal-3")),
 } as const;
 
 type ConceptKey = keyof typeof concepts;
 
 const aliases: Record<string, ConceptKey> = {
-  starfield: "starfield-1",
-  monograph: "monograph-1",
-  terminal: "terminal-1",
+  monograph: "monograph-2",
+  terminal: "terminal-3",
 };
 
 const groups = [
   {
     label: "Starfield",
-    keys: ["starfield-1", "starfield-2", "starfield-3"] as ConceptKey[],
+    keys: ["starfield-1"] as ConceptKey[],
   },
   {
     label: "Monograph",
-    keys: ["monograph-1", "monograph-2", "monograph-3"] as ConceptKey[],
+    keys: ["monograph-2"] as ConceptKey[],
   },
   {
     label: "Terminal",
-    keys: ["terminal-1", "terminal-2", "terminal-3"] as ConceptKey[],
+    keys: ["terminal-3"] as ConceptKey[],
   },
 ];
 
 const labels: Record<ConceptKey, string> = {
   "starfield-1": "Stars",
-  "starfield-2": "Gravity",
-  "starfield-3": "Hole",
-  "monograph-1": "Blobs",
   "monograph-2": "Bubbles",
-  "monograph-3": "Gradient",
-  "terminal-1": "System Mono",
-  "terminal-2": "JetBrains",
   "terminal-3": "Space Mono",
 };
 
