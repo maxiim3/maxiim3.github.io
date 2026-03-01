@@ -230,9 +230,10 @@ export default function V4MonographStars() {
             initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
             animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="-ml-1 md:-ml-2 font-serif text-[clamp(6rem,18vw,16rem)] font-thin leading-[0.85] tracking-tight text-zinc-100 select-none"
+            className="-ml-1 md:-ml-2 font-serif text-[clamp(3.5rem,18vw,16rem)] font-thin leading-[0.85] tracking-tight text-zinc-100 select-none"
           >
-            {content.name}
+            <span className="block">{content.firstName}</span>
+            <span className="block text-[0.75em] text-zinc-400">{content.lastName}</span>
           </motion.h1>
 
           {/* Title + subtitle */}
@@ -470,7 +471,7 @@ export default function V4MonographStars() {
       <footer className="relative z-10 border-t border-white/10 px-6 md:px-12 lg:px-24 py-10">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-serif text-lg font-thin text-zinc-400">
-            {content.name}
+            {content.firstName} {content.lastName}
           </span>
           <p className="font-sans text-[11px] tracking-[0.2em] text-zinc-400">
             &copy; {new Date().getFullYear()} &mdash;{" "}
