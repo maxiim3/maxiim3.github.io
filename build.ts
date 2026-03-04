@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
-import { rm } from "fs/promises";
+import { copyFile, rm } from "fs/promises";
 import path from "path";
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
@@ -145,5 +145,22 @@ const outputTable = result.outputs.map(output => ({
 
 console.table(outputTable);
 const buildTime = (end - start).toFixed(2);
+
+// Copy public assets and generate SPA fallback for GitHub Pages
+const publicDir = path.join(process.cwd(), "public");
+if (existsSync(publicDir)) {
+  for await (const file of new Bun.Glob("**/*").scan(publicDir)) {
+    await copyFile(path.join(publicDir, file), path.join(outdir, file));
+  }
+  console.log("📂 Copied public/ assets to dist/");
+}
+
+// 404.html = index.html (SPA fallback for GitHub Pages)
+await copyFile(path.join(outdir, "index.html"), path.join(outdir, "404.html"));
+console.log("📄 Created 404.html for SPA routing");
+
+// .nojekyll to bypass Jekyll processing
+await Bun.write(path.join(outdir, ".nojekyll"), "");
+console.log("📄 Created .nojekyll");
 
 console.log(`\n✅ Build completed in ${buildTime}ms\n`);
