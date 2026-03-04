@@ -76,7 +76,6 @@ function ProjectCard({
   description,
   tech,
   role,
-  year,
   url,
   viewLabel,
 }: {
@@ -86,21 +85,20 @@ function ProjectCard({
   description: string;
   tech: readonly string[];
   role: string;
-  year: string;
-  url: string;
+  url?: string;
   viewLabel: string;
 }) {
   const num = String(index + 1).padStart(2, "0");
 
   return (
-    <motion.article {...reveal} className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-      {/* Number + year column */}
+    <motion.article
+      {...reveal}
+      className="group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12"
+    >
+      {/* Number column */}
       <div className="md:col-span-2 flex md:flex-col items-baseline md:items-start gap-4 md:gap-2">
         <span className="font-serif text-6xl md:text-7xl font-thin text-white/8 leading-none select-none">
           {num}
-        </span>
-        <span className="font-sans text-[11px] tracking-[0.15em] text-zinc-400 tabular-nums">
-          {year}
         </span>
       </div>
 
@@ -134,15 +132,17 @@ function ProjectCard({
           ))}
         </div>
 
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.2em] text-sky-400 transition-colors duration-300 hover:text-sky-300"
-        >
-          {viewLabel}
-          <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
+        {url ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.2em] text-sky-400 transition-colors duration-300 hover:text-sky-300"
+          >
+            {viewLabel}
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        ) : null}
       </div>
     </motion.article>
   );
@@ -202,10 +202,7 @@ export default function V4MonographStars() {
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <header className="relative z-10 flex min-h-screen flex-col justify-between px-6 md:px-12 lg:px-24 py-8">
         {/* Top bar — language toggle */}
-        <nav
-          aria-label="Language"
-          className="flex justify-end gap-1"
-        >
+        <nav aria-label="Language" className="flex justify-end gap-1">
           {(["en", "fr"] as Lang[]).map((l) => (
             <button
               key={l}
@@ -233,7 +230,9 @@ export default function V4MonographStars() {
             className="-ml-1 md:-ml-2 font-serif text-[clamp(3.5rem,18vw,16rem)] font-thin leading-[0.85] tracking-tight text-zinc-100 select-none"
           >
             <span className="block">{content.firstName}</span>
-            <span className="block text-[0.75em] text-zinc-400">{content.lastName}</span>
+            <span className="block text-[0.75em] text-zinc-400">
+              {content.lastName}
+            </span>
           </motion.h1>
 
           {/* Title + subtitle */}
@@ -316,18 +315,30 @@ export default function V4MonographStars() {
               {[
                 {
                   value: `${content.stats.yearsExp}+`,
-                  label: { en: "Years of\nexperience", fr: "Années\nd'expérience" },
+                  label: {
+                    en: "Years of\nexperience",
+                    fr: "Années\nd'expérience",
+                  },
                 },
                 {
-                  value: `${content.stats.projects}+`,
-                  label: { en: "Projects\ndelivered", fr: "Projets\nlivrés" },
+                  value: `${content.stats.techExp}+`,
+                  label: {
+                    en: "Years in\nfront-end",
+                    fr: "Années en\nfront-end",
+                  },
                 },
                 {
-                  value: `${content.stats.clients}+`,
-                  label: { en: "Happy\nclients", fr: "Clients\nsatisfaits" },
+                  value: `${content.stats.frameworks}`,
+                  label: {
+                    en: "Frameworks\nmastered",
+                    fr: "Frameworks\nmaîtrisés",
+                  },
                 },
               ].map((stat) => (
-                <div key={stat.label.en} className="flex flex-col gap-1 md:text-right">
+                <div
+                  key={stat.label.en}
+                  className="flex flex-col gap-1 md:text-right"
+                >
                   <span className="font-serif text-5xl font-thin text-zinc-100 tabular-nums leading-none">
                     {stat.value}
                   </span>
@@ -354,8 +365,7 @@ export default function V4MonographStars() {
                 description={project.description[lang]}
                 tech={project.tech}
                 role={project.role[lang]}
-                year={project.year}
-                url={project.url}
+                url={project?.url}
                 viewLabel={content.cta.viewProject[lang]}
               />
             ))}
@@ -388,7 +398,10 @@ export default function V4MonographStars() {
               [
                 { key: "frontend", label: { en: "Frontend", fr: "Frontend" } },
                 { key: "backend", label: { en: "Backend", fr: "Backend" } },
-                { key: "tools", label: { en: "Tools & Infra", fr: "Outils & Infra" } },
+                {
+                  key: "tools",
+                  label: { en: "Tools & Infra", fr: "Outils & Infra" },
+                },
               ] as const
             ).map((cat) => (
               <motion.div key={cat.key} {...fadeUp}>
@@ -432,18 +445,37 @@ export default function V4MonographStars() {
               </motion.a>
             </motion.div>
 
-            <motion.div {...fadeUp} className="md:col-span-5 flex flex-col gap-4 md:items-end md:justify-end">
+            <motion.div
+              {...fadeUp}
+              className="md:col-span-5 flex flex-col gap-4 md:items-end md:justify-end"
+            >
               {[
                 { href: content.socials.github, label: "GitHub", icon: Github },
-                { href: content.socials.linkedin, label: "LinkedIn", icon: Linkedin },
-                { href: content.socials.twitter, label: "Twitter", icon: Twitter },
-                { href: `mailto:${content.socials.email}`, label: "Email", icon: Mail },
+                {
+                  href: content.socials.linkedin,
+                  label: "LinkedIn",
+                  icon: Linkedin,
+                },
+                {
+                  href: content.socials.twitter,
+                  label: "Twitter",
+                  icon: Twitter,
+                },
+                {
+                  href: `mailto:${content.socials.email}`,
+                  label: "Email",
+                  icon: Mail,
+                },
               ].map(({ href, label, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target={href.startsWith("mailto") ? undefined : "_blank"}
-                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                  rel={
+                    href.startsWith("mailto")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
                   aria-label={label}
                   className="group flex items-center gap-3 font-sans text-sm text-zinc-400 transition-colors duration-300 hover:text-sky-400"
                 >
