@@ -176,6 +176,12 @@ export const content = {
       "Typesense/Algolia",
     ],
   },
+  contact: {
+    tagline: {
+      en: "Open to meaningful conversations about demanding projects and long-term collaboration. Let's talk.",
+      fr: "Ouvert aux échanges autour de projets exigeants et de collaborations durables. Parlons-en.",
+    },
+  },
   socials: {
     github: "https://github.com/maxiim3",
     linkedin: "https://www.linkedin.com/in/maximetamburrini/?locale=en",

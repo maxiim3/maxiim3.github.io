@@ -430,9 +430,7 @@ export default function V4MonographStars() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
             <motion.div {...reveal} className="md:col-span-7">
               <p className="font-serif text-2xl md:text-3xl font-thin leading-[1.5] text-zinc-300">
-                {lang === "en"
-                  ? "Available for freelance and full-time opportunities. Let's build something meaningful together."
-                  : "Disponible pour des missions freelance et des postes en CDI. Construisons quelque chose d'ambitieux ensemble."}
+                {content.contact.tagline[lang]}
               </p>
 
               <motion.a
