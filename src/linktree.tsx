@@ -10,6 +10,7 @@ const links = [
       { label: "LinkedIn", href: content.socials.linkedin },
       { label: "GitHub", href: content.socials.github },
       { label: "Twitter / X", href: content.socials.twitter },
+      { label: "Nostr / Primal", href: content.socials.nostr },
     ],
   },
   {

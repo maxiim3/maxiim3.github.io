@@ -10,6 +10,18 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { content, type Lang } from "@/data/portfolio";
+
+const NostrIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M23.137 2.47A13.27 13.27 0 0 0 16.002 0C8.269 0 2 6.268 2 14.002c0 3.151 1.05 6.062 2.81 8.392L2.09 29.52a.5.5 0 0 0 .65.637l7.184-2.73A13.93 13.93 0 0 0 16 28.004C23.732 28.004 30 21.735 30 14.002A13.97 13.97 0 0 0 23.137 2.47Zm-3.824 18.5-3.95-5.637v5.637h-3.5V9.033h3.288l3.95 5.637V9.033h3.5V20.97Z" />
+  </svg>
+);
 import { cn } from "@/lib/utils";
 import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 
@@ -503,6 +515,11 @@ export default function V4MonographStars() {
                   icon: Twitter,
                 },
                 {
+                  href: content.socials.nostr,
+                  label: "Nostr",
+                  icon: NostrIcon,
+                },
+                {
                   href: `mailto:${content.socials.email}`,
                   label: "Email",
                   icon: Mail,
@@ -546,10 +563,18 @@ export default function V4MonographStars() {
           <span className="font-serif text-lg font-thin text-zinc-400">
             {content.firstName} {content.lastName}
           </span>
-          <p className="font-sans text-[11px] tracking-[0.2em] text-zinc-400">
-            &copy; {new Date().getFullYear()} &mdash;{" "}
-            {lang === "en" ? "All rights reserved" : "Tous droits réservés"}
-          </p>
+          <div className="flex items-center gap-6">
+            <a
+              href="/linktree"
+              className="font-sans text-[11px] tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+            >
+              Linktree
+            </a>
+            <p className="font-sans text-[11px] tracking-[0.2em] text-zinc-400">
+              &copy; {new Date().getFullYear()} &mdash;{" "}
+              {lang === "en" ? "All rights reserved" : "Tous droits réservés"}
+            </p>
+          </div>
         </div>
       </footer>
     </div>
