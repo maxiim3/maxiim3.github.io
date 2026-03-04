@@ -224,8 +224,8 @@ export default function V4MonographStars() {
         <div className="flex flex-1 flex-col justify-center">
           {/* Name — massive, left-aligned, overflowing */}
           <motion.h1
-            initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
-            animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="-ml-1 md:-ml-2 font-serif text-[clamp(3.5rem,18vw,16rem)] font-thin leading-[0.85] tracking-tight text-zinc-100 select-none"
           >
@@ -238,27 +238,27 @@ export default function V4MonographStars() {
           {/* Title + subtitle */}
           <div className="mt-8 md:mt-12 max-w-lg md:ml-2">
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+              initial={{ y: 16 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
               className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-zinc-400"
             >
               {content.title[lang]}
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
+              initial={{ y: 16 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
               className="mt-6 font-serif text-lg font-thin leading-relaxed text-zinc-300 italic"
             >
               {content.subtitle[lang]}
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.9 }}
+              initial={{ y: 16 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
               <button
@@ -385,6 +385,49 @@ export default function V4MonographStars() {
                 period={exp.period}
                 description={exp.description[lang]}
               />
+            ))}
+          </div>
+        </Section>
+
+        {/* ── SIDE PROJECTS ──────────────────────────────────────────────── */}
+        <Section id="apps">
+          <SectionLabel>{content.sections.apps[lang]}</SectionLabel>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px border border-white/8">
+            {content.apps.map((app) => (
+              <motion.a
+                key={app.title}
+                {...fadeUp}
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col gap-4 border border-white/8 p-8 transition-colors duration-300 hover:bg-white/[0.03]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="font-serif text-2xl font-thin text-zinc-100">
+                      {app.title}
+                    </h3>
+                    <p className="mt-1 font-serif text-sm font-thin italic text-zinc-400">
+                      {app.tagline[lang]}
+                    </p>
+                  </div>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-zinc-500 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-sky-400" />
+                </div>
+                <p className="font-sans text-sm leading-[1.9] text-zinc-200">
+                  {app.description[lang]}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                  {app.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border border-white/8 px-3 py-1 font-sans text-[11px] tracking-wide text-zinc-500"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.a>
             ))}
           </div>
         </Section>

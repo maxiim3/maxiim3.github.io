@@ -26,6 +26,7 @@ export const content = {
     projects: { en: "Selected projects", fr: "Projets sélectionnés" },
     experience: { en: "Experience", fr: "Expérience" },
     skills: { en: "Skills", fr: "Compétences" },
+    apps: { en: "Side projects", fr: "Projets perso" },
     contact: { en: "Contact", fr: "Contact" },
   },
   projects: [
@@ -176,6 +177,60 @@ export const content = {
       "Typesense/Algolia",
     ],
   },
+  apps: [
+    {
+      title: "Calcul TJM",
+      tagline: {
+        en: "Daily rate simulator for French freelancers",
+        fr: "Simulateur de TJM pour freelances",
+      },
+      description: {
+        en: "Calculate your net income based on your daily rate (or the reverse), with a breakdown of taxes and social contributions per legal structure: micro-enterprise, SASU, EURL. Includes ACRE support and visual charts.",
+        fr: "Calcule ton revenu net à partir de ton TJM (ou l'inverse), avec la décomposition des charges par statut : micro-entreprise, SASU, EURL. Supporte l'ACRE et propose une visualisation graphique.",
+      },
+      url: "https://calcul-tjm.fr",
+      tags: ["Vue.js", "TypeScript"],
+    },
+    {
+      title: "The Pause",
+      tagline: {
+        en: "Minimalist meditation timer",
+        fr: "Timer de méditation minimaliste",
+      },
+      description: {
+        en: "A simple, distraction-free meditation timer. No account, no tracking — just a pause.",
+        fr: "Un timer de méditation simple et sans friction. Pas de compte, pas de tracking — juste une pause.",
+      },
+      url: "https://www.thepause.app",
+      tags: ["Nuxt", "TypeScript"],
+    },
+    {
+      title: "JustForget",
+      tagline: {
+        en: "Card-swipe note app — WIP",
+        fr: "Notes en card swipe — WIP",
+      },
+      description: {
+        en: "A front-end experiment: note-taking with a card swipe interface. No database, no account. A scratchpad you swipe away.",
+        fr: "Une expérience front : prendre des notes avec une interface de swipe de cartes. Pas de base de données, pas de compte. Un bloc-notes que tu chasses du doigt.",
+      },
+      url: "https://justforget.app",
+      tags: ["React", "TypeScript"],
+    },
+    {
+      title: "Polishable",
+      tagline: {
+        en: "Browser extension for PWA launch prep",
+        fr: "Extension navigateur pour préparer un lancement PWA",
+      },
+      description: {
+        en: "Generate screenshots, icons and a PWA analysis in one shot, across multiple formats and viewports. No account, no cloud upload — runs entirely in the browser.",
+        fr: "Génère screenshots, icônes et analyse PWA en une fois, sur plusieurs formats et viewports. Pas de compte, pas d'upload cloud — tout se passe dans le navigateur.",
+      },
+      url: "https://polishable.app",
+      tags: ["TypeScript", "Web Extension"],
+    },
+  ],
   contact: {
     tagline: {
       en: "Open to meaningful conversations about demanding projects and long-term collaboration. Let's talk.",

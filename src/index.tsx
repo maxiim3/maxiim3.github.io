@@ -1,5 +1,6 @@
 import { serve } from "bun";
 import index from "./index.html";
+import linktree from "./linktree.html";
 
 const server = serve({
   routes: {
@@ -12,6 +13,8 @@ const server = serve({
     "/cv-fr.pdf": new Response(Bun.file("public/cv-fr.pdf"), {
       headers: { "Content-Type": "application/pdf" },
     }),
+
+    "/linktree": linktree,
 
     // Serve index.html for all unmatched routes.
     "/*": index,
