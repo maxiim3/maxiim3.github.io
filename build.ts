@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
-import { copyFile, rm } from "fs/promises";
+import { copyFile, mkdir, rm } from "fs/promises";
 import path from "path";
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
@@ -129,6 +129,10 @@ const result = await Bun.build({
   minify: true,
   target: "browser",
   sourcemap: "linked",
+  naming: {
+    chunk: "[name]-[hash].[ext]",
+    asset: "[name]-[hash].[ext]",
+  },
   define: {
     "process.env.NODE_ENV": JSON.stringify("production"),
   },
@@ -150,10 +154,24 @@ const buildTime = (end - start).toFixed(2);
 const publicDir = path.join(process.cwd(), "public");
 if (existsSync(publicDir)) {
   for await (const file of new Bun.Glob("**/*").scan(publicDir)) {
-    await copyFile(path.join(publicDir, file), path.join(outdir, file));
+    const dest = path.join(outdir, file);
+    await mkdir(path.dirname(dest), { recursive: true });
+    await copyFile(path.join(publicDir, file), dest);
   }
   console.log("📂 Copied public/ assets to dist/");
 }
+
+// Inject favicon + manifest links that Bun can't resolve at build time (root-relative paths)
+const faviconLinks = `
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <link rel="manifest" href="/manifest.json">`;
+const indexHtmlPath = path.join(outdir, "index.html");
+const indexHtml = await Bun.file(indexHtmlPath).text();
+await Bun.write(indexHtmlPath, indexHtml.replace("</head>", `${faviconLinks}\n  </head>`));
+console.log("🔗 Injected favicon + manifest links into index.html");
 
 // 404.html = index.html (SPA fallback for GitHub Pages)
 await copyFile(path.join(outdir, "index.html"), path.join(outdir, "404.html"));
