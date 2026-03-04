@@ -6,6 +6,12 @@ const server = serve({
     "/robots.txt": new Response(Bun.file("public/robots.txt"), {
       headers: { "Content-Type": "text/plain" },
     }),
+    "/cv-en.pdf": new Response(Bun.file("public/cv-en.pdf"), {
+      headers: { "Content-Type": "application/pdf" },
+    }),
+    "/cv-fr.pdf": new Response(Bun.file("public/cv-fr.pdf"), {
+      headers: { "Content-Type": "application/pdf" },
+    }),
 
     // Serve index.html for all unmatched routes.
     "/*": index,

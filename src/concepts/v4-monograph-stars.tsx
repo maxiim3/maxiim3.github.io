@@ -273,7 +273,7 @@ export default function V4MonographStars() {
                 <ChevronDown className="h-3 w-3" />
               </button>
               <a
-                href="/cv.pdf"
+                href={`/cv-${lang}.pdf`}
                 download
                 className="flex items-center gap-2 px-7 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-400 transition-colors duration-300 hover:text-sky-400"
               >
@@ -487,7 +487,7 @@ export default function V4MonographStars() {
               ))}
 
               <a
-                href="/cv.pdf"
+                href={`/cv-${lang}.pdf`}
                 download
                 className="mt-4 inline-flex items-center gap-2.5 border border-white/10 px-6 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-300 hover:border-sky-400 hover:text-sky-400 md:self-end"
               >
