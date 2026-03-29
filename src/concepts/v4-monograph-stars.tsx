@@ -2,12 +2,11 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import {
   Github,
-  Linkedin,
-  Twitter,
   Mail,
   Download,
   ArrowUpRight,
   ChevronDown,
+  Feather,
 } from "lucide-react";
 import { content, type Lang } from "@/data/portfolio";
 
@@ -15,13 +14,40 @@ const NostrIcon = ({ size = 16 }: { size?: number }) => (
   <svg
     width={size}
     height={size}
+    viewBox="0 0 512 512"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M 286.666 75.634 C 279.792 74.548 274.782 68.2 275.868 61.326 C 276.954 54.452 283.302 49.442 290.176 50.528 C 321.82 55.542 350.798 70.772 372.42 93.75 C 394.044 116.728 407.302 146.166 410.278 177.728 C 411.562 191.092 402.092 202.906 389.14 204.244 C 376.188 205.582 364.762 196.016 363.478 182.73 C 361.238 157.982 350.546 135.372 333.304 118.082 C 316.06 100.792 293.752 89.944 269.066 87.474 C 262.148 86.78 257.062 80.712 257.756 73.794 C 258.45 66.876 264.518 61.79 271.436 62.484 C 300.874 65.454 328.512 78.472 349.736 100.078 C 370.96 121.684 383.886 150.162 386.43 180.792 C 387.046 188.108 391.606 194.276 398.324 196.616 C 405.042 198.956 412.494 196.982 417.212 191.616 C 421.93 186.25 422.93 178.658 419.73 172.228 C 405.486 143.676 379.52 94.076 357.476 71.476 C 335.432 48.876 269.126 0.016 269.126 0.016 L 286.666 75.634 Z" />
+    <path d="M 256 96 C 167.634 96 96 167.634 96 256 C 96 344.366 167.634 416 256 416 C 344.366 416 416 344.366 416 256 C 416 167.634 344.366 96 256 96 Z M 256 144 C 317.856 144 368 194.144 368 256 C 368 317.856 317.856 368 256 368 C 194.144 368 144 317.856 144 256 C 144 194.144 194.144 144 256 144 Z" />
+    <path d="M 256 192 C 220.654 192 192 220.654 192 256 C 192 291.346 220.654 320 256 320 C 291.346 320 320 291.346 320 256 C 320 220.654 291.346 192 256 192 Z M 256 240 C 264.836 240 272 247.164 272 256 C 272 264.836 264.836 272 256 272 C 247.164 272 240 264.836 240 256 C 240 247.164 247.164 240 256 240 Z" />
+  </svg>
+);
+
+const MatrixIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
     viewBox="0 0 32 32"
     fill="currentColor"
     aria-hidden="true"
   >
-    <path d="M23.137 2.47A13.27 13.27 0 0 0 16.002 0C8.269 0 2 6.268 2 14.002c0 3.151 1.05 6.062 2.81 8.392L2.09 29.52a.5.5 0 0 0 .65.637l7.184-2.73A13.93 13.93 0 0 0 16 28.004C23.732 28.004 30 21.735 30 14.002A13.97 13.97 0 0 0 23.137 2.47Zm-3.824 18.5-3.95-5.637v5.637h-3.5V9.033h3.288l3.95 5.637V9.033h3.5V20.97Z" />
+    <path d="M4 2h2v28H4V2zm22 0h2v28h-2V2zm-18 3h2v2H8V5zm0 4h2v2H8V9zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm0 4h2v2H8v-2zm4-20h2v2h-2V5zm4 0h2v2h-2V5zm4 0h2v2h-2V5zm-8 4h2v2h-2V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9zm-8 4h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2z" />
   </svg>
 );
+
+const XIcon = ({ size = 16 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.15z" />
+  </svg>
+);
+
 import { cn } from "@/lib/utils";
 import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 
@@ -215,7 +241,7 @@ export default function V4MonographStars() {
       <header className="relative z-10 flex min-h-screen flex-col justify-between px-6 md:px-12 lg:px-24 py-8">
         {/* Top bar — language toggle */}
         <nav aria-label="Language" className="flex justify-end gap-1">
-          {(["en", "fr"] as Lang[]).map((l) => (
+          {(["en", "fr", "sr-lat"] as Lang[]).map((l) => (
             <button
               key={l}
               onClick={() => setLang(l)}
@@ -227,7 +253,7 @@ export default function V4MonographStars() {
                   : "text-zinc-400 hover:text-sky-400",
               )}
             >
-              {l}
+              {l === "sr-lat" ? "SR" : l}
             </button>
           ))}
         </nav>
@@ -327,24 +353,15 @@ export default function V4MonographStars() {
               {[
                 {
                   value: `${content.stats.yearsExp}+`,
-                  label: {
-                    en: "Years of\nexperience",
-                    fr: "Années\nd'expérience",
-                  },
+                  label: content.skills.stats.yearsExp.label,
                 },
                 {
                   value: `${content.stats.techExp}+`,
-                  label: {
-                    en: "Years in\nfront-end",
-                    fr: "Années en\nfront-end",
-                  },
+                  label: content.skills.stats.techExp.label,
                 },
                 {
                   value: `${content.stats.frameworks}`,
-                  label: {
-                    en: "Frameworks\nmastered",
-                    fr: "Frameworks\nmaîtrisés",
-                  },
+                  label: content.skills.stats.frameworks.label,
                 },
               ].map((stat) => (
                 <div
@@ -449,22 +466,13 @@ export default function V4MonographStars() {
           <SectionLabel>{content.sections.skills[lang]}</SectionLabel>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {(
-              [
-                { key: "frontend", label: { en: "Frontend", fr: "Frontend" } },
-                { key: "backend", label: { en: "Backend", fr: "Backend" } },
-                {
-                  key: "tools",
-                  label: { en: "Tools & Infra", fr: "Outils & Infra" },
-                },
-              ] as const
-            ).map((cat) => (
-              <motion.div key={cat.key} {...fadeUp}>
+            {(["frontend", "backend", "tools"] as const).map((cat) => (
+              <motion.div key={cat} {...fadeUp}>
                 <h3 className="mb-6 font-serif text-lg font-thin text-zinc-200">
-                  {cat.label[lang]}
+                  {content.skills.labels[cat][lang]}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {content.skills[cat.key].map((skill) => (
+                  {content.skills[cat].map((skill) => (
                     <span
                       key={skill}
                       className="inline-block rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 font-sans text-[13px] text-zinc-400"
@@ -505,19 +513,24 @@ export default function V4MonographStars() {
               {[
                 { href: content.socials.github, label: "GitHub", icon: Github },
                 {
-                  href: content.socials.linkedin,
-                  label: "LinkedIn",
-                  icon: Linkedin,
-                },
-                {
                   href: content.socials.twitter,
-                  label: "Twitter",
-                  icon: Twitter,
+                  label: "X",
+                  icon: XIcon,
                 },
                 {
                   href: content.socials.nostr,
                   label: "Nostr",
                   icon: NostrIcon,
+                },
+                {
+                  href: content.socials.matrix,
+                  label: "Matrix",
+                  icon: MatrixIcon,
+                },
+                {
+                  href: content.socials.typefully,
+                  label: "Typefully",
+                  icon: Feather,
                 },
                 {
                   href: `mailto:${content.socials.email}`,
@@ -572,7 +585,11 @@ export default function V4MonographStars() {
             </a>
             <p className="font-sans text-[11px] tracking-[0.2em] text-zinc-400">
               &copy; {new Date().getFullYear()} &mdash;{" "}
-              {lang === "en" ? "All rights reserved" : "Tous droits réservés"}
+              {lang === "en"
+                ? "All rights reserved"
+                : lang === "fr"
+                  ? "Tous droits réservés"
+                  : "Sva prava zadržana"}
             </p>
           </div>
         </div>
