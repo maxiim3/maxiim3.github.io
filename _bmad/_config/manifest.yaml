@@ -1,43 +1,51 @@
 installation:
-  version: 6.2.2
+  version: 6.6.0
   installDate: 2026-03-28T20:03:37.481Z
-  lastUpdated: 2026-03-28T20:03:37.481Z
+  lastUpdated: 2026-05-05T17:47:54.008Z
 modules:
   - name: core
-    version: 6.2.2
+    version: 6.6.0
     installDate: 2026-03-28T20:03:35.855Z
-    lastUpdated: 2026-03-28T20:03:35.855Z
+    lastUpdated: 2026-05-05T17:47:53.913Z
+    source: built-in
+    npmPackage: null
+    repoUrl: null
+  - name: bmm
+    version: 6.6.0
+    installDate: 2026-05-05T17:47:52.137Z
+    lastUpdated: 2026-05-05T17:47:53.913Z
     source: built-in
     npmPackage: null
     repoUrl: null
   - name: bmb
-    version: 1.1.0
+    version: v1.7.0
     installDate: 2026-03-28T20:03:29.451Z
-    lastUpdated: 2026-03-28T20:03:36.259Z
+    lastUpdated: 2026-05-05T17:47:53.936Z
     source: external
     npmPackage: bmad-builder
     repoUrl: https://github.com/bmad-code-org/bmad-builder
+    channel: stable
+    sha: 86033fc9aeae2ca6d52c7cdb675c1f4bf17fc1c1
   - name: cis
-    version: 0.1.9
+    version: v0.2.0
     installDate: 2026-03-28T20:03:30.599Z
-    lastUpdated: 2026-03-28T20:03:36.664Z
+    lastUpdated: 2026-05-05T17:47:53.961Z
     source: external
     npmPackage: bmad-creative-intelligence-suite
     repoUrl: https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite
-  - name: gds
-    version: 0.2.2
-    installDate: 2026-03-28T20:03:31.916Z
-    lastUpdated: 2026-03-28T20:03:37.053Z
-    source: external
-    npmPackage: bmad-game-dev-studio
-    repoUrl: https://github.com/bmad-code-org/bmad-module-game-dev-studio.git
+    channel: stable
+    sha: 14a63b893c07173b7a6cfe0fb6a9a72ba51d3cf1
   - name: wds
-    version: 0.3.1
+    version: v0.1.0
     installDate: 2026-03-28T20:03:33.227Z
-    lastUpdated: 2026-03-28T20:03:37.481Z
-    source: external
+    lastUpdated: 2026-05-05T17:47:54.008Z
+    source: community
     npmPackage: bmad-method-wds-expansion
     repoUrl: https://github.com/bmad-code-org/bmad-method-wds-expansion
+    channel: stable
+    sha: 50312755ca93d6667f9a9087cfe72cfd378b5329
+    registryApprovedTag: v0.1.0
 ides:
-  - claude-code
   - opencode
+  - codex
+  - claude-code
