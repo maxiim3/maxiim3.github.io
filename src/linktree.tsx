@@ -34,9 +34,7 @@ const links = [
       { label: "Email", href: `mailto:${content.socials.email}` },
       { label: "GitHub", href: content.socials.github, icon: "github" },
       { label: "Nostr", href: content.socials.nostr, icon: "nostr" },
-      { label: "Matrix", href: content.socials.matrix, icon: "matrix" },
       { label: "X", href: content.socials.twitter, icon: "x" },
-      { label: "Typefully", href: content.socials.typefully, icon: "typefully" },
     ],
   },
   {
@@ -93,8 +91,7 @@ function Linktree() {
                   href={item.href}
                   download={"download" in item ? item.download : undefined}
                   target={
-                    item.href.startsWith("mailto") ||
-                    "download" in item
+                    item.href.startsWith("mailto") || "download" in item
                       ? undefined
                       : "_blank"
                   }

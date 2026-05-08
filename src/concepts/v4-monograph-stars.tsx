@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import { motion } from "motion/react";
 import {
   Github,
@@ -9,11 +9,20 @@ import {
   Feather,
 } from "lucide-react";
 import { content, type Lang } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
+import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 
-const NostrIcon = ({ size = 16 }: { size?: number }) => (
+const NostrIcon = ({
+  size = 16,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) => (
   <svg
     width={size}
     height={size}
+    className={className}
     viewBox="0 0 512 512"
     fill="currentColor"
     aria-hidden="true"
@@ -24,10 +33,17 @@ const NostrIcon = ({ size = 16 }: { size?: number }) => (
   </svg>
 );
 
-const MatrixIcon = ({ size = 16 }: { size?: number }) => (
+const MatrixIcon = ({
+  size = 16,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) => (
   <svg
     width={size}
     height={size}
+    className={className}
     viewBox="0 0 32 32"
     fill="currentColor"
     aria-hidden="true"
@@ -36,10 +52,17 @@ const MatrixIcon = ({ size = 16 }: { size?: number }) => (
   </svg>
 );
 
-const XIcon = ({ size = 16 }: { size?: number }) => (
+const XIcon = ({
+  size = 16,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) => (
   <svg
     width={size}
     height={size}
+    className={className}
     viewBox="0 0 24 24"
     fill="currentColor"
     aria-hidden="true"
@@ -47,9 +70,6 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.15z" />
   </svg>
 );
-
-import { cn } from "@/lib/utils";
-import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 
 // ─── Clip-reveal animation preset ────────────────────────────────────────────
 const reveal = {
@@ -69,6 +89,66 @@ const fadeUp = {
   viewport: { once: true, margin: "-60px" },
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
+
+const LANGUAGE_OPTIONS = [
+  "en",
+  "fr",
+  "sr-lat",
+] as const satisfies readonly Lang[];
+const SKILL_CATEGORIES = ["frontend", "backend", "tools"] as const;
+
+const STAT_ITEMS = [
+  {
+    value: `${content.stats.yearsExp}+`,
+    label: content.skills.stats.yearsExp.label,
+  },
+  {
+    value: `${content.stats.techExp}+`,
+    label: content.skills.stats.techExp.label,
+  },
+  {
+    value: `${content.stats.frameworks}`,
+    label: content.skills.stats.frameworks.label,
+  },
+] as const;
+
+const HERO_NAME_INITIAL = { clipPath: "inset(0 0 100% 0)" };
+const HERO_NAME_ANIMATE = { clipPath: "inset(0 0 0% 0)" };
+const HERO_NAME_TRANSITION = { duration: 1.2, ease: [0.22, 1, 0.36, 1] };
+const HERO_COPY_INITIAL = { y: 16 };
+const HERO_COPY_ANIMATE = { y: 0 };
+const HERO_TITLE_TRANSITION = { duration: 0.6, ease: "easeOut", delay: 0.3 };
+const HERO_SUBTITLE_TRANSITION = { duration: 0.6, ease: "easeOut", delay: 0.4 };
+const HERO_ACTIONS_TRANSITION = { duration: 0.5, ease: "easeOut", delay: 0.5 };
+const SCROLL_HINT_ANIMATE = { y: [0, 6, 0] };
+const SCROLL_HINT_TRANSITION = {
+  duration: 2.5,
+  repeat: Infinity,
+  ease: "easeInOut",
+};
+
+const SOCIAL_LINKS: readonly {
+  href: string;
+  label: string;
+  icon: ComponentType<{ className?: string }>;
+}[] = [
+  { href: content.socials.github, label: "GitHub", icon: Github },
+  {
+    href: content.socials.twitter,
+    label: "X",
+    icon: XIcon,
+  },
+  {
+    href: content.socials.nostr,
+    label: "Nostr",
+    icon: NostrIcon,
+  },
+  {
+    href: `mailto:${content.socials.email}`,
+    label: "Email",
+    icon: Mail,
+  },
+];
 
 // ─── Section wrapper ─────────────────────────────────────────────────────────
 function Section({
@@ -241,7 +321,7 @@ export default function V4MonographStars() {
       <header className="relative z-10 flex min-h-screen flex-col justify-between px-6 md:px-12 lg:px-24 py-8">
         {/* Top bar — language toggle */}
         <nav aria-label="Language" className="flex justify-end gap-1">
-          {(["en", "fr", "sr-lat"] as Lang[]).map((l) => (
+          {LANGUAGE_OPTIONS.map((l) => (
             <button
               key={l}
               onClick={() => setLang(l)}
@@ -262,9 +342,9 @@ export default function V4MonographStars() {
         <div className="flex flex-1 flex-col justify-center">
           {/* Name — massive, left-aligned, overflowing */}
           <motion.h1
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            initial={HERO_NAME_INITIAL}
+            animate={HERO_NAME_ANIMATE}
+            transition={HERO_NAME_TRANSITION}
             className="-ml-1 md:-ml-2 font-serif text-[clamp(3.5rem,18vw,16rem)] font-thin leading-[0.85] tracking-tight text-zinc-100 select-none"
           >
             <span className="block">{content.firstName}</span>
@@ -276,27 +356,27 @@ export default function V4MonographStars() {
           {/* Title + subtitle */}
           <div className="mt-8 md:mt-12 max-w-lg md:ml-2">
             <motion.p
-              initial={{ y: 16 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+              initial={HERO_COPY_INITIAL}
+              animate={HERO_COPY_ANIMATE}
+              transition={HERO_TITLE_TRANSITION}
               className="font-sans text-xs font-medium uppercase tracking-[0.35em] text-zinc-400"
             >
               {content.title[lang]}
             </motion.p>
 
             <motion.p
-              initial={{ y: 16 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              initial={HERO_COPY_INITIAL}
+              animate={HERO_COPY_ANIMATE}
+              transition={HERO_SUBTITLE_TRANSITION}
               className="mt-6 font-serif text-lg font-thin leading-relaxed text-zinc-300 italic"
             >
               {content.subtitle[lang]}
             </motion.p>
 
             <motion.div
-              initial={{ y: 16 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+              initial={HERO_COPY_INITIAL}
+              animate={HERO_COPY_ANIMATE}
+              transition={HERO_ACTIONS_TRANSITION}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
               <button
@@ -325,8 +405,8 @@ export default function V4MonographStars() {
         {/* Bottom scroll hint */}
         <motion.div
           className="flex justify-center pb-4"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          animate={SCROLL_HINT_ANIMATE}
+          transition={SCROLL_HINT_TRANSITION}
           aria-hidden="true"
         >
           <ChevronDown className="h-4 w-4 text-zinc-500" />
@@ -350,20 +430,7 @@ export default function V4MonographStars() {
               {...fadeUp}
               className="md:col-span-5 flex flex-row md:flex-col flex-wrap gap-8 md:gap-10 md:items-end md:justify-start md:pt-4"
             >
-              {[
-                {
-                  value: `${content.stats.yearsExp}+`,
-                  label: content.skills.stats.yearsExp.label,
-                },
-                {
-                  value: `${content.stats.techExp}+`,
-                  label: content.skills.stats.techExp.label,
-                },
-                {
-                  value: `${content.stats.frameworks}`,
-                  label: content.skills.stats.frameworks.label,
-                },
-              ].map((stat) => (
+              {STAT_ITEMS.map((stat) => (
                 <div
                   key={stat.label.en}
                   className="flex flex-col gap-1 md:text-right"
@@ -466,7 +533,7 @@ export default function V4MonographStars() {
           <SectionLabel>{content.sections.skills[lang]}</SectionLabel>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-            {(["frontend", "backend", "tools"] as const).map((cat) => (
+            {SKILL_CATEGORIES.map((cat) => (
               <motion.div key={cat} {...fadeUp}>
                 <h3 className="mb-6 font-serif text-lg font-thin text-zinc-200">
                   {content.skills.labels[cat][lang]}
@@ -510,34 +577,7 @@ export default function V4MonographStars() {
               {...fadeUp}
               className="md:col-span-5 flex flex-col gap-4 md:items-end md:justify-end"
             >
-              {[
-                { href: content.socials.github, label: "GitHub", icon: Github },
-                {
-                  href: content.socials.twitter,
-                  label: "X",
-                  icon: XIcon,
-                },
-                {
-                  href: content.socials.nostr,
-                  label: "Nostr",
-                  icon: NostrIcon,
-                },
-                {
-                  href: content.socials.matrix,
-                  label: "Matrix",
-                  icon: MatrixIcon,
-                },
-                {
-                  href: content.socials.typefully,
-                  label: "Typefully",
-                  icon: Feather,
-                },
-                {
-                  href: `mailto:${content.socials.email}`,
-                  label: "Email",
-                  icon: Mail,
-                },
-              ].map(({ href, label, icon: Icon }) => (
+              {SOCIAL_LINKS.map(({ href, label, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
